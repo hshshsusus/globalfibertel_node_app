@@ -1,0 +1,81 @@
+export const LOGO = "https://e7.pngegg.com/pngimages/65/490/png-clipart-internet-service-provider-broadband-internet-access-others-miscellaneous-angle-thumbnail.png";
+
+export const IMG_SLIDE_URL = [{
+    id: 1,
+    url: 'https://images.pexels.com/photos/853151/pexels-photo-853151.jpeg?_gl=1*x16sns*_ga*NjA4NjMzMzE5LjE3NjIyNDUyMTc.*_ga_8JE65Q40S6*czE3NjIyNDUyMTYkbzEkZzEkdDE3NjIyNDUyNTIkajI0JGwwJGgw'
+},
+{
+    id: 2,
+    url: "https://miro.medium.com/v2/1*EisBRyxxCrOmTQ9bHAZnMQ.jpeg"
+},
+{
+    id: 3,
+    url: "https://media.istockphoto.com/id/1186955933/photo/sign-of-the-wireless-technology.jpg?s=612x612&w=0&k=20&c=j_ms9Ny6JddYQj6aHnwlSq1MAV1IeLuxiN2cdwuXGJE="
+},
+{
+    id: 4,
+    url: "https://www.shutterstock.com/image-photo/wifi-internet-access-concept-business-260nw-2415780575.jpg"
+},
+{
+    id: 5,
+    url: "https://primex.com/wp-content/uploads/2018/12/blog-mesh-networks.jpg"
+},
+]
+
+export const packagesData = [
+    {
+        "id": 1,
+        "speed": "100MBPS",
+        "price": "2151.00",
+        "validity": "3 months",
+        "data1": "GST extra",
+        "data2": "Equipment Priced Separately"
+    },
+    {
+        "id": 4,
+        "speed": "50MBPS",
+        "price": "4788.00",
+        "validity": "12 months",
+        "data1": "GST extra",
+        "data2": "Equipment Priced Separately"
+    },
+    {
+        "id": 15,
+        "speed": "200MBPS",
+        "price": "7188.00",
+        "validity": "12 months",
+        "data1": "GST extra",
+        "data2": "Equipment Priced Separately"
+    },
+]
+
+export const FAQ = [
+    {
+        q: "Which wifi is best for home?",
+        a: `Globalfibertel offers high-speed, reliable WiFi that’s perfect for modern homes—whether you’re streaming, working, or gaming.`
+    },
+    {
+        q: "Which is best broadband?",
+        a: `Globalfibertel is trusted for its fast speeds, low downtime, and dependable customer service, making it a top broadband choice.`
+    },
+    {
+        q: "Which is the best internet service provider?",
+        a: `Globalfibertel stands out for its 100% fiber network and consistent high-speed performance across multiple cities in India.`
+    },
+    {
+        q: "Which is the best internet connection?",
+        a: `Globalfibertel offers high-speed, reliable WiFi that’s perfect for modern homes—whether you’re streaming, working, or gaming.`
+    },
+    {
+        q: "How to measure internet speed?",
+        a: `Globalfibertel users can test their speed easily via the global app or website, or use trusted tools like Speedtest.net.`
+    },
+    {
+        q: "How to measure broadband speed?",
+        a: `Globalfibertel Fibernet customers can check broadband speed in real time using the in-app speed test or standard online tools.`
+    },
+    {
+        q: "Which is the best internet connection near me?",
+        a: `ACT Fibernet is available across major cities, offering strong local connectivity and fast, stable internet.`
+    },
+]
