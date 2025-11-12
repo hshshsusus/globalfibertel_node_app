@@ -49,11 +49,9 @@ export const ImageSlider = () => {
             setActiveImage(banner?.length - 1)
         }
         else {
-
             setActiveImage(activeImage - 1)
         }
     }
-
     const handleScrolldown = () => {
         if (window.scrollY > 10) {
             setScroll(true)
@@ -75,7 +73,7 @@ export const ImageSlider = () => {
     }, [])
 
     return (
-        <div className={`relative ${scroll && "mt-[40px]"}`}>
+        <div className={`relative ${scroll && "mt-[40px]"} z-0`}>
             <img src={banner?.[img || activeImage]?.imageURL} alt="" className={`w-[100vw] h-[70vh] mx-auto object-cover ${state ? "animate__animated animate__fadeInLeft" : 'animate__animated animate__fadeInLeft'}`} />
 
             <button className="absolute right-0 cursor-pointer transition duration-500 ease-in-out bg-gray-200 text-[30px] text-gray-600 hover:bg-red-600 hover:text-white p-[10px] top-[40%]" onClick={handleNext}><FaAngleRight /></button>

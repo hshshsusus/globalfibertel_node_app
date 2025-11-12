@@ -9,6 +9,7 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../Redux/userslice";
+import Loader from "./Loader";
 
 const VerifyOtp = () => {
 
@@ -16,6 +17,7 @@ const VerifyOtp = () => {
 
     const [inputArr, setInputArr] = useState(new Array(OTP_NUMBER_COUNT).fill(""));
     const [showError, setShowError] = useState();
+    const [loader, setLoader] = useState(false)
 
     const user = useSelector(store => store.user);
     const dispatch = useDispatch();
@@ -49,16 +51,19 @@ const VerifyOtp = () => {
     }
 
     const handleSentOTP = async () => {
-
         try {
+            setLoader(true);
             setShowError();
-            const { email } = user.updatedUser;
+            const { email } = user?.updatedUser;
             const otp = parseInt(inputArr.join(''));
             const res = await axios.post(BASE_URL + "/login/user/otp/verify", { email, otp }, { withCredentials: true })
+            console.log(res.data)
             dispatch(addUser(res.data));
             navigate("/")
+            setLoader(false)
         } catch (error) {
-            setShowError(error.response.data.message)
+            // console.log(error)
+            setShowError(error?.response?.data?.message)
         }
     }
 
@@ -108,7 +113,7 @@ const VerifyOtp = () => {
                             <p className="text-[14px] font-semibold text-red-600">{showError}</p>
                         </div>
                         <div className={`transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 rounded-tl-[10px] rounded-br-[10px] justify-center ${isFilled ? "bg-red-600 text-white font-bold" : "bg-gray-400 text-white font-bold"} w-fit py-[10px] px-[35px] mt-[-40px] mt-[20px]`} onClick={() => isFilled && handleSentOTP()}>
-                            <button className="cursor-pointer">Verify</button>
+                            <button className="cursor-pointer">{loader ? <Loader/> : "Verify"}</button>
                         </div>
                     </div>
                 </div>

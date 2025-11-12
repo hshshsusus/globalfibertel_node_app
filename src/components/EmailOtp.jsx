@@ -17,13 +17,13 @@ const EmailOtp = () => {
     const [email, setEmail] = useState("");
     const [showError, setShowError] = useState();
     const [loader, setLoader] = useState(false);
-    
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleOTP = async () => {
         try {
-            if(email.length === 0) return;
+            if (email.length === 0) return;
             setShowError();
             setLoader(true);
             const res = await axios.post(BASE_URL + "/login/user/otp", { email }, { withCredentials: true })
@@ -34,7 +34,6 @@ const EmailOtp = () => {
             setShowError(error.response.data.message);
         }
     }
-
     return (
         <>
             <TopNavbar />

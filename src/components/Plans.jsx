@@ -78,7 +78,7 @@ const Plans = () => {
                 </Link>}
             </div>
 
-            {filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[2%] py-2 mt-[20px] px-20">
+            {filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20">
                 {
                     filPacks?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity, id } = prop;
@@ -101,7 +101,7 @@ const Plans = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-center mt-[25px]">
-                                    <p className="text-[22px]">Rs{price}.00</p>
+                                    <p className="text-[22px]">Rs{price}</p>
                                     <span className="text-end pt-2.5 text-[16px]">/{validity}</span>
                                 </div>
                                 <div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-red-600 hover:text-white transition duration-500 ease-in-out">

@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import 'animate.css';
-
 import { AnimatePresence, motion } from 'framer-motion';
-
 import Page from './components/Page';
 import Plans from './components/Plans';
 import Services from './components/Services';
@@ -15,6 +13,7 @@ import AddPack from './components/AddPack';
 import UpdatePack from './components/UpdatePack';
 import EmailOtp from './components/EmailOtp';
 import VerifyOtp from './components/VerifyOtp';
+import UserDashboard from './components/UserDashboard';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -93,6 +92,14 @@ function AnimatedRoutes() {
               </motion.div>
             }
           />
+          <Route
+            path="/user/dashboard"
+            element={
+              <motion.div {...pageVariants}>
+                <UserDashboard />
+              </motion.div>
+            }
+          />
         </Route>
 
         <Route
@@ -119,7 +126,9 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+
       </Routes>
+
     </AnimatePresence>
   );
 }
