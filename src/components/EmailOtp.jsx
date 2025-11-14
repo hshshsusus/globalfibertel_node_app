@@ -38,53 +38,89 @@ const EmailOtp = () => {
     return (
         <>
             <TopNavbar />
-            <div className="mx-[10%] my-[5%] flex items-center justify-between py-[35px] px-[6%] emailOtp">
-                <div className="flex flex-col gap-7 w-[34%]">
-                    <p className="text-[32px] font-bold">Enjoy your life with<br /> high speed internet</p>
-                    <ul className="flex flex-col gap-5 pl-[20px]">
-                        <li className="flex items-center gap-3.5">
-                            <IoMdCheckboxOutline className="text-[20px] text-green-600 font-bold" />
-                            <p className="text-[18px] text-gray-600">Broadband service</p>
-                        </li>
-                        <li className=" flex items-center gap-3.5">
-                            <IoMdCheckboxOutline className="text-[20px] text-green-600 font-bold" />
-                            <p className="text-[18px] text-gray-600">High speed internet</p>
-                        </li>
-                        <li className="flex items-center gap-3.5">
-                            <IoMdCheckboxOutline className="text-[20px] text-green-600 font-bold" />
-                            <p className="text-[18px] text-gray-600">Instant customer support</p>
-                        </li>
-                        <li className="flex items-center gap-3.5">
-                            <IoMdCheckboxOutline className="text-[20px] text-green-600 font-bold" />
-                            <p className="text-[18px] text-gray-600">24/7 availability</p>
-                        </li>
+            <div className="mx-[8%] my-[5%] flex items-center justify-between py-[40px] px-[6%] 
+     bg-gradient-to-r from-[#f6f9ff] to-[#ffffff] rounded-2xl shadow-lg">
+
+                {/* LEFT SIDE TEXT */}
+                <div className="flex flex-col gap-8 w-[40%]">
+                    <h2 className="text-[40px] leading-tight font-extrabold text-gray-800">
+                        Enjoy your life with <br />
+                        <span className="text-green-600">high speed internet</span>
+                    </h2>
+
+                    <ul className="flex flex-col gap-5 pl-[10px]">
+                        {[
+                            "Broadband service",
+                            "High speed internet",
+                            "Instant customer support",
+                            "24/7 availability",
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                                <IoMdCheckboxOutline className="text-[24px] text-green-600" />
+                                <p className="text-[18px] text-gray-600">{item}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
-                <div className=" flex flex-col gap-10 py-[30px] px-[30px] w-[65%] otpbox mx-auto">
-                    <div className="flex items-center gap-2.5 mx-auto">
-                        <p className="text-[33px] font-bold text-green-600">Email </p>
-                        <span className="text-[30px] font-bold text-orange-600">verification</span>
-                        <MdOutlineMailLock className="text-[30px] text-orange-600 font-bold" />
-                    </div>
-                    <div className="flex flex-col gap-2 pl-[20%]">
-                        <p className="text-[16px] text-gray-700 font-bold">Email address</p>
-                        <input type="email" placeholder="enter your email address..." className="py-[10px]  px-[15px] otpInput border border-gray-500 rounded-full w-[70%] focus:border-none" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    {showError && <p className="animate__animated animate__flash pl-[20%] overflow-hidden w-[100%] text-[14px] text-red-600 font-semibold text-start mt-[-15px] mb-[-16px]">{showError}</p>}
-                    <div className="flex flex-col gap-3.5 mx-auto">
-                        <div className="transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 rounded-tl-[10px] rounded-br-[10px] justify-center bg-red-600 text-white font-bold w-fit py-[10px] px-[35px]" onClick={handleOTP}>
-                            <button className="cursor-pointer">{loader ? <Loader /> : "Get otp"}</button>
-                            {!loader && <IoMdArrowForward className="text-[22px]" />}
+
+                {/* OTP BOX */}
+                <div className="w-[55%]">
+                    <div className="flex flex-col gap-8 p-[40px] rounded-2xl bg-white/70 backdrop-blur-lg shadow-xl border border-gray-200">
+
+                        {/* HEADING */}
+                        <div className="flex items-center gap-3 mx-auto">
+                            <p className="text-[36px] font-bold text-green-600">Email</p>
+                            <span className="text-[32px] font-bold text-orange-600">Verification</span>
+                            <MdOutlineMailLock className="text-[32px] text-orange-600" />
                         </div>
-                        <p className="text-gray-700 font-bold text-center">or</p>
-                        <Link to={"/"}><div className="flex items-center gap-2.5 hover:text-green-700 transition-all duration-300 ease-in hover:underline cursor-pointer text-[16px] font-bold text-blue-700">
-                            <FaArrowLeft />
-                            <p>Back to Home</p>
+
+                        {/* EMAIL INPUT */}
+                        <div className="flex flex-col gap-2 mx-auto w-[70%]">
+                            <p className="text-[16px] text-gray-700 font-semibold">Email address</p>
+                            <input
+                                type="email"
+                                placeholder="Enter your email address..."
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="py-[12px] px-[18px] rounded-full border border-gray-400 text-[16px]
+                    focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 focus:border-none"
+                            />
                         </div>
-                        </Link>
+
+                        {/* ERROR */}
+                        {showError && (
+                            <p className="animate__animated animate__shakeX text-red-600 font-semibold text-center text-[14px]">
+                                {showError}
+                            </p>
+                        )}
+
+                        {/* BUTTON */}
+                        <div className="flex flex-col gap-4 mx-auto">
+                            <button
+                                onClick={handleOTP}
+                                className="flex items-center gap-2 justify-center cursor-pointer 
+                    bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400
+                    rounded-xl text-white font-semibold text-[18px] py-[12px] px-[40px]
+                    shadow-md hover:shadow-lg transition-all duration-300"
+                            >
+                                {loader ? <Loader /> : "Get OTP"}
+                                {!loader && <IoMdArrowForward className="text-[22px]" />}
+                            </button>
+
+                            <p className="text-gray-700 font-semibold text-center">or</p>
+
+                            <Link to="/">
+                                <div className="flex items-center gap-2.5 text-red-700 hover:underline hover:text-green-700 
+                        transition-all duration-300 cursor-pointer font-semibold mx-auto">
+                                    <FaArrowLeft />
+                                    <span>Back to Home</span>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <Footer />
         </>
     )

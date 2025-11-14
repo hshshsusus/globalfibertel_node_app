@@ -62,7 +62,7 @@ const Navbar = () => {
         try {
             const res = await axios.post(BASE_URL + "/logout/user", {}, { withCredentials: true });
             dispatch(removeUser())
-            window.location.href = "/";
+             window.location.href = "/"; 
         } catch (error) {
             console.log(error)
         }

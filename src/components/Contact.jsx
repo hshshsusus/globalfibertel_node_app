@@ -39,6 +39,10 @@ const Contact = () => {
             });
             setSuccessMessage(res.data)
             setLoader(false)
+            setName("")
+            setNumber("")
+            setEmail("")
+            setSuccessMessage("")
         } catch (error) {
             setLoader(false)
             setSuccessMessage(error.response.data.message)

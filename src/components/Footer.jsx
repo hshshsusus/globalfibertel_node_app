@@ -7,45 +7,72 @@ import { MdHeadsetMic } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <div className="my-[25px]">
-            <div className="flex justify-between py-10 px-14 border-t border-gray-200 mt-[25px]">
-                <div className="flex items-center gap-6">
-                    <MdHeadsetMic className="text-[45px] text-red-600 font-bold" />
+        <div className="my-10">
+
+            {/* MAIN FOOTER CONTENT */}
+            <div className="flex justify-between py-12 px-16 border-t border-gray-200 bg-white shadow-sm rounded-xl">
+
+                {/* CONTACT */}
+                <div className="flex items-start gap-6">
+                    <MdHeadsetMic className="text-[48px] text-red-600" />
+
                     <div>
-                        <p className="text-[18px] text-gray-400 font-bold">Contact us 24/7</p>
-                        <p className="mt-[5px] text-[20px] font-bold hover:text-red-600">(+91) 9999999999</p>
-                        <p className="mt-[10px] text-[20px] font-bold hover:text-red-600 mt-[10px]">(+91) 8888888888</p>
+                        <p className="text-[18px] text-gray-500 font-semibold">Contact Us 24/7</p>
+
+                        <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
+                            (+91) 9999999999
+                        </p>
+
+                        <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
+                            (+91) 8888888888
+                        </p>
                     </div>
                 </div>
+
+                {/* SERVICES */}
                 <div className="flex flex-col gap-3">
-                    <p className="text-[20px] font-bold">Our services</p>
-                    <div className="text-[16px] text-gray-600 pl-[5px]">
+                    <p className="text-[20px] font-bold text-gray-800">Our Services</p>
+
+                    <div className="text-[16px] text-gray-600 flex flex-col gap-1 pl-1">
                         <p className="hover:text-blue-600 cursor-pointer hover:underline">Broadband Service</p>
-                        <p className="hover:text-blue-600 cursor-pointer hover:underline">Fast wifi-connection</p>
-                        <p className="hover:text-blue-600 cursor-pointer hover:underline">24/7 customer service</p>
+                        <p className="hover:text-blue-600 cursor-pointer hover:underline">Fast Wi-Fi Connection</p>
+                        <p className="hover:text-blue-600 cursor-pointer hover:underline">24/7 Customer Support</p>
                     </div>
                 </div>
-                <div className="flex flex-col">
-                    <p className="text-[20px] font-bold">Menu</p>
-                    <p className="hover:text-blue-600 text-gray-600 cursor-pointer hover:underline mt-[10px]">Terms & Conditions</p>
-                    <p className="hover:text-blue-600 text-gray-600 cursor-pointer hover:underline">Privacy policy</p>
+
+                {/* MENU */}
+                <div className="flex flex-col gap-3">
+                    <p className="text-[20px] font-bold text-gray-800">Menu</p>
+
+                    <p className="text-gray-600 hover:text-blue-600 cursor-pointer hover:underline">
+                        Terms & Conditions
+                    </p>
+
+                    <p className="text-gray-600 hover:text-blue-600 cursor-pointer hover:underline">
+                        Privacy Policy
+                    </p>
                 </div>
-                <div className="flex flex-col pr-5">
-                    <p className="text-[20px] font-bold">Timings</p>
-                    <div className="flex flex-col text-gray-600">
-                        <p>Monday - Saturday</p>
-                        <p>9:00 am - 6:00 pm</p>
+
+                {/* TIMINGS */}
+                <div className="flex flex-col gap-3 pr-5">
+                    <p className="text-[20px] font-bold text-gray-800">Timings</p>
+
+                    <div className="text-gray-600 leading-[1.5]">
+                        <p>Monday – Saturday</p>
+                        <p>9:00 AM – 6:00 PM</p>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-center gap-5 text-[18px]">
-                <FaFacebookF  className="text-white cursor-pointer bg-red-600 p-[4px] rounded-full text-[25px]" />
-                <FaInstagram  className="text-white cursor-pointer bg-red-600 p-[4px] rounded-full text-[25px]" />
-                <FaGoogle  className="text-white cursor-pointer bg-red-600 p-[4px] rounded-full text-[25px]" />
-                <AiOutlineYoutube  className="text-white cursor-pointer bg-red-600 p-[4px] rounded-full text-[25px]" />
-                <FaTwitter className="text-white cursor-pointer bg-red-600 p-[4px] rounded-full text-[25px]" />
+            {/* SOCIAL ICONS */}
+            <div className="flex items-center justify-center gap-6 mt-6">
+                <FaFacebookF className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
+                <FaInstagram className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
+                <FaGoogle className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
+                <AiOutlineYoutube className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
+                <FaTwitter className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
             </div>
         </div>
+
     )
 }
 export default Footer

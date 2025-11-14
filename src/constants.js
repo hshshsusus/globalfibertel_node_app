@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:7777"
+export const BASE_URL = "http://192.168.6.30:7777"
 
 export const packagesData = [
     {

@@ -61,7 +61,7 @@ const VerifyOtp = () => {
             navigate("/")
             setLoader(false)
         } catch (error) {
-            // console.log(error)
+            setLoader(false)
             setShowError(error?.response?.data?.message)
         }
     }

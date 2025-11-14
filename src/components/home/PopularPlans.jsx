@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { packagesData } from "../../utils";
-import { IoMdCheckboxOutline } from "react-icons/io";
+import { IoMdCheckboxOutline, IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ export const PopularPlans = () => {
     const [hover, setHover] = useState();
 
     const popularPacks = useSelector(store => store.pack.allPacks)
-       
+
     return (
         <div className="mt-[25px]">
             <p className="text-[35px] text-center py-[10px] font-bold">Our Popular plans</p>
@@ -19,34 +19,73 @@ export const PopularPlans = () => {
                     popularPacks?.slice(0, 3)?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity } = prop;
                         return (
-                            <div key={i} className="animate__animated animate__slideInDown border border-gray-300 py-6 px-12 rounded-md relative pack" onMouseOver={() => setHover(i)} onMouseLeave={() => setHover()}>
-                                {hover === i && <img src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp" alt="img" className="absolute w-[75px] h-[75px] top-[-50px] right-[-40px] bag animate__animated animate__fadeIn bag" />}
-                                <p className="text-center text-[40px] text-red-600">{uploadSpeed}</p>
-                                <div className="mt-[30px] ">
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckboxOutline className="text-green-500" />
-                                        <p className="text-[16px] text-gray-600">{downloadSpeed} Upload</p>
+                            <div
+                                key={i}
+                                className={`relative pack cursor-pointer rounded-2xl border border-gray-200 p-8 
+              bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 
+              hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
+                                onMouseOver={() => setHover(i)}
+                                onMouseLeave={() => setHover()}
+                            >
+                                {/* Top Hover Sticker */}
+                                {hover === i && (
+                                    <img
+                                        src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp"
+                                        alt="img"
+                                        className="absolute w-[70px] h-[70px] top-[-40px] right-[-30px] animate__animated animate__fadeIn"
+                                    />
+                                )}
+
+                                {/* Speed Badge */}
+                                <p className="text-center text-4xl font-extrabold bg-gradient-to-r from-red-600 to-orange-500 text-transparent bg-clip-text">
+                                    {uploadSpeed.toUpperCase()}
+                                </p>
+
+                                {/* Features */}
+                                <div className="mt-6 space-y-3">
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">{uploadSpeed.toUpperCase()} Upload</p>
                                     </div>
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckboxOutline className="text-green-500" />
-                                        <p className="text-[16px] text-gray-600">{downloadSpeed} Download</p>
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">{downloadSpeed.toUpperCase()} Download</p>
                                     </div>
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckboxOutline className="text-green-500" />
-                                        <p className="text-[16px] text-gray-600">Unlimited</p>
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">Unlimited Data*</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-center mt-[25px]">
-                                    <p className="text-[30px]">Rs{price}</p>
-                                    <span className="text-end pt-2.5">/{validity}</span>
+
+                                {/* Price Section */}
+                                <div className="flex items-center justify-center mt-7">
+                                    <p className="text-3xl font-bold text-red-600">₹{price}</p>
+                                    <span className="text-gray-500 text-lg mt-1">/{validity}</span>
                                 </div>
-                                <Link to={"/plans"}><div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[15px] rounded-br-[15px] hover:bg-red-600 hover:text-white transition duration-500 ease-in-out">
-                                    <p>View all plans</p>
-                                    <FaArrowRight />
+
+                                {/* Buy Button */}
+                                <div
+                                    className="mt-7 py-3 px-6 text-center font-semibold 
+                 text-white bg-gradient-to-r from-red-600 to-red-700
+                 rounded-xl shadow-lg hover:shadow-xl
+                 hover:from-red-700 hover:to-red-800
+                 transition-all duration-300"
+                                >
+                                    Buy / Subscribe
                                 </div>
-                                </Link>
-                                {hover === i && <img src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp" alt="img" className="absolute w-[80px] h-[80px] left-[-30px] bottom-[-30px] animate__animated animate__fadeIn" />}
+
+                                {/* Admin Edit Button */}
+
+                                {/* Bottom Hover Sticker */}
+                                {hover === i && (
+                                    <img
+                                        src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp"
+                                        alt="img"
+                                        className="absolute w-[70px] h-[70px] left-[-25px] bottom-[-25px] animate__animated animate__fadeIn"
+                                    />
+                                )}
                             </div>
+
                         )
                     })
                 }

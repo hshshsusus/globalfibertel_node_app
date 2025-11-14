@@ -10,28 +10,51 @@ export const OurServices = () => {
 
     const home = useSelector(store => store.home);
     const services = home?.services;
-    
+
     return (
-        <div className="mt-[25px] ">
-            <p className="text-[35px] text-center py-[10px] font-bold">Our popular services</p>
-            <div className="flex items-center justify-center gap-8 mt-[20px] mx-[10%] ">
-                {
-                    services?.map((each, i) => {
-                        return (
-                            <div key={i} className="flex flex-col gap-5 border border-gray-200 py-4 px-5 rounded-md service ">
-                                <FaTowerBroadcast className="text-red-600 text-[45px] hover:text-red-600" />
-                                <p className="text-[25px] text-gray-700 font-bold hover:text-white">{each?.serviceName}</p>
-                                <p className="text-[16px] text-gray-500 hover:text-white">{each?.serviceDescription}</p>
-                                <Link to={"/service"}><div className="flex items-center gap-3 text-[14px] text-red-600 font-bold hover:text-red-600 cursor-pointer">
-                                    <p >READ MORE</p>
-                                    <HiOutlineArrowRight />
-                                </div>
-                                </Link>
+        <div className="mt-[40px]">
+            <p className="text-[38px] text-center font-extrabold tracking-wide">
+                Our Popular Services
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-10 mt-10 px-[10%]">
+                {services?.map((each, i) => {
+                    return (
+                        <div
+                            key={i}
+                            className="group w-[300px] bg-white border border-gray-200 p-6 rounded-2xl 
+                    shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer 
+                    hover:-translate-y-3 hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
+                        >
+                            {/* Icon */}
+                            <div className="flex items-center justify-center">
+                                <FaTowerBroadcast
+                                    className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
+                                />
                             </div>
-                        )
-                    })
-                }
+
+                            {/* Service Name */}
+                            <p className="mt-5 text-[24px] text-gray-800 font-bold text-center group-hover:text-red-600 transition-all duration-300">
+                                {each?.serviceName}
+                            </p>
+
+                            {/* Description */}
+                            <p className="mt-3 text-[16px] text-gray-500 text-center leading-relaxed">
+                                {each?.serviceDescription}
+                            </p>
+
+                            {/* Read More */}
+                            <Link to="/service">
+                                <div className="mt-6 flex items-center justify-center gap-2 text-red-600 font-bold group-hover:gap-4 transition-all duration-300">
+                                    <p>READ MORE</p>
+                                    <HiOutlineArrowRight className="text-lg" />
+                                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
         </div>
+
     )
 }

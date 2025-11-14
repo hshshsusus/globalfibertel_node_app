@@ -14,34 +14,43 @@ export const Faq = () => {
 
     return (
         <>
-            <p className="text-center text-[35px] font-bold mt-[25px]">{home?.[0]?.FAQ?.faqText}</p>
-            <div className="py-1.5 px-14 mx-[145px] flex flex-col gap-1 mt-[20px]">
+            <p className="text-center text-[35px] font-bold mt-[25px]">
+                {home?.[0]?.FAQ?.faqText}
+            </p>
+
+            <div className="py-4 px-10 mx-[145px] flex flex-col gap-4 mt-[20px]">
                 {FAQS?.map((each, i) => {
                     const isOpen = showAns === i;
+
                     return (
                         <div
                             key={i}
-                            className={`flex flex-col gap-2 bg-gray-50 ${FAQ.length - 1 === i ? "" : "border-b border-gray-300"
-                                } cursor-pointer py-[20px] px-[20px] rounded-md`}
                             onClick={() => handleFAQ(i)}
+                            className={`cursor-pointer bg-white shadow-md hover:shadow-xl 
+        border border-gray-200 rounded-xl p-5 transition-all duration-300 
+        ${isOpen ? "bg-red-50 border-red-300" : ""}`}
                         >
+                            {/* Question Row */}
                             <div className="flex items-center justify-between">
-                                <p className="text-[18px] font-bold">
+                                <p className={`text-[20px] font-semibold transition-all 
+            ${isOpen ? "text-red-600" : "text-gray-800"}`}
+                                >
                                     Q{i + 1}. {each.question}
                                 </p>
-                                <div>
+
+                                <div className="transition-transform duration-300">
                                     {isOpen ? (
-                                        <IoIosArrowUp className="text-[25px] mr-6 font-bold" />
+                                        <IoIosArrowUp className="text-[26px] text-red-600" />
                                     ) : (
-                                        <IoIosArrowDown className="text-[25px] mr-6 font-bold" />
+                                        <IoIosArrowDown className="text-[26px] text-gray-600" />
                                     )}
                                 </div>
                             </div>
 
+                            {/* Answer */}
                             <div className={`faq-answer-wrapper ${isOpen ? "open" : ""}`}>
-                                <p className="text-gray-700 faq-answer">
-                                    <span className="font-bold">Ans.</span> {each.answer
-                                    }
+                                <p className="text-gray-700 mt-3 text-[16px] leading-relaxed">
+                                    <span className="font-bold text-red-600">Ans.</span> {each.answer}
                                 </p>
                             </div>
                         </div>

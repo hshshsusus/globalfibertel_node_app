@@ -91,18 +91,14 @@ body {
 .faq-answer-wrapper {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.5s ease;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
   opacity: 0;
 }
 
 .faq-answer-wrapper.open {
   max-height: 500px;
-  /* enough to fit your longest answer */
+  /* enough height */
   opacity: 1;
-}
-
-.faq-answer {
-  margin-top: 10px;
 }
 
 .login {
@@ -277,10 +273,12 @@ body {
 .account {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-.scrollbar::-webkit-scrollbar{
+
+.scrollbar::-webkit-scrollbar {
   display: none;
 }
-.scrollbar{
+
+.scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -288,20 +286,53 @@ body {
 /* for mobile view */
 
 @media (max-width: 480px) {
-    .topNav{
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding: 5px 10px;
-    }
-    .topChild1{
-      display: flex;
-      align-items: center;
-      padding: 5px 10px;
-      justify-content: space-between;
-    }
-    .topSubChild1{
-      padding: 0 5px;
-    }
+  .topNav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px 10px;
+  }
+
+  .topChild1 {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    justify-content: space-between;
+  }
+
+  .topSubChild1 {
+    padding: 0 5px;
+  }
 }
 
+.slide-in {
+  animation: slideIn 0.3s forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.3s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}

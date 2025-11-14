@@ -4,7 +4,6 @@ import { CgMathPlus } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEdit, FiFilter } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
-import { BsFilterRight } from "react-icons/bs";
 import { addScroll } from "../Redux/scrollSlice";
 
 const Plans = () => {
@@ -20,7 +19,7 @@ const Plans = () => {
     const navigate = useNavigate();
 
     const allPacks = useSelector(store => store.pack.allPacks);
-    
+
     const admin = useSelector(store => store.admin.adminProfile);
 
     const handleFilter = (validity) => {
@@ -36,7 +35,7 @@ const Plans = () => {
         }
     }
 
-    const handleBuy = () =>{
+    const handleBuy = () => {
         navigate('/contact')
     }
 
@@ -53,29 +52,64 @@ const Plans = () => {
     return (
         <>
             <div className="flex items-center justify-between my-[25px] mx-[8%] py-8 ">
-                <div className="flex items-center gap-8">
-                    <div className="flex items-center gap-2.5 py-[10px] px-[20px] w-fit bg-red-600 text-white hover:bg-red-500 transition-all duration-200 ease-out cursor-pointer rounded-tl-[10px] rounded-br-[10px] " onClick={() => setOpenFil(!openFil)}>
-                        <button className="text-[16px] font-bold">Filter</button>
-                        <FiFilter className="text-[16px] font-bold" />
+                <div className="relative flex items-center gap-8 ">
+
+                    {/* Filter Button */}
+                    <div
+                        className="flex items-center gap-2 py-2 px-5 bg-gradient-to-r from-red-500 to-red-400 
+        text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
+                        onClick={() => setOpenFil(!openFil)}
+                    >
+                        <FiFilter className="text-lg" />
+                        <button className="text-[16px]">Filter</button>
                     </div>
-                    {openFil && <div className={`animate__animated animate__fadeInLeft flex gap-5 border border-gray-500 rounded-[5px] w-fit py-[4px] px-[10px]`}>
-                        <div className="flex gap-1.5 fil items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("3months")}>
-                            <p>3 months</p>
-                            <BsFilterRight />
+
+                    {/* Dropdown Panel */}
+                    {openFil && (
+                        <div
+                            className="absolute left-40 top-0 mt-16 w-64 bg-[rgba(0,0,0,0.9)] shadow-xl rounded-2xl 
+            border border-gray-100 overflow-hidden animate__animated animate__fadeInLeft z-30"
+                        >
+                            {/* 3 Months */}
+                            <div
+                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                onClick={() => handleFilter('3months')}
+                            >
+                                <span className="text-green-600 text-[20px]">✔</span>
+                                <p className="text-[16px] text-gray-50 font-semibold">3 months</p>
+                            </div>
+
+                            {/* 6 Months */}
+                            <div
+                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                onClick={() => handleFilter('6months')}
+                            >
+                                <FiFilter className="text-[18px] text-green-600" />
+                                <p className="text-[16px] text-gray-50 font-semibold">6 months</p>
+                            </div>
+
+                            {/* 12 Months */}
+                            <div
+                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                onClick={() => handleFilter('12months')}
+                            >
+                                <FiFilter className="text-[18px] text-green-600" />
+                                <p className="text-[16px] text-gray-50 font-semibold">12 months</p>
+                            </div>
+
+                            {/* All Packages */}
+                            <div
+                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                onClick={() => setFilPackages(packs)}
+                            >
+                                <FiFilter className="text-[18px] text-green-600" />
+                                <p className="text-[16px] text-gray-50 font-semibold">All Packages</p>
+                            </div>
                         </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("6months")}>
-                            <p>6 months</p>
-                            <BsFilterRight />
-                        </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("12months")}>
-                            <p>12 months</p>
-                            <BsFilterRight />
-                        </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => setFilPackages(packs)}>
-                            <p>All packages</p>
-                        </div>
-                    </div>}
+                    )}
                 </div>
+
+
                 {admin && <Link to={`${admin ? "/package/add" : "/plans"}`}><div className="flex gap-2.5 items-center border text-red-600 border-red-600 px-3.5 py-2 hover:bg-red-600 hover:text-white cursor-pointer font-bold rounded-tl-[10px] rounded-br-[10px] transition duration-500 ease-in-out mr-[25px]">
                     <CgMathPlus className="text-[22px] cursor-pointer" />
                     <button className="text-[16px] cursor-pointer">Add new pack</button>
@@ -83,42 +117,89 @@ const Plans = () => {
                 </Link>}
             </div>
 
-            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20">
+            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20 animate__animated animate__fadeInDown">
                 {
                     filPacks?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity, id } = prop;
                         return (
-                            <div key={i} className="animate__animated animate__slideInDown border border-gray-300 py-6 px-10 rounded-lg relative pack" onMouseOver={() => setHover(i)} onMouseLeave={() => setHover()}>
-                                {hover === i && <img src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp" alt="img" className="absolute w-[65px] h-[65px] top-[-50px] right-[-40px] bag animate__animated animate__fadeIn bag" />}
-                                <p className="text-center text-[30px] text-red-600">{uploadSpeed}</p>
-                                <div className="mt-[30px] ">
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckmarkCircleOutline className="text-green-700" />
-                                        <p className="text-[16px] text-gray-600">{uploadSpeed} Upload</p>
+                            <div
+                                key={i}
+                                className={`relative pack cursor-pointer rounded-2xl border border-gray-200 p-15 
+              bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 
+              hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
+                                onMouseOver={() => setHover(i)}
+                                onMouseLeave={() => setHover()}
+                            >
+                                {/* Top Hover Sticker */}
+                                {hover === i && (
+                                    <img
+                                        src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp"
+                                        alt="img"
+                                        className="absolute w-[70px] h-[70px] top-[-40px] right-[-30px] animate__animated animate__fadeIn"
+                                    />
+                                )}
+
+                                {/* Speed Badge */}
+                                <p className="text-center text-4xl font-extrabold bg-gradient-to-r from-red-600 to-orange-500 text-transparent bg-clip-text">
+                                    {uploadSpeed.toUpperCase()}
+                                </p>
+
+                                {/* Features */}
+                                <div className="mt-6 space-y-3">
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">{uploadSpeed.toUpperCase()} Upload</p>
                                     </div>
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckmarkCircleOutline className="text-green-700" />
-                                        <p className="text-[16px] text-gray-600">{downloadSpeed} Download</p>
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">{downloadSpeed.toUpperCase()} Download</p>
                                     </div>
-                                    <div className="flex gap-1 items-center">
-                                        <IoMdCheckmarkCircleOutline className="text-green-700" />
-                                        <p className="text-[16px] text-gray-600">Unlimited*</p>
+                                    <div className="flex items-center gap-2">
+                                        <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
+                                        <p className="text-gray-700 text-[17px]">Unlimited Data*</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-center mt-[25px]">
-                                    <p className="text-[22px]">Rs{price}</p>
-                                    <span className="text-end pt-2.5 text-[16px]">/{validity}</span>
+
+                                {/* Price Section */}
+                                <div className="flex items-center justify-center mt-7">
+                                    <p className="text-3xl font-bold text-red-600">₹{price}</p>
+                                    <span className="text-gray-500 text-lg mt-1">/{validity}</span>
                                 </div>
-                                <div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-red-600 hover:text-white transition duration-500 ease-in-out" onClick={handleBuy}>
-                                    <p>Buy / Subscribe</p>
+
+                                {/* Buy Button */}
+                                <div
+                                    onClick={handleBuy}
+                                    className="mt-7 py-3 px-6 text-center font-semibold 
+                 text-white bg-gradient-to-r from-red-600 to-red-700
+                 rounded-xl shadow-lg hover:shadow-xl
+                 hover:from-red-700 hover:to-red-800
+                 transition-all duration-300"
+                                >
+                                    Buy / Subscribe
                                 </div>
-                                {admin && <Link to={`/package/update/${_id}`}><div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-green-700 hover:text-white transition duration-500 ease-in-out">
-                                    <p>Edit pack</p>
-                                    <FiEdit className="text-orange-500 font-bold text-[18px] hover:text-white" />
-                                </div>
-                                </Link>}
-                                {hover === i && <img src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp" alt="img" className="absolute w-[65px] h-[65px] left-[-30px] bottom-[-30px] animate__animated animate__fadeIn" />}
+
+                                {/* Admin Edit Button */}
+                                {admin && (
+                                    <Link to={`/package/update/${_id}`}>
+                                        <div className="mt-4 py-3 px-6 text-center font-semibold 
+                        bg-gray-100 text-gray-800 rounded-xl
+                        hover:bg-gray-200 transition-all border flex items-center justify-center gap-2">
+                                            <p>Edit Pack</p>
+                                            <FiEdit className="text-orange-500 text-xl" />
+                                        </div>
+                                    </Link>
+                                )}
+
+                                {/* Bottom Hover Sticker */}
+                                {hover === i && (
+                                    <img
+                                        src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp"
+                                        alt="img"
+                                        className="absolute w-[70px] h-[70px] left-[-25px] bottom-[-25px] animate__animated animate__fadeIn"
+                                    />
+                                )}
                             </div>
+
                         )
                     })
                 }

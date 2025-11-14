@@ -25,33 +25,55 @@ const TopNavbar = () => {
         !topData && fetchTopData();
     }, [])
     return (
-        <div className="flex items-center justify-between py-1.5 px-14 border-b border-gray-200 topNav">
+        <div className="w-full border-b border-gray-200 shadow-sm bg-white">
+            <div className="flex items-center justify-between px-10 py-3">
 
-            <div className="flex items-center justify-center gap-10 py-3.5 topChild1">
-                {location.pathname === "/login" && <Link to={"/"}>
-                    <img src="https://e7.pngegg.com/pngimages/65/490/png-clipart-internet-service-provider-broadband-internet-access-others-miscellaneous-angle-thumbnail.png" alt="" className="w-[45px] h-[45px]" />
-                </Link>}
-                <div className="flex items-center justify-center gap-3 text-[20px] border-r-3 border-gray-300 pr-6 topSubChild1">
-                    <TiLocation className="text-red-600 text-[20px]" />
-                    <p className="text-[14px] text-gray-500">{topData?.location}</p>
+                {/* LEFT SECTION */}
+                <div className="flex items-center gap-10">
+
+                    {/* Logo only on login page */}
+                    {location.pathname === "/login" && (
+                        <Link to="/">
+                            <img
+                                src="https://e7.pngegg.com/pngimages/65/490/png-clipart-internet-service-provider-broadband-internet-access-others-miscellaneous-angle-thumbnail.png"
+                                alt="logo"
+                                className="w-[48px] h-[48px] rounded-full shadow-sm hover:scale-105 duration-200"
+                            />
+                        </Link>
+                    )}
+
+                    {/* Location */}
+                    <div className="flex items-center gap-3 pr-6 border-r border-gray-300">
+                        <TiLocation className="text-red-600 text-[22px]" />
+                        <p className="text-sm font-medium text-gray-600">{topData?.location}</p>
+                    </div>
+
+                    {/* WhatsApp */}
+                    <div className="flex items-center gap-3 pr-6 border-r border-gray-300">
+                        <SiWhatsapp className="text-green-600 text-[22px]" />
+                        <p className="text-sm font-medium text-gray-600">+91 {topData?.customerCareNumber}</p>
+                    </div>
+
+                    {/* Timings */}
+                    <div className="flex items-center gap-3">
+                        <WiTime4 className="text-red-600 text-[22px]" />
+                        <p className="text-sm font-medium text-gray-600">{topData?.timings}</p>
+                    </div>
                 </div>
-                <div className="flex items-center justify-center gap-3 text-[20px] border-r-3 border-gray-300 pr-6">
-                    <SiWhatsapp className="text-green-700 text-[20px]" />
-                    <p className="text-[14px] text-gray-500">+91 {topData?.customerCareNumber}</p>
+
+                {/* RIGHT SECTION - SOCIALS */}
+                <div className="flex items-center gap-5 text-[20px]">
+
+                    <FaFacebook className="text-blue-600 cursor-pointer hover:scale-110 duration-200" />
+                    <FaInstagram className="text-pink-600 cursor-pointer hover:scale-110 duration-200" />
+                    <FaLinkedin className="text-sky-600 cursor-pointer hover:scale-110 duration-200" />
+                    <FaYoutube className="text-red-600 cursor-pointer hover:scale-110 duration-200" />
+                    <FaTwitter className="text-sky-600 cursor-pointer hover:scale-110 duration-200" />
+
                 </div>
-                <div className="flex items-center justify-center gap-3 text-[20px] pr-6">
-                    <WiTime4 className="text-red-600 text-[20px]" />
-                    <p className="text-[14px] text-gray-500">{topData?.timings}</p>
-                </div>
-            </div>
-            <div className="flex items-center justify-center gap-5 text-[18px]">
-                <FaFacebook className="text-blue-600 cursor-pointer" />
-                <FaInstagram className="text-pink-600 cursor-pointer" />
-                <FaLinkedin className="text-sky-600 cursor-pointer" />
-                <FaYoutube className="text-red-600 cursor-pointer" />
-                <FaTwitter className="text-sky-600 cursor-pointer" />
             </div>
         </div>
+
     )
 }
 export default TopNavbar;
