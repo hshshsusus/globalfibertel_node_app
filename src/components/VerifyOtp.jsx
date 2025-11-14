@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import TopNavbar from "./TopNavbar";
-import { input } from "framer-motion/client";
 import { IoMdCheckboxOutline } from "react-icons/io";
 import Footer from "./Footer";
 import { IoIosArrowBack } from "react-icons/io";
@@ -113,7 +112,7 @@ const VerifyOtp = () => {
                             <p className="text-[14px] font-semibold text-red-600">{showError}</p>
                         </div>
                         <div className={`transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 rounded-tl-[10px] rounded-br-[10px] justify-center ${isFilled ? "bg-red-600 text-white font-bold" : "bg-gray-400 text-white font-bold"} w-fit py-[10px] px-[35px] mt-[-40px] mt-[20px]`} onClick={() => isFilled && handleSentOTP()}>
-                            <button className="cursor-pointer">{loader ? <Loader/> : "Verify"}</button>
+                            <button className="cursor-pointer">{loader ? <Loader /> : "Verify"}</button>
                         </div>
                     </div>
                 </div>

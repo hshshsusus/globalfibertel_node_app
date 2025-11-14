@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { TiLocation } from "react-icons/ti";
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { WiTime4 } from "react-icons/wi";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SiWhatsapp } from "react-icons/si";
 import axios from "axios";
 import { BASE_URL } from "../constants";
-
 
 const TopNavbar = () => {
 
@@ -26,13 +25,13 @@ const TopNavbar = () => {
         !topData && fetchTopData();
     }, [])
     return (
-        <div className="flex items-center justify-between py-1.5 px-14 border-b border-gray-200">
+        <div className="flex items-center justify-between py-1.5 px-14 border-b border-gray-200 topNav">
 
-            <div className="flex items-center justify-center gap-10 py-3.5 ">
+            <div className="flex items-center justify-center gap-10 py-3.5 topChild1">
                 {location.pathname === "/login" && <Link to={"/"}>
                     <img src="https://e7.pngegg.com/pngimages/65/490/png-clipart-internet-service-provider-broadband-internet-access-others-miscellaneous-angle-thumbnail.png" alt="" className="w-[45px] h-[45px]" />
                 </Link>}
-                <div className="flex items-center justify-center gap-3 text-[20px] border-r-3 border-gray-300 pr-6">
+                <div className="flex items-center justify-center gap-3 text-[20px] border-r-3 border-gray-300 pr-6 topSubChild1">
                     <TiLocation className="text-red-600 text-[20px]" />
                     <p className="text-[14px] text-gray-500">{topData?.location}</p>
                 </div>

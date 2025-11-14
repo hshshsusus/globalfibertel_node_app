@@ -1,4 +1,4 @@
-export const LOGO = "https://e7.pngegg.com/pngimages/65/490/png-clipart-internet-service-provider-broadband-internet-access-others-miscellaneous-angle-thumbnail.png";
+export const LOGO = "https://internationalschoolspartnership.com/wp-content/uploads/cropped-favicon.png";
 
 export const IMG_SLIDE_URL = [{
     id: 1,

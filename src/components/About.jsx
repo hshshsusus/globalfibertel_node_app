@@ -3,12 +3,14 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Counting } from "./home/Counting";
 import { useDispatch } from "react-redux";
 import { addScroll } from "../Redux/scrollSlice";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
 
     const [scroll, setScroll] = useState(false);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleScroll = () => {
         if (window.scrollY > 20) {
@@ -16,6 +18,10 @@ const About = () => {
         } else {
             setScroll(false);
         }
+    }
+
+    const handleConnect = () =>{
+        navigate("/contact")
     }
 
     useEffect(() => {
@@ -52,7 +58,7 @@ const About = () => {
                             <p>Trusted & recommended</p>
                         </div>
                     </div>
-                    <button className="py-[8px] px-[15px] text-red-600 border border-red-600 w-fit rounded-br-[15px] rounded-tl-[15px] hover:bg-red-600 hover:text-white cursor-pointer font-bold">Get connection</button>
+                    <button className="py-[8px] px-[15px] text-red-600 border border-red-600 w-fit rounded-br-[15px] rounded-tl-[15px] hover:bg-red-600 hover:text-white cursor-pointer font-bold" onClick={handleConnect}>Get connection</button>
                 </div>
             </div>
             <Counting />

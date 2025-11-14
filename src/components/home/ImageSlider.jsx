@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { IMG_SLIDE_URL } from "../../utils";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { IoMdCall } from "react-icons/io";

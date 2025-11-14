@@ -269,6 +269,39 @@ body {
   outline-width: thin;
   outline-color: red;
 }
-.dash{
+
+.dash {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
+.account {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.scrollbar::-webkit-scrollbar{
+  display: none;
+}
+.scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* for mobile view */
+
+@media (max-width: 480px) {
+    .topNav{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 5px 10px;
+    }
+    .topChild1{
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+      justify-content: space-between;
+    }
+    .topSubChild1{
+      padding: 0 5px;
+    }
+}
+

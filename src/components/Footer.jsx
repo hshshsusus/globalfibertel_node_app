@@ -3,7 +3,6 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
-
 import { MdHeadsetMic } from "react-icons/md";
 
 const Footer = () => {

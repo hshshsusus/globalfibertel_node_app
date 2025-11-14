@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { TbPackageImport } from "react-icons/tb";
 import { BASE_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,6 @@ const UpdatePack = () => {
     const allPack = useSelector(store => store.pack.allPacks);
 
     const updatablePack = allPack?.filter(each => each._id === id);
-
 
     const [upload, setUpload] = useState(updatablePack?.[0] && updatablePack?.[0]?.upload);
     const [download, setDownload] = useState(updatablePack?.[0] && updatablePack?.[0]?.download);
@@ -48,10 +47,10 @@ const UpdatePack = () => {
         } catch (error) {
             console.log(error.message)
         }
-
     }
 
     if (!allPack) return;
+
 
     return (
         <>

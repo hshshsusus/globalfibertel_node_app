@@ -3,14 +3,18 @@ import { TbMessages } from "react-icons/tb";
 import { CgArrowRight } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { addScroll } from "../Redux/scrollSlice";
-
+import axios from "axios";
+import { BASE_URL } from "../constants";
+import Loader from "./Loader";
 
 const Contact = () => {
 
     const [name, setName] = useState("");
-    const [number, setNumber] = useState("");
+    const [phoneNumber, setNumber] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
+    const [successMessage, setSuccessMessage] = useState();
+    const [loader, setLoader] = useState(false);
 
     const [scroll, setScroll] = useState(false);
 
@@ -23,10 +27,33 @@ const Contact = () => {
             setScroll(false);
         }
     }
-    
+
+    const handleContactUs = async () => {
+        try {
+            setLoader(true)
+            const res = await axios.post(BASE_URL + "/user/contact/sent/message", {
+                name,
+                email,
+                phoneNumber,
+                message,
+            });
+            setSuccessMessage(res.data)
+            setLoader(false)
+        } catch (error) {
+            setLoader(false)
+            setSuccessMessage(error.response.data.message)
+        }
+    }
+
     useEffect(() => {
         dispatch(addScroll(scroll));
-    }, [scroll, dispatch]);
+        if (successMessage) {
+            const time = setTimeout(() => {
+                setSuccessMessage('');
+            }, 5000);
+        }
+    
+    }, [scroll, dispatch, successMessage]);
 
     const handleContact = () => {
 
@@ -47,23 +74,24 @@ const Contact = () => {
                 <div className="flex gap-6">
                     <div className="flex flex-col w-fit gap-2.5">
                         <label htmlFor="">Your name</label>
-                        <input type="text" placeholder="name.." className="border border-gray-300 py-[5px] px-[10px] rounded-md input" value={name} onChange={(e) => setName(e.target.value)} />
+                        <input type="text" placeholder="name.." className="border border-gray-300 py-[5px] px-[10px] rounded-md input focus:border-none" value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className="flex flex-col w-fit gap-2.5">
                         <label htmlFor="">Mobile number</label>
-                        <input type="number" placeholder="mobile number." className="num border border-gray-300 py-[5px] px-[10px] rounded-md input" value={number} onChange={(e) => setNumber(e.target.value)} />
+                        <input type="number" placeholder="mobile number." className="num border border-gray-300 py-[5px] px-[10px] rounded-md input focus:border-none" value={phoneNumber} onChange={(e) => setNumber(e.target.value)} />
                     </div>
                 </div>
                 <div className="flex flex-col w-fit gap-2.5">
                     <label htmlFor="">Email address</label>
-                    <input type="email" placeholder="email@gmail.com" className="border border-gray-300 py-[5px] px-[10px] rounded-md input" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" placeholder="email@gmail.com" className="border border-gray-300 py-[5px] px-[10px] rounded-md input focus:border-none" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="flex flex-col w-full gap-2.5">
                     <label htmlFor="">Message</label>
-                    <textarea name="" id="" className="h-[30vh] border border-gray-300 py-[5px] px-[10px] rounded-md input" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
+                    <textarea name="" id="" className="h-[22vh] border border-gray-300 py-[5px] px-[10px] rounded-md input focus:border-none" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
                 </div>
+                <p className="text-[14px] text-red-600 font-semibold">{successMessage}</p>
                 <div className="text-white font-bold py-[10px] px-[20px] flex gap-2.5 items-center bg-red-600 hover:bg-red-500 w-fit rounded-br-[15px] rounded-tl-[15px]" onClick={handleContact}>
-                    <button >Submit message</button>
+                    <button onClick={handleContactUs}>{loader ? <Loader /> : "Submit message"}</button>
                     <CgArrowRight className="text-[20px]" />
                 </div>
             </div>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
-import { FaArrowRight } from "react-icons/fa6";
 import { CgMathPlus } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiEdit, FiFilter } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { BsFilterRight } from "react-icons/bs";
@@ -17,6 +16,8 @@ const Plans = () => {
     const [scroll, setScroll] = useState(false);
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const allPacks = useSelector(store => store.pack.allPacks);
     
@@ -33,6 +34,10 @@ const Plans = () => {
         } else {
             setScroll(false);
         }
+    }
+
+    const handleBuy = () =>{
+        navigate('/contact')
     }
 
     useEffect(() => {
@@ -54,19 +59,19 @@ const Plans = () => {
                         <FiFilter className="text-[16px] font-bold" />
                     </div>
                     {openFil && <div className={`animate__animated animate__fadeInLeft flex gap-5 border border-gray-500 rounded-[5px] w-fit py-[4px] px-[10px]`}>
-                        <div className="flex gap-1.5 fil items-center py-[4px] px-[10px] border border-red-600 text-red-600 rounded-[5px] hover:bg-green-600 hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("3months")}>
+                        <div className="flex gap-1.5 fil items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("3months")}>
                             <p>3 months</p>
                             <BsFilterRight />
                         </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-red-600 text-red-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("6months")}>
+                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("6months")}>
                             <p>6 months</p>
                             <BsFilterRight />
                         </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-red-600 text-red-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("12months")}>
+                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => handleFilter("12months")}>
                             <p>12 months</p>
                             <BsFilterRight />
                         </div>
-                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-red-600 text-red-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => setFilPackages(packs)}>
+                        <div className="flex gap-1.5 items-center py-[4px] px-[10px] border border-green-600 text-green-600 rounded-[5px] hover:bg-green-600 fil hover:border-none hover:text-white font-semibold cursor-pointer" onClick={() => setFilPackages(packs)}>
                             <p>All packages</p>
                         </div>
                     </div>}
@@ -78,7 +83,7 @@ const Plans = () => {
                 </Link>}
             </div>
 
-            {filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20">
+            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20">
                 {
                     filPacks?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity, id } = prop;
@@ -104,7 +109,7 @@ const Plans = () => {
                                     <p className="text-[22px]">Rs{price}</p>
                                     <span className="text-end pt-2.5 text-[16px]">/{validity}</span>
                                 </div>
-                                <div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-red-600 hover:text-white transition duration-500 ease-in-out">
+                                <div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-red-600 hover:text-white transition duration-500 ease-in-out" onClick={handleBuy}>
                                     <p>Buy / Subscribe</p>
                                 </div>
                                 {admin && <Link to={`/package/update/${_id}`}><div className="btn flex items-center justify-center gap-2.5 mt-[25px] py-2.5 px-6 cursor-pointer font-bold text-red-600 rounded-tl-[10px] rounded-br-[10px] hover:bg-green-700 hover:text-white transition duration-500 ease-in-out">

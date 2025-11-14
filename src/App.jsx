@@ -13,12 +13,12 @@ import AddPack from './components/AddPack';
 import UpdatePack from './components/UpdatePack';
 import EmailOtp from './components/EmailOtp';
 import VerifyOtp from './components/VerifyOtp';
-import UserDashboard from './components/UserDashboard';
+import UserDashboard from './components/Dashboard/UserDashboard';
 
 function AnimatedRoutes() {
-  const location = useLocation();
 
   // Reusable animation variants
+  const location = useLocation();
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -92,8 +92,9 @@ function AnimatedRoutes() {
               </motion.div>
             }
           />
+
           <Route
-            path="/user/dashboard"
+            path="/user/dashboard/:userId"
             element={
               <motion.div {...pageVariants}>
                 <UserDashboard />

@@ -23,6 +23,7 @@ const EmailOtp = () => {
 
     const handleOTP = async () => {
         try {
+            console.log(email)
             if (email.length === 0) return;
             setShowError();
             setLoader(true);
