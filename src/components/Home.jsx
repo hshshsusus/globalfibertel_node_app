@@ -12,7 +12,7 @@ import { AddHome } from "../Redux/homeSlice";
 const Home = () => {
 
     const [rendor, setRendor] = useState(0);
-    console.log(rendor)
+    
     const dispatch = useDispatch();
 
     const fetchHomepageData = async () => {
@@ -32,6 +32,7 @@ const Home = () => {
         });
 
     }, [])
+    
     return (
         <div>
             <ImageSlider />

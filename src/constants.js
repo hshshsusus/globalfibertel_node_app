@@ -1,4 +1,8 @@
-export const BASE_URL = "http://192.168.6.30:7777"
+export const BASE_URL = "http://192.168.6.30:7777";
+
+export const ROUTER_ICON ="https://res.cloudinary.com/dssabhgtb/image/upload/v1763180950/ChatGPT_Image_Nov_15_2025_09_52_11_AM_al38dd.png";
+
+export const GLOBE_ICON = "https://res.cloudinary.com/dssabhgtb/image/upload/v1763180969/ChatGPT_Image_Nov_15_2025_09_53_34_AM_ynir48.png";
 
 export const packagesData = [
     {

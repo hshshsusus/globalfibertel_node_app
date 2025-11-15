@@ -11,6 +11,7 @@ import { BASE_URL } from "../constants";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Redux/userslice";
 import Loader from "./Loader";
+import { toast } from "react-toastify";
 
 const EmailOtp = () => {
 
@@ -23,14 +24,15 @@ const EmailOtp = () => {
 
     const handleOTP = async () => {
         try {
-            console.log(email)
             if (email.length === 0) return;
             setShowError();
             setLoader(true);
-            const res = await axios.post(BASE_URL + "/login/user/otp", { email }, { withCredentials: true })
+            const res = await axios.post(BASE_URL + "/login/user/otp", { email }, { withCredentials: true });
+            toast.success("Otp sent successfuly!")
             dispatch(addUser(res.data));
             navigate("/auth/otp/verify")
         } catch (error) {
+            toast.error("Failed to sent otp!")
             setLoader(false)
             setShowError(error.response.data.message);
         }
@@ -84,7 +86,7 @@ const EmailOtp = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="py-[12px] px-[18px] rounded-full border border-gray-400 text-[16px]
                     focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 focus:border-none"
-                            />
+                            onKeyDown={(e) => e.key === "Enter" && handleOTP()}/>
                         </div>
 
                         {/* ERROR */}
@@ -97,12 +99,12 @@ const EmailOtp = () => {
                         {/* BUTTON */}
                         <div className="flex flex-col gap-4 mx-auto">
                             <button
+                                
                                 onClick={handleOTP}
                                 className="flex items-center gap-2 justify-center cursor-pointer 
                     bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400
                     rounded-xl text-white font-semibold text-[18px] py-[12px] px-[40px]
-                    shadow-md hover:shadow-lg transition-all duration-300"
-                            >
+                    shadow-md hover:shadow-lg transition-all duration-300" >
                                 {loader ? <Loader /> : "Get OTP"}
                                 {!loader && <IoMdArrowForward className="text-[22px]" />}
                             </button>

@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { SiWhatsapp } from "react-icons/si";
 import axios from "axios";
 import { BASE_URL } from "../constants";
+import ResendOtp from "./ResendOtp";
 
 const TopNavbar = () => {
 

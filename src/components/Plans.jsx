@@ -60,19 +60,19 @@ const Plans = () => {
         text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
                         onClick={() => setOpenFil(!openFil)}
                     >
-                        <FiFilter className="text-lg" />
-                        <button className="text-[16px]">Filter</button>
+                        <FiFilter className="text-lg cursor-pointer" />
+                        <button className="text-[16px] cursor-pointer">Filter</button>
                     </div>
 
                     {/* Dropdown Panel */}
                     {openFil && (
                         <div
-                            className="absolute left-40 top-0 mt-16 w-64 bg-[rgba(0,0,0,0.9)] shadow-xl rounded-2xl 
+                            className="absolute left-24 -top-6 mt-16 w-45 bg-[rgba(0,0,0,0.9)] shadow-xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl 
             border border-gray-100 overflow-hidden animate__animated animate__fadeInLeft z-30"
                         >
                             {/* 3 Months */}
                             <div
-                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('3months')}
                             >
                                 <span className="text-green-600 text-[20px]">✔</span>
@@ -81,7 +81,7 @@ const Plans = () => {
 
                             {/* 6 Months */}
                             <div
-                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('6months')}
                             >
                                 <FiFilter className="text-[18px] text-green-600" />
@@ -90,7 +90,7 @@ const Plans = () => {
 
                             {/* 12 Months */}
                             <div
-                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('12months')}
                             >
                                 <FiFilter className="text-[18px] text-green-600" />
@@ -99,7 +99,7 @@ const Plans = () => {
 
                             {/* All Packages */}
                             <div
-                                className="flex items-center gap-3 px-5 py-4 cursor-pointer hover:bg-gray-600 border-b"
+                                className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => setFilPackages(packs)}
                             >
                                 <FiFilter className="text-[18px] text-green-600" />

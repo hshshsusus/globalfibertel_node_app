@@ -14,14 +14,14 @@ export const PopularPlans = () => {
     return (
         <div className="mt-[25px]">
             <p className="text-[35px] text-center py-[10px] font-bold">Our Popular plans</p>
-            <div className="flex flex-wrap items-center justify-center gap-14 mx-auto py-1.5 px-14 mt-[25px]">
+            <div className="relative flex flex-wrap items-center justify-center gap-14 mx-auto py-1.5 px-14 mt-[25px]">
                 {
                     popularPacks?.slice(0, 3)?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity } = prop;
                         return (
                             <div
                                 key={i}
-                                className={`relative pack cursor-pointer rounded-2xl border border-gray-200 p-8 
+                                className={`pack cursor-pointer rounded-2xl border border-gray-200 p-8 
               bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 
               hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
                                 onMouseOver={() => setHover(i)}
@@ -85,7 +85,6 @@ export const PopularPlans = () => {
                                     />
                                 )}
                             </div>
-
                         )
                     })
                 }

@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import { FAQ } from "../../utils";
+import React, { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useSelector } from "react-redux";
 
@@ -8,6 +7,7 @@ export const Faq = () => {
 
     const home = useSelector(store => store.home);
     const FAQS = home?.FAQ;
+   
     const handleFAQ = (i) => {
         setShowAns(showAns === i ? null : i);
     };
@@ -15,7 +15,7 @@ export const Faq = () => {
     return (
         <>
             <p className="text-center text-[35px] font-bold mt-[25px]">
-                {home?.[0]?.FAQ?.faqText}
+                FAQs
             </p>
 
             <div className="py-4 px-10 mx-[145px] flex flex-col gap-4 mt-[20px]">

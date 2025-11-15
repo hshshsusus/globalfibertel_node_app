@@ -4,6 +4,7 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { IoMdCall } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { addScroll } from "../../Redux/scrollSlice";
+import { useNavigate } from "react-router-dom";
 
 export const ImageSlider = () => {
 
@@ -19,11 +20,14 @@ export const ImageSlider = () => {
 
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         setState(true);
 
         const timeId = setInterval(() => {
-            let value = Math.floor(Math.random() * 10);
+            let value = Math.floor(Math.random() * 4);
+            // console.log(value)
             if (value >= 0 && value < banner?.length) {
                 setValue(value)
                 setImg(value)
@@ -76,7 +80,7 @@ export const ImageSlider = () => {
 
             {/* Background Image */}
             <img
-                src={banner?.[img || activeImage]?.imageURL}
+                src={banner?.[img || !img &&activeImage]?.imageURL}
                 alt=""
                 className={`relative w-full h-[70vh] object-cover transition-all duration-700 z-0`}
             />
@@ -104,7 +108,7 @@ export const ImageSlider = () => {
 
             {/* Text Content Box */}
             <div
-                className="absolute top-[25%] left-20 max-w-[450px] bg-white/10 backdrop-blur-xl rounded-2xl 
+                className="absolute top-[18%] left-[10%] max-w-[450px] bg-white/10 backdrop-blur-[2px] 
         p-8 shadow-2xl animate__animated animate__fadeInLeft"
             >
                 {/* Heading */}
@@ -131,7 +135,7 @@ export const ImageSlider = () => {
             hover:from-red-500 hover:to-red-400 transition-all duration-300 
             mt-6 px-6 py-3 rounded-xl text-white font-semibold text-[18px] 
             flex items-center gap-2 shadow-lg w-fit"
-                >
+                onClick={() => navigate("/contact")}>
                     <IoMdCall className="text-xl" />
                     <p >{banner?.[activeImage || img]?.number1} {banner?.[activeImage || img]?.number2}</p>
                 </div>

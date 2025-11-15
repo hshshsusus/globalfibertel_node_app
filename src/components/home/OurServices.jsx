@@ -28,9 +28,11 @@ export const OurServices = () => {
                         >
                             {/* Icon */}
                             <div className="flex items-center justify-center">
-                                <FaTowerBroadcast
+                                {each.serviceName === "Broadband" ? <FaTowerBroadcast
                                     className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
-                                />
+                                /> : <GiWifiRouter 
+                                    className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
+                                />}
                             </div>
 
                             {/* Service Name */}

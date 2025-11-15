@@ -9,6 +9,8 @@ import { BASE_URL } from "../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../Redux/userslice";
 import Loader from "./Loader";
+import { toast } from "react-toastify";
+import ResendOtp from "./ResendOtp";
 
 const VerifyOtp = () => {
 
@@ -18,10 +20,13 @@ const VerifyOtp = () => {
     const [showError, setShowError] = useState();
     const [loader, setLoader] = useState(false)
 
-    const user = useSelector(store => store.user);
+    const user = useSelector(store => store?.user);
+    console.log(user)
+    const email = user?.email;
+    const otpExpiry = user?.otpExpiry
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    
     const refArr = useRef([]);
 
     const isFilled = inputArr.every(e => e !== "");
@@ -53,16 +58,18 @@ const VerifyOtp = () => {
         try {
             setLoader(true);
             setShowError();
-            const { email } = user?.updatedUser;
+            const { email } = user;
             const otp = parseInt(inputArr.join(''));
             const res = await axios.post(BASE_URL + "/login/user/otp/verify", { email, otp }, { withCredentials: true })
-            console.log(res.data)
             dispatch(addUser(res.data));
+            toast.success("Logged in successfully.!");
             navigate("/")
             setLoader(false)
         } catch (error) {
+            toast.error("Login unsuccessfull!")
             setLoader(false)
             setShowError(error?.response?.data?.message)
+            console.log(error)
         }
     }
 
@@ -91,7 +98,7 @@ const VerifyOtp = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="flex items-center justify-center py-[35px] px-[40px] otpbox">
+                <div className="flex items-center justify-center py-[35px] px-[40px] otpbox rounded-2xl">
                     <div className="flex flex-col gap-10">
                         <Link to={"/auth/otp"}>
                             <IoIosArrowBack className="text-[55px] font-bold text-red-600 p-[10px] rounded-full hover:bg-[rgba(0,0,0,0.1)] cursor-pointer" />
@@ -104,11 +111,14 @@ const VerifyOtp = () => {
                             <div className="flex gap-6">
                                 {
                                     inputArr.map((value, index) => {
-                                        return <input key={index} type="text" placeholder={value} value={inputArr[index]} onChange={(e) => handleOtpValues(e.target.value, index)} className="border border-gray-500 rounded-md w-[45px] h-[45px] text-center leading-[45px] text-[22px] font-semibold focus:outline-none focus:ring-1 focus:ring-red-600 focus:border-none" ref={(input) => refArr.current[index] = input} onKeyDown={(e) => handleFocus(e, index)} />
+                                        return <input key={index} type="text" placeholder={value} value={inputArr[index]} onChange={(e) => handleOtpValues(e.target.value, index)} className="border border-gray-500 rounded-xl w-[45px] h-[45px] text-center leading-[45px] text-[22px] font-semibold focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-none" ref={(input) => refArr.current[index] = input} onKeyDown={(e) => {
+                                            e.key === "Enter" && handleSentOTP();
+                                            handleFocus(e, index);
+                                        }} />
                                     })
                                 }
                             </div>
-                            <p className="text-end pr-[100px] text-red-600 font-bold ">Resend OTP in:</p>
+                            <div className="flex items-end justify-end text-red-600 font-bold "><ResendOtp email={user?.email} otpExpiry={user?.otpExpiry} /></div>
                             <p className="text-[14px] font-semibold text-red-600">{showError}</p>
                         </div>
                         <div className={`transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 rounded-tl-[10px] rounded-br-[10px] justify-center ${isFilled ? "bg-red-600 text-white font-bold" : "bg-gray-400 text-white font-bold"} w-fit py-[10px] px-[35px] mt-[-40px] mt-[20px]`} onClick={() => isFilled && handleSentOTP()}>
@@ -117,6 +127,7 @@ const VerifyOtp = () => {
                     </div>
                 </div>
             </div>
+
             <Footer />
         </>
 
