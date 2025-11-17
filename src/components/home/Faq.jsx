@@ -30,7 +30,6 @@ export const Faq = () => {
         border border-gray-200 rounded-xl p-5 transition-all duration-300 
         ${isOpen ? "bg-red-50 border-red-300" : ""}`}
                         >
-                            {/* Question Row */}
                             <div className="flex items-center justify-between">
                                 <p className={`text-[20px] font-semibold transition-all 
             ${isOpen ? "text-red-600" : "text-gray-800"}`}
@@ -46,8 +45,6 @@ export const Faq = () => {
                                     )}
                                 </div>
                             </div>
-
-                            {/* Answer */}
                             <div className={`faq-answer-wrapper ${isOpen ? "open" : ""}`}>
                                 <p className="text-gray-700 mt-3 text-[16px] leading-relaxed">
                                     <span className="font-bold text-red-600">Ans.</span> {each.answer}

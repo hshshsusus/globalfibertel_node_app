@@ -8,28 +8,19 @@ import { MdHeadsetMic } from "react-icons/md";
 const Footer = () => {
     return (
         <div className="my-10">
-
-            {/* MAIN FOOTER CONTENT */}
             <div className="flex justify-between py-12 px-16 border-t border-gray-200 bg-white shadow-sm rounded-xl">
-
-                {/* CONTACT */}
                 <div className="flex items-start gap-6">
                     <MdHeadsetMic className="text-[48px] text-red-600" />
-
                     <div>
                         <p className="text-[18px] text-gray-500 font-semibold">Contact Us 24/7</p>
-
                         <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
                             (+91) 9999999999
                         </p>
-
                         <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
                             (+91) 8888888888
                         </p>
                     </div>
                 </div>
-
-                {/* SERVICES */}
                 <div className="flex flex-col gap-3">
                     <p className="text-[20px] font-bold text-gray-800">Our Services</p>
 
@@ -39,8 +30,6 @@ const Footer = () => {
                         <p className="hover:text-blue-600 cursor-pointer hover:underline">24/7 Customer Support</p>
                     </div>
                 </div>
-
-                {/* MENU */}
                 <div className="flex flex-col gap-3">
                     <p className="text-[20px] font-bold text-gray-800">Menu</p>
 
@@ -52,8 +41,6 @@ const Footer = () => {
                         Privacy Policy
                     </p>
                 </div>
-
-                {/* TIMINGS */}
                 <div className="flex flex-col gap-3 pr-5">
                     <p className="text-[20px] font-bold text-gray-800">Timings</p>
 
@@ -63,7 +50,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            {/* SOCIAL ICONS */}
             <div className="flex items-center justify-center gap-6 mt-6">
                 <FaFacebookF className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
                 <FaInstagram className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
@@ -72,7 +58,6 @@ const Footer = () => {
                 <FaTwitter className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
             </div>
         </div>
-
     )
 }
 export default Footer

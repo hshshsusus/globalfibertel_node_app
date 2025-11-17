@@ -3,10 +3,12 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { OurServices } from "./home/OurServices";
 import { useDispatch } from "react-redux";
 import { addScroll } from "../Redux/scrollSlice";
+import ServicesShimmer from "../ShimmerUI/ServicesShimmer";
 
 const Services = () => {
 
     const [scroll, setScroll] = useState(false);
+    const [showShimmer, setShowShimmer] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -20,6 +22,9 @@ const Services = () => {
     
     useEffect(() => {
         dispatch(addScroll(scroll));
+        const timeId = setTimeout(() =>{
+            setShowShimmer(true)
+        },2000)
     }, [scroll, dispatch]);
 
     useEffect(() => {
@@ -29,7 +34,7 @@ const Services = () => {
         }
     }, [])
 
-    return (
+    return !showShimmer ? <ServicesShimmer/> : (
         <>
             <div className="flex items-center mx-[5%] gap-[35px] my-[25px]">
                 <div className="flex flex-col gap-5">

@@ -51,7 +51,6 @@ const UpdatePack = () => {
 
     if (!allPack) return;
 
-
     return (
         <>
             <div className="flex gap-1.5 items-center justify-center border-t border-gray-300 py-5">

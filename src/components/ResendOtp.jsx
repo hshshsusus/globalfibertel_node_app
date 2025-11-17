@@ -56,8 +56,6 @@ const ResendOtp = (prop) => {
 
     return (
         <div className="w-full flex flex-col items-center justify-end mt-3">
-
-            {/* Timer Box */}
             <div className="bg-gray-100 px-6 py-3 rounded-xl shadow-md border border-gray-200 flex items-center gap-2">
                 {!resendOtp ? (
                     <>
@@ -74,8 +72,6 @@ const ResendOtp = (prop) => {
                     </p>
                 )}
             </div>
-
-            {/* Resend Button */}
             <button
                 disabled={!resendOtp}
                 className={`

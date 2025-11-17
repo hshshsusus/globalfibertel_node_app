@@ -40,10 +40,7 @@ const EmailOtp = () => {
     return (
         <>
             <TopNavbar />
-            <div className="mx-[8%] my-[5%] flex items-center justify-between py-[40px] px-[6%] 
-     bg-gradient-to-r from-[#f6f9ff] to-[#ffffff] rounded-2xl shadow-lg">
-
-                {/* LEFT SIDE TEXT */}
+            <div className="mx-[8%] my-[5%] flex items-center justify-between py-[40px] px-[6%] bg-gradient-to-r from-[#f6f9ff] to-[#ffffff] rounded-2xl shadow-lg">
                 <div className="flex flex-col gap-8 w-[40%]">
                     <h2 className="text-[40px] leading-tight font-extrabold text-gray-800">
                         Enjoy your life with <br />
@@ -64,19 +61,13 @@ const EmailOtp = () => {
                         ))}
                     </ul>
                 </div>
-
-                {/* OTP BOX */}
                 <div className="w-[55%]">
                     <div className="flex flex-col gap-8 p-[40px] rounded-2xl bg-white/70 backdrop-blur-lg shadow-xl border border-gray-200">
-
-                        {/* HEADING */}
                         <div className="flex items-center gap-3 mx-auto">
                             <p className="text-[36px] font-bold text-green-600">Email</p>
                             <span className="text-[32px] font-bold text-orange-600">Verification</span>
                             <MdOutlineMailLock className="text-[32px] text-orange-600" />
                         </div>
-
-                        {/* EMAIL INPUT */}
                         <div className="flex flex-col gap-2 mx-auto w-[70%]">
                             <p className="text-[16px] text-gray-700 font-semibold">Email address</p>
                             <input
@@ -86,34 +77,24 @@ const EmailOtp = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="py-[12px] px-[18px] rounded-full border border-gray-400 text-[16px]
                     focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 focus:border-none"
-                            onKeyDown={(e) => e.key === "Enter" && handleOTP()}/>
+                                onKeyDown={(e) => e.key === "Enter" && handleOTP()} />
                         </div>
-
-                        {/* ERROR */}
                         {showError && (
                             <p className="animate__animated animate__shakeX text-red-600 font-semibold text-center text-[14px]">
                                 {showError}
                             </p>
                         )}
-
-                        {/* BUTTON */}
                         <div className="flex flex-col gap-4 mx-auto">
                             <button
-                                
+
                                 onClick={handleOTP}
-                                className="flex items-center gap-2 justify-center cursor-pointer 
-                    bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400
-                    rounded-xl text-white font-semibold text-[18px] py-[12px] px-[40px]
-                    shadow-md hover:shadow-lg transition-all duration-300" >
+                                className="flex items-center gap-2 justify-center cursor-pointer bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400 rounded-xl text-white font-semibold text-[18px] py-[12px] px-[40px] shadow-md hover:shadow-lg transition-all duration-300" >
                                 {loader ? <Loader /> : "Get OTP"}
                                 {!loader && <IoMdArrowForward className="text-[22px]" />}
                             </button>
-
                             <p className="text-gray-700 font-semibold text-center">or</p>
-
                             <Link to="/">
-                                <div className="flex items-center gap-2.5 text-red-700 hover:underline hover:text-green-700 
-                        transition-all duration-300 cursor-pointer font-semibold mx-auto">
+                                <div className="flex items-center gap-2.5 text-red-700 hover:underline hover:text-green-700 transition-all duration-300 cursor-pointer font-semibold mx-auto">
                                     <FaArrowLeft />
                                     <span>Back to Home</span>
                                 </div>

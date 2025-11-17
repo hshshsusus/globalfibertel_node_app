@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FiEdit, FiFilter } from "react-icons/fi";
 import { useDispatch, useSelector } from "react-redux";
 import { addScroll } from "../Redux/scrollSlice";
+import PlanShimmer from "./PlanShimmerUi";
 
 const Plans = () => {
     const [hover, setHover] = useState();
@@ -44,17 +45,22 @@ const Plans = () => {
     }, [scroll, dispatch]);
 
     useEffect(() => {
-        setPacks(allPacks);
+        const timerId = setTimeout(() => {
+            setPacks(allPacks);
+        }, 2000)
+
         setFilPackages(allPacks)
         window.addEventListener("scroll", handleScroll)
+        return () => {
+            clearTimeout(timerId)
+        }
     }, [allPacks])
 
-    return (
+
+    return packs.length === 0 ? <PlanShimmer /> : (
         <>
             <div className="flex items-center justify-between my-[25px] mx-[8%] py-8 ">
                 <div className="relative flex items-center gap-8 ">
-
-                    {/* Filter Button */}
                     <div
                         className="flex items-center gap-2 py-2 px-5 bg-gradient-to-r from-red-500 to-red-400 
         text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
@@ -63,14 +69,11 @@ const Plans = () => {
                         <FiFilter className="text-lg cursor-pointer" />
                         <button className="text-[16px] cursor-pointer">Filter</button>
                     </div>
-
-                    {/* Dropdown Panel */}
                     {openFil && (
                         <div
                             className="absolute left-24 -top-6 mt-16 w-45 bg-[rgba(0,0,0,0.9)] shadow-xl rounded-tr-2xl rounded-bl-2xl rounded-br-2xl 
             border border-gray-100 overflow-hidden animate__animated animate__fadeInLeft z-30"
                         >
-                            {/* 3 Months */}
                             <div
                                 className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('3months')}
@@ -78,8 +81,6 @@ const Plans = () => {
                                 <span className="text-green-600 text-[20px]">✔</span>
                                 <p className="text-[16px] text-gray-50 font-semibold">3 months</p>
                             </div>
-
-                            {/* 6 Months */}
                             <div
                                 className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('6months')}
@@ -87,8 +88,6 @@ const Plans = () => {
                                 <FiFilter className="text-[18px] text-green-600" />
                                 <p className="text-[16px] text-gray-50 font-semibold">6 months</p>
                             </div>
-
-                            {/* 12 Months */}
                             <div
                                 className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => handleFilter('12months')}
@@ -96,8 +95,6 @@ const Plans = () => {
                                 <FiFilter className="text-[18px] text-green-600" />
                                 <p className="text-[16px] text-gray-50 font-semibold">12 months</p>
                             </div>
-
-                            {/* All Packages */}
                             <div
                                 className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-600 border-b"
                                 onClick={() => setFilPackages(packs)}
@@ -117,20 +114,17 @@ const Plans = () => {
                 </Link>}
             </div>
 
-            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold">No data found.!</p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20 animate__animated animate__fadeInDown">
+            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold"><PlanShimmer /></p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20 animate__animated animate__fadeIn">
                 {
                     filPacks?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity, id } = prop;
                         return (
                             <div
                                 key={i}
-                                className={`relative pack cursor-pointer rounded-2xl border border-gray-200 p-15 
-              bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 
-              hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
+                                className={`relative pack cursor-pointer rounded-2xl border border-gray-200 p-15 bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
                                 onMouseOver={() => setHover(i)}
                                 onMouseLeave={() => setHover()}
                             >
-                                {/* Top Hover Sticker */}
                                 {hover === i && (
                                     <img
                                         src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp"
@@ -138,13 +132,9 @@ const Plans = () => {
                                         className="absolute w-[70px] h-[70px] top-[-40px] right-[-30px] animate__animated animate__fadeIn"
                                     />
                                 )}
-
-                                {/* Speed Badge */}
                                 <p className="text-center text-4xl font-extrabold bg-gradient-to-r from-red-600 to-orange-500 text-transparent bg-clip-text">
                                     {uploadSpeed.toUpperCase()}
                                 </p>
-
-                                {/* Features */}
                                 <div className="mt-6 space-y-3">
                                     <div className="flex items-center gap-2">
                                         <IoMdCheckmarkCircleOutline className="text-green-600 text-xl" />
@@ -159,38 +149,24 @@ const Plans = () => {
                                         <p className="text-gray-700 text-[17px]">Unlimited Data*</p>
                                     </div>
                                 </div>
-
-                                {/* Price Section */}
                                 <div className="flex items-center justify-center mt-7">
                                     <p className="text-3xl font-bold text-red-600">₹{price}</p>
                                     <span className="text-gray-500 text-lg mt-1">/{validity}</span>
                                 </div>
-
-                                {/* Buy Button */}
                                 <div
                                     onClick={handleBuy}
-                                    className="mt-7 py-3 px-6 text-center font-semibold 
-                 text-white bg-gradient-to-r from-red-600 to-red-700
-                 rounded-xl shadow-lg hover:shadow-xl
-                 hover:from-red-700 hover:to-red-800
-                 transition-all duration-300"
+                                    className="mt-7 py-3 px-6 text-center font-semibold text-white bg-gradient-to-r from-red-600 to-red-700 rounded-xl shadow-lg hover:shadow-xl hover:from-red-700 hover:to-red-800 transition-all duration-300"
                                 >
                                     Buy / Subscribe
                                 </div>
-
-                                {/* Admin Edit Button */}
                                 {admin && (
                                     <Link to={`/package/update/${_id}`}>
-                                        <div className="mt-4 py-3 px-6 text-center font-semibold 
-                        bg-gray-100 text-gray-800 rounded-xl
-                        hover:bg-gray-200 transition-all border flex items-center justify-center gap-2">
+                                        <div className="mt-4 py-3 px-6 text-center font-semibold bg-gray-100 text-gray-800 rounded-xl hover:bg-gray-200 transition-all border flex items-center justify-center gap-2">
                                             <p>Edit Pack</p>
                                             <FiEdit className="text-orange-500 text-xl" />
                                         </div>
                                     </Link>
                                 )}
-
-                                {/* Bottom Hover Sticker */}
                                 {hover === i && (
                                     <img
                                         src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp"
@@ -199,7 +175,6 @@ const Plans = () => {
                                     />
                                 )}
                             </div>
-
                         )
                     })
                 }

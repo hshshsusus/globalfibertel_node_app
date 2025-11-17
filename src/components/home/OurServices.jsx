@@ -22,11 +22,8 @@ export const OurServices = () => {
                     return (
                         <div
                             key={i}
-                            className="group w-[300px] bg-white border border-gray-200 p-6 rounded-2xl 
-                    shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer 
-                    hover:-translate-y-3 hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
+                            className="group w-[300px] bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer hover:-translate-y-3 hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
                         >
-                            {/* Icon */}
                             <div className="flex items-center justify-center">
                                 {each.serviceName === "Broadband" ? <FaTowerBroadcast
                                     className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
@@ -34,18 +31,12 @@ export const OurServices = () => {
                                     className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
                                 />}
                             </div>
-
-                            {/* Service Name */}
                             <p className="mt-5 text-[24px] text-gray-800 font-bold text-center group-hover:text-red-600 transition-all duration-300">
                                 {each?.serviceName}
                             </p>
-
-                            {/* Description */}
                             <p className="mt-3 text-[16px] text-gray-500 text-center leading-relaxed">
                                 {each?.serviceDescription}
                             </p>
-
-                            {/* Read More */}
                             <Link to="/service">
                                 <div className="mt-6 flex items-center justify-center gap-2 text-red-600 font-bold group-hover:gap-4 transition-all duration-300">
                                     <p>READ MORE</p>

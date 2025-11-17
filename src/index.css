@@ -7,11 +7,8 @@ body {
 
 .number {
   background: #ff9966;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #ff5e62, #ff9966);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #ff5e62, #ff9966);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -68,8 +65,6 @@ body {
 }
 
 .navshadow {
-  /* z-index: 9999; */
-  /* transition: top 0.4s ease, opacity 0.4s ease; */
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
@@ -97,12 +92,10 @@ body {
 
 .faq-answer-wrapper.open {
   max-height: 500px;
-  /* enough height */
   opacity: 1;
 }
 
 .login {
-  /* Outline style must be set for outline to be visible */
   outline-width: thin;
   outline-color: red;
 
@@ -134,7 +127,6 @@ body {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-/* From Uiverse.io by abrahamcalsin */
 .dot-spinner {
   --uib-size: 2.8rem;
   --uib-speed: .9s;
@@ -283,8 +275,6 @@ body {
   scrollbar-width: none;
 }
 
-/* for mobile view */
-
 @media (max-width: 480px) {
   .topNav {
     display: flex;
@@ -339,4 +329,7 @@ body {
 
 .userOption {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.shimmer{
+  background-color: rgb(236, 236, 236);
 }

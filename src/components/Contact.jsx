@@ -7,6 +7,8 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
+import { time } from "framer-motion";
+import ContactShimmer from "../ShimmerUI/ContactShimmer";
 
 const Contact = () => {
 
@@ -16,6 +18,7 @@ const Contact = () => {
     const [message, setMessage] = useState("");
     const [successMessage, setSuccessMessage] = useState();
     const [loader, setLoader] = useState(false);
+    const [shimmerLoader, setShimmerLoader] = useState(false);
 
     const [scroll, setScroll] = useState(false);
 
@@ -37,7 +40,7 @@ const Contact = () => {
                 email,
                 phoneNumber,
                 message,
-            }, {withCredentials:true});
+            }, { withCredentials: true });
             toast.success("Message submitted successfully!")
             setSuccessMessage(res.data)
             setLoader(false)
@@ -60,6 +63,13 @@ const Contact = () => {
             }, 5000);
         }
 
+        const timeId = setTimeout(() => {
+            setShimmerLoader(true)
+        }, 2000)
+        return () => {
+            clearTimeout(time)
+            clearTimeout(timeId)
+        }
     }, [scroll, dispatch, successMessage]);
 
     const handleContact = () => {
@@ -73,10 +83,8 @@ const Contact = () => {
         }
     }, [])
 
-    return (
+    return !shimmerLoader ? <ContactShimmer/> : (
         <div className="mx-[15%] bg-white shadow-xl rounded-2xl p-10 flex gap-10">
-
-            {/* LEFT SIDE - Form */}
             <div className="w-[65%] flex flex-col gap-6">
                 <p className="text-3xl text-red-600 font-extrabold">Contact Us</p>
 
@@ -136,8 +144,6 @@ const Contact = () => {
                     <CgArrowRight className="ml-2 text-xl" />
                 </button>
             </div>
-
-            {/* RIGHT SIDE - Contact Info */}
             <div className="w-[35%] p-8 rounded-xl bg-gray-50 border border-gray-200 flex flex-col gap-4">
                 <p className="text-lg font-semibold text-gray-700">Contact Info</p>
 

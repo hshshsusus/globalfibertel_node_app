@@ -19,7 +19,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function AnimatedRoutes() {
 
-  // Reusable animation variants
   const location = useLocation();
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -131,9 +130,7 @@ function AnimatedRoutes() {
               </motion.div>
             }
           />
-
         </Routes>
-
       </AnimatePresence>
     </>
   );
