@@ -10,7 +10,6 @@ import {
 } from "recharts";
 
 const DataUsage = () => {
-
     const data = [
         { day: "Mon", usage: 1 },
         { day: "Tue", usage: 2 },
@@ -20,7 +19,6 @@ const DataUsage = () => {
         { day: "Sat", usage: 2 },
         { day: "Sun", usage: 1.5 },
     ];
-
     return (
         <div className="flex flex-col gap-7 w-[60vw] py-[25px] px-[65px] account rounded-lg">
             <p className="text-[25px] text-red-600 font-bold">Datausage in Linechart</p>

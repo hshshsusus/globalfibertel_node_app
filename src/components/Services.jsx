@@ -36,7 +36,7 @@ const Services = () => {
 
     return !showShimmer ? <ServicesShimmer/> : (
         <>
-            <div className="flex items-center mx-[5%] gap-[35px] my-[25px]">
+            <div className="flex items-center mx-[5%] gap-[35px] my-[25px] z-10">
                 <div className="flex flex-col gap-5">
                     <p className="text-[40px] font-bold">Find Perfect Network Solutions From Us</p>
                     <p className="text-[18px] text-gray-500">Home Internet to connect your computer, phone, and other devices in<br /> your home simultaneously.</p>

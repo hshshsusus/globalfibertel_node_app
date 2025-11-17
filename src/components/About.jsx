@@ -45,7 +45,7 @@ const About = () => {
 
     return !shimmerLoader ? <AboutShimmer /> : (
         <>
-            <div className="relative w-full py-[60px] px-[7%] bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+            <div className="relative w-full py-[60px] px-[7%] bg-gradient-to-br from-gray-50 to-white overflow-hidden -z-[10]">
                 <div className="absolute top-0 left-0 w-[280px] h-[280px] bg-red-500/10 blur-3xl rounded-full"></div>
                 <div className="absolute bottom-0 right-0 w-[240px] h-[240px] bg-purple-500/10 blur-3xl rounded-full"></div>
 
