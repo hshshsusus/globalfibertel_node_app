@@ -2,43 +2,63 @@ import React, { useEffect, useState } from "react";
 import DataUsage from "./DataUsage";
 import Billing from "./Billing";
 import BarChartData from "./BarChartData";
+import { FaRocketchat } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
 
     const [scrollValue, setScrollValue] = useState();
+    const navigate = useNavigate();
 
-    const handleScroll = () =>{
+    const handleScroll = () => {
         setScrollValue(window.scrollY)
     }
-    
-    useEffect(() =>{
+
+    useEffect(() => {
         window.addEventListener("scroll", handleScroll)
-    },[])
+    }, [])
+
+    const handleChatbot = async () =>{
+       navigate("/user/chatbot")
+    }
 
     return (
-        <>
+        <div className="relative">
             <div className="mt-[75px] flex items-center gap-4 ml-[2%]">
-                <div className="w-[35vw] flex flex-col gap-10 py-[55px] px-[65px] account rounded-lg">
-                    <p className="text-[25px] text-red-600 font-bold ">Account summary</p>
-                    <p className="text-[35px] font-bold">User name</p>
-                    <div className="flex items-center justify-between">
-                        <div className="flex flex-col gap-2">
-                            <p className="text-[18px] text-gray-600 font-bold">Current plan</p>
-                            <p className="text-[22px] font-bold pb-[10px]">Speed</p>
-                            <button className="py-[10px] rounded-tl-[10px] rounded-br-[8px] px-[25px] text-[18px] border border-red-600 text-red-600 font-semibold cursor-pointer hover:bg-red-600 hover:text-white transition-all duration-300 ease-in">Renew plan</button>
+                <div className="w-[35vw] flex flex-col gap-12 py-12 px-10 rounded-xl 
+    bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-200">
+                    <p className="text-[26px] text-red-600 font-extrabold tracking-wide">
+                        Account Summary
+                    </p>
+                    <p className="text-[36px] font-bold text-gray-900">
+                        User Name
+                    </p>
+                    <div className="flex items-start justify-between">
+                        <div className="flex flex-col gap-3">
+                            <p className="text-[18px] text-gray-500 font-semibold">Current Plan</p>
+                            <p className="text-[24px] font-bold text-gray-800 pb-2">Speed</p>
+
+                            <button className="py-2.5 px-7 text-[18px] font-semibold border border-red-600 text-red-600 rounded-xl shadow-sm hover:bg-red-600 hover:text-white hover:shadow-[0_4px_15px_rgba(255,0,0,0.4)] transition-all duration-300 ease-out">
+                                Renew Plan
+                            </button>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <p className="text-[18px] text-gray-600 font-bold">Validity</p>
-                            <p className="text-[22px] pb-[10px] font-bold">*months</p>
-                            <button className="py-[10px] rounded-tl-[10px] rounded-br-[8px] px-[25px] text-[18px] border border-red-600 text-red-600 font-semibold cursor-pointer hover:bg-red-600 hover:text-white transition-all duration-300 ease-in">Upgrade plan</button>
+                        <div className="flex flex-col gap-3">
+                            <p className="text-[18px] text-gray-500 font-semibold">Validity</p>
+                            <p className="text-[24px] font-bold text-gray-800 pb-2">*months</p>
+                            <button className="py-2.5 px-7 text-[18px] font-semibold border border-red-600 text-red-600 rounded-xl shadow-sm hover:bg-red-600 hover:text-white hover:shadow-[0_4px_15px_rgba(255,0,0,0.4)] transition-all duration-300 ease-out
+      ">
+                                Upgrade Plan
+                            </button>
                         </div>
                     </div>
                 </div>
                 <DataUsage />
             </div>
-            {scrollValue > 10 &&<BarChartData/>}
-            <Billing/>
-        </>
+            {scrollValue > 10 && <BarChartData />}
+            <Billing />
+            <FaRocketchat className="text-white text-[55px] fixed bottom-6 right-6 
+             z-50 cursor-pointer bg-red-600 p-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.2)]" onClick={handleChatbot}/>
+        </div>
     )
 }
 export default UserDashboard;

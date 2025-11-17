@@ -52,7 +52,7 @@ const Services = () => {
                     </div>
                 </div>
                 <div>
-                    <img src="https://vnetservices.in/wp-content/uploads/2022/01/in_services_img.jpg" alt="" className="rounded-br-[15px] rounded-tl-[15px] animate__animated animate__fadeInRight" />
+                    <img src="https://vnetservices.in/wp-content/uploads/2022/01/in_services_img.jpg" alt="" className="rounded-br-[15px] rounded-tl-[15px] animate__animated animate__fadeIn" />
                 </div>
             </div>
             <div>

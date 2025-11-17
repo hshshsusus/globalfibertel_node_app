@@ -16,6 +16,7 @@ import VerifyOtp from './components/VerifyOtp';
 import UserDashboard from './components/Dashboard/UserDashboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ChatBot from './components/ChatBot';
 
 function AnimatedRoutes() {
 
@@ -101,6 +102,14 @@ function AnimatedRoutes() {
               element={
                 <motion.div {...pageVariants}>
                   <UserDashboard />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/user/chatbot"
+              element={
+                <motion.div {...pageVariants}>
+                  <ChatBot />
                 </motion.div>
               }
             />

@@ -56,18 +56,14 @@ const Plans = () => {
         }
     }, [allPacks])
 
-
     return packs.length === 0 ? <PlanShimmer /> : (
         <>
             <div className="flex items-center justify-between my-[25px] mx-[8%] py-8 ">
                 <div className="relative flex items-center gap-8 ">
                     <div
-                        className="flex items-center gap-2 py-2 px-5 bg-gradient-to-r from-red-500 to-red-400 
-        text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer"
-                        onClick={() => setOpenFil(!openFil)}
-                    >
-                        <FiFilter className="text-lg cursor-pointer" />
-                        <button className="text-[16px] cursor-pointer">Filter</button>
+                        className="flex items-center gap-2 py-2 px-6 rounded-full bg-gradient-to-r from-red-500 via-red-400 to-red-500 text-white font-semibold shadow-lg hover:from-red-600 hover:to-red-500 hover:shadow-red-400/40 transition-all duration-300 cursor-pointer" onClick={() => setOpenFil(!openFil)} >
+                        <FiFilter className="text-xl" />
+                        <span className="text-[17px]">Filter</span>
                     </div>
                     {openFil && (
                         <div
@@ -114,7 +110,7 @@ const Plans = () => {
                 </Link>}
             </div>
 
-            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold"><PlanShimmer /></p> : <div className="flex flex-wrap gap-6 mx-[5%] py-2 mt-[20px] px-20 animate__animated animate__fadeIn">
+            {filPacks && filPacks.length === 0 ? <p className="text-center text-[20px] font-bold"><PlanShimmer /></p> : <div className="flex flex-wrap gap-10 mx-[5%] py-2 mt-[20px] px-20 animate__animated animate__fadeIn">
                 {
                     filPacks?.map((prop, i) => {
                         const { uploadSpeed, downloadSpeed, price, validity, id } = prop;
@@ -129,7 +125,7 @@ const Plans = () => {
                                     <img
                                         src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/Bank_bottom.webp"
                                         alt="img"
-                                        className="absolute w-[70px] h-[70px] top-[-40px] right-[-30px] animate__animated animate__fadeIn"
+                                        className="absolute w-[70px] h-[70px] top-[-40px] right-[-30px] animate__animated animate__fadeIn blur-[2px]"
                                     />
                                 )}
                                 <p className="text-center text-4xl font-extrabold bg-gradient-to-r from-red-600 to-orange-500 text-transparent bg-clip-text">
@@ -171,7 +167,7 @@ const Plans = () => {
                                     <img
                                         src="https://www.actcorp.in/themes/custom/actcorp/Plan_hover_images_webp/MeshGraphicBottom.webp"
                                         alt="img"
-                                        className="absolute w-[70px] h-[70px] left-[-25px] bottom-[-25px] animate__animated animate__fadeIn"
+                                        className="absolute w-[70px] h-[70px] left-[-25px] bottom-[-25px] animate__animated animate__fadeIn "
                                     />
                                 )}
                             </div>

@@ -2,38 +2,37 @@ import React from "react";
 
 const PlanShimmer = () => {
     return (
-        <div className="flex flex-wrap gap-20 mx-[5%] py-2 mt-[75px] pl-[150px]">
+        <div className="flex flex-wrap justify-center gap-16 py-10 px-6">
             {Array(6)
                 .fill(0)
                 .map((_, i) => (
                     <div
                         key={i}
-                        className="w-[280px] h-[380px] rounded-2xl border border-gray-200 p-6 
-            bg-white/70 backdrop-blur-xl shadow animate-pulse"
+                        className="relative w-[300px] h-[400px] rounded-[28px] overflow-hidden 
+        bg-gradient-to-br from-white/25 to-white/5 backdrop-blur-2xl 
+        border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
                     >
-                        <div className="h-10 w-32 mx-auto bg-gray-200 rounded-md mb-6"></div>
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
-                                <div className="h-4 w-40 bg-gray-200 rounded-md"></div>
+                        <div className="absolute inset-x-0 top-0 h-[120px] bg-gradient-to-b 
+        from-white/50 to-transparent opacity-70"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r 
+        from-transparent via-white/30 to-transparent 
+        animate-[shimmer_2s_infinite]"></div>
+                        <div className="relative z-10 p-8">
+                            <div className="h-8 w-40 bg-white/30 rounded-xl mb-8"></div>
+                            <div className="space-y-6">
+                                <div className="h-4 w-52 bg-white/20 rounded-lg"></div>
+                                <div className="h-4 w-48 bg-white/20 rounded-lg"></div>
+                                <div className="h-4 w-40 bg-white/20 rounded-lg"></div>
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
-                                <div className="h-4 w-44 bg-gray-200 rounded-md"></div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="h-5 w-5 bg-gray-200 rounded-full"></div>
-                                <div className="h-4 w-36 bg-gray-200 rounded-md"></div>
-                            </div>
+                            <div className="mt-9 h-9 w-28 bg-white/25 rounded-xl mx-auto"></div>
+                            <div className="mt-8 h-10 w-full bg-white/20 rounded-xl"></div>
+                            <div className="mt-4 h-10 w-full bg-white/10 rounded-xl"></div>
                         </div>
-                        <div className="flex items-center justify-center mt-8">
-                            <div className="h-8 w-20 bg-gray-200 rounded-md"></div>
-                        </div>
-                        <div className="mt-6 h-10 w-full bg-gray-200 rounded-xl"></div>
-                        <div className="mt-4 h-10 w-full bg-gray-100 rounded-xl"></div>
                     </div>
                 ))}
         </div>
+
+
     );
 };
 

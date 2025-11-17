@@ -20,28 +20,39 @@ const DataUsage = () => {
         { day: "Sun", usage: 1.5 },
     ];
     return (
-        <div className="flex flex-col gap-7 w-[60vw] py-[25px] px-[65px] account rounded-lg">
-            <p className="text-[25px] text-red-600 font-bold">Datausage in Linechart</p>
-            <div className="bg-white rounded-2xl shadow p-4 w-full h-[300px]">
-
+        <div className="flex flex-col gap-8 w-[60vw] py-10 px-12 rounded-2xl bg-white/80 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-200">
+            <div>
+                <p className="text-[26px] font-extrabold text-gray-900 flex items-center gap-3">
+                    <span className="text-red-600">Data Usage</span> (Line Chart)
+                </p>
+                <div className="w-[120px] h-[4px] bg-red-500 mt-1 rounded-full"></div>
+            </div>
+            <div className="bg-white/90 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-100 p-6 w-full h-[350px] hover:shadow-[0_6px_25px_rgba(0,0,0,0.18)] transition-all duration-300 ease-out">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="day" />
-                        <YAxis unit=" GB" />
-                        <Tooltip />
+                        <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#e2e8f0" />
+                        <XAxis dataKey="day" stroke="#475569" />
+                        <YAxis unit=" GB" stroke="#475569" />
+                        <Tooltip
+                            contentStyle={{
+                                borderRadius: "12px",
+                                border: "1px solid #ddd",
+                                boxShadow: "0 3px 10px rgba(0,0,0,0.12)",
+                            }}
+                        />
                         <Line
-                            type="linear"
+                            type="monotone"
                             dataKey="usage"
-                            stroke="#38a169"
+                            stroke="#ef4444"
                             strokeWidth={3}
-                            dot={{ r: 4 }}
+                            dot={{ r: 4, fill: "#ef4444" }}
                         />
                     </LineChart>
                 </ResponsiveContainer>
 
             </div>
         </div>
+
     )
 }
 export default DataUsage;
