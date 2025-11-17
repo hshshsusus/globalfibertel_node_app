@@ -1,4 +1,4 @@
-export const LOGO = "https://res.cloudinary.com/dssabhgtb/image/upload/v1763120867/ChatGPT_Image_Nov_14_2025_05_14_08_PM_bv3xyj.png";
+export const LOGO = import.meta.env.VITE_LOGO;
 
 export const IMG_SLIDE_URL = [{
     id: 1,

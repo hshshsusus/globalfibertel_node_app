@@ -15,6 +15,7 @@ export const ImageSlider = () => {
     const [img, setImg] = useState(0);
     const [value1, setValue] = useState();
     const [shimmerLoader, setShowShimmer] = useState(false);
+    const [value, setValue1] = useState() 
 
     const home = useSelector(store => store.home);
 
@@ -38,17 +39,17 @@ export const ImageSlider = () => {
                 setImg(0)
             }
         }, 2000)
-
+        setValue1(value)
         const timeId1 = setTimeout(() => {
             setShowShimmer(true)
-        }, 2000)
+        }, 500)
 
         return () => {
             setState(false);
             clearInterval(timeId);
             clearTimeout(timeId1)
         }
-    }, [value1])
+    }, [value])
 
     const handleNext = () => {
         setActiveImage((activeImage + 1) % banner?.length);
@@ -84,7 +85,6 @@ export const ImageSlider = () => {
 
     return !shimmerLoader ? <ImageSliderShimmer/> : (
         <div className={`relative ${scroll && "mt-[40px]"} `}>
-
             <img
                 src={banner?.[img || !img && activeImage]?.imageURL}
                 alt=""
@@ -104,7 +104,7 @@ export const ImageSlider = () => {
                 <FaAngleRight className="text-3xl" />
             </button>
             <div
-                className="absolute top-[18%] left-[10%] max-w-[450px] bg-white/10 backdrop-blur-[2px] p-8 shadow-2xl animate__animated animate__fadeInLeft"
+                className="absolute top-[18%] left-[10%] max-w-[450px] bg-white/10 backdrop-blur-[2px] p-8 shadow-2xl animate__animated animate__pulse rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl"
             >
                 <p className="text-[42px] font-extrabold text-white leading-tight drop-shadow-xl">
                     {banner?.[activeImage || img]?.heading}

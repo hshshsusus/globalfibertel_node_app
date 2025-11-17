@@ -47,7 +47,7 @@ const Plans = () => {
     useEffect(() => {
         const timerId = setTimeout(() => {
             setPacks(allPacks);
-        }, 2000)
+        }, 1000)
 
         setFilPackages(allPacks)
         window.addEventListener("scroll", handleScroll)

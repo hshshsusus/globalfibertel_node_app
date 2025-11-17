@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactShimmer = () => {
     return (
-        <div className="mx-[15%] bg-white shadow-xl rounded-2xl p-10 flex gap-10 animate-pulse">
+        <div className="mx-[15%] bg-white shadow-xl rounded-2xl p-6 flex gap-6 animate-pulse">
             <div className="w-[65%] flex flex-col gap-6">
                 <div className="h-8 w-40 bg-gray-200 rounded-md"></div>
                 <div className="flex gap-6 w-full">

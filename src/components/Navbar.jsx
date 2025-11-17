@@ -40,7 +40,7 @@ const Navbar = () => {
     }
 
     // console.log(1763190525.49 - Date.now()/1000 )
-    //Getting user profile
+
     const fetchUser = async () => {
         try {
             const res = await axios.get(BASE_URL + "/profile/user/get", { withCredentials: true });
@@ -49,6 +49,7 @@ const Navbar = () => {
             console.log(error)
         }
     }
+
     useEffect(() => {
         fetchUser();
         getAllPackages();
@@ -73,10 +74,10 @@ const Navbar = () => {
         user && navigate("/user/dashboard/:userId")
     }
 
-    const handleImageNavigation = () =>{
-       !user && navigate("/auth/otp")
+    const handleImageNavigation = () => {
+        !user && navigate("/auth/otp")
     }
-// console.log(Math.floor(Math.random() * 4))
+
     return (
         <div>
             <TopNavbar />
@@ -103,13 +104,21 @@ const Navbar = () => {
                             <li className={`${location.pathname === "/about" ? "text-red-600 underline" : "text-gray-800"} cursor-pointer hover:text-red-600`}>ABOUT</li>
                         </Link>
                         <div className={`relative mt-[5px] ${user ? "text-green-700" : "hover:text-red-600"} `} onMouseOver={() => { setShowDash(true) }} onMouseLeave={() => { setShowDash(false) }}>
-                            <img src={user ? "https://res.cloudinary.com/dssabhgtb/image/upload/v1763027943/profile_vufmtj.png" : "https://res.cloudinary.com/dssabhgtb/image/upload/v1763028097/profile-picture_vuzaai.png"} alt="" className="w-[35px] h-[35px] cursor-pointer" onClick={handleImageNavigation}/>
+                            <img src={user ? "https://res.cloudinary.com/dssabhgtb/image/upload/v1763027943/profile_vufmtj.png" : "https://res.cloudinary.com/dssabhgtb/image/upload/v1763028097/profile-picture_vuzaai.png"} alt="" className="w-[35px] h-[35px] cursor-pointer" onClick={handleImageNavigation} onMouseOver={() => setShowLogin(true)} onMouseLeave={() => setShowLogin(false)} />
                             {showDash && user && <div className={`absolute top-6 rounded-tl-2xl rounded-bl-2xl rounded-br-2xl w-40 z-10 animate__animated animate__slideInDown ${!showDash && "animate__animated animate__fadeOutUp"} left-[-150px] flex flex-col bg-[rgba(0,0,0,0.8)] text-gray-100 gap-2.5 py-3.5 px-4 dash`}>
                                 <Link to={"/user/dashboard/:userId"}>
                                     <p className="flex items-center gap-2.5 userOption cursor-pointer hover:bg-gray-700 rounded-md py-[5px] px-[5px]" onClick={navigateToDashboard}><FaUser className="text-red-600 text-[20px]" /> <span>My account</span></p>
                                 </Link>
                                 <p className="flex items-center gap-2.5 userOption cursor-pointer hover:bg-gray-700 rounded-md py-[5px] px-[5px]" onClick={handleLogout}><IoPowerSharp className="text-red-600 text-[20px]" /> <span>Logout</span></p>
                             </div>}
+                            {!user && showLogin && (
+                                <p
+                                    className={`transition-all duration-300 ease-in-out text-[16px] text-white bg-black py-0.5 px-2 font-semibold absolute top-[-30px] left-[-40px] rounded-tl-xl rounded-tr-xl rounded-bl-xl`}
+                                >
+                                    Login
+                                </p>
+                            )}
+
                         </div>
                     </ul>
                 </div>

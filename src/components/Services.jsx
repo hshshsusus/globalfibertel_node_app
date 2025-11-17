@@ -24,7 +24,7 @@ const Services = () => {
         dispatch(addScroll(scroll));
         const timeId = setTimeout(() =>{
             setShowShimmer(true)
-        },2000)
+        },500)
     }, [scroll, dispatch]);
 
     useEffect(() => {

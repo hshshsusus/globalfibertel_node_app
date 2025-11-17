@@ -30,7 +30,7 @@ const About = () => {
         dispatch(addScroll(scroll));
         const timeId = setTimeout(() => {
             setShimmerLoader(true)
-        }, 2500);
+        }, 500);
         return () => {
             clearTimeout(timeId)
         }

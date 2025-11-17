@@ -13,7 +13,7 @@ export const PopularPlans = () => {
     useEffect(() => {
         const timerId = setTimeout(() => {
             setShimmer(true)
-        }, 1000);
+        }, 500);
         return () => {
             clearTimeout(timerId)
         }
