@@ -3,61 +3,115 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
-import { MdHeadsetMic } from "react-icons/md";
+import { ourServices } from "../utils";
+import { importentLinks } from "../utils";
+import { OurProducts } from "../utils";
+import { IoIosCall } from "react-icons/io";
+import { TbMailOpenedFilled } from "react-icons/tb";
+import { PiBuildingOfficeDuotone } from "react-icons/pi";
 
 const Footer = () => {
     return (
-        <div className="my-10">
-            <div className="flex justify-between py-12 px-16 border-t border-gray-200 bg-white shadow-sm rounded-xl">
-                <div className="flex items-start gap-6">
-                    <MdHeadsetMic className="text-[48px] text-red-600" />
-                    <div>
-                        <p className="text-[18px] text-gray-500 font-semibold">Contact Us 24/7</p>
-                        <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
-                            (+91) 9999999999
-                        </p>
-                        <p className="mt-2 text-[20px] font-semibold hover:text-red-600 cursor-pointer">
-                            (+91) 8888888888
-                        </p>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <p className="text-[20px] font-bold text-gray-800">Our Services</p>
-
-                    <div className="text-[16px] text-gray-600 flex flex-col gap-1 pl-1">
-                        <p className="hover:text-blue-600 cursor-pointer hover:underline">Broadband Service</p>
-                        <p className="hover:text-blue-600 cursor-pointer hover:underline">Fast Wi-Fi Connection</p>
-                        <p className="hover:text-blue-600 cursor-pointer hover:underline">24/7 Customer Support</p>
-                    </div>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <p className="text-[20px] font-bold text-gray-800">Menu</p>
-
-                    <p className="text-gray-600 hover:text-blue-600 cursor-pointer hover:underline">
-                        Terms & Conditions
-                    </p>
-
-                    <p className="text-gray-600 hover:text-blue-600 cursor-pointer hover:underline">
-                        Privacy Policy
+        <div className="bg-[#0a0a0a] text-gray-300 px-[5%] pt-14 pb-10 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 border-b border-gray-700 pb-10">
+                <div>
+                    <img
+                        src="/company_logo.png"
+                        alt="Company Logo"
+                        className="w-[125px] h-[125px] mb-4"
+                    />
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                        Delivering ultra-fast broadband, secured network solutions, and modern digital services across India.
                     </p>
                 </div>
-                <div className="flex flex-col gap-3 pr-5">
-                    <p className="text-[20px] font-bold text-gray-800">Timings</p>
+                <div>
+                    <p className="text-[22px] font-bold text-white mb-4">Our Services</p>
+                    <div className="flex flex-col gap-3">
+                        {ourServices?.map((e, i) => {
+                            const Icon = e.icon;
+                            return (
+                                <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
+                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div>
+                    <p className="text-[22px] font-bold text-white mb-4">Important Links</p>
+                    <div className="flex flex-col gap-3">
+                        {importentLinks?.map((e, i) => {
+                            const Icon = e.icon;
+                            return (
+                                <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
+                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div>
+                    <p className="text-[22px] font-bold text-white mb-4">Our products</p>
+                    <div className="flex flex-col gap-3">
+                        {OurProducts?.map((e, i) => {
+                            const Icon = e.icon;
+                            return (
+                                <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
+                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+                <div>
+                    <p className="text-[22px] font-bold text-white mb-4">Contact Us</p>
 
-                    <div className="text-gray-600 leading-[1.5]">
-                        <p>Monday – Saturday</p>
-                        <p>9:00 AM – 6:00 PM</p>
+                    <img
+                        src="https://erp.globalfibertel.com/assets/images/whatsapp_logo.png"
+                        className="w-[130px] mb-3 cursor-pointer hover:scale-105 duration-200"
+                    />
+
+                    <div className="flex items-center gap-3 py-1 cursor-pointer">
+                        <IoIosCall className="text-[20px] text-gray-400 group-hover:text-red-500" />
+                        <p className="text-[16px] hover:text-red-400">+91 9705-9999-72</p>
+                    </div>
+
+                    <div className="flex items-center gap-3 py-1 cursor-pointer">
+                        <TbMailOpenedFilled className="text-[20px] text-gray-400" />
+                        <p className="text-[16px] hover:text-red-400">support@globalfibertel.com</p>
+                    </div>
+
+                    <div className="flex flex-col py-1">
+                        <div className="flex items-center gap-3">
+                            <PiBuildingOfficeDuotone className="text-[20px] text-gray-400" />
+                            <p className="text-[16px]">Corporate Office:</p>
+                        </div>
+                        <p className="text-[14px] text-gray-400 mt-2">
+                            Plot no 46, 5th Floor, VIP Hills,<br />
+                            Hi-Tech City, Madhapur, Hyderabad,<br />
+                            Telangana - 500081.
+                        </p>
                     </div>
                 </div>
             </div>
             <div className="flex items-center justify-center gap-6 mt-6">
-                <FaFacebookF className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
-                <FaInstagram className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
-                <FaGoogle className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
-                <AiOutlineYoutube className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
-                <FaTwitter className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200" />
+                {[FaFacebookF, FaInstagram, FaGoogle, AiOutlineYoutube, FaTwitter].map(
+                    (Icon, i) => (
+                        <Icon
+                            key={i}
+                            className="text-white bg-red-600 p-1 rounded-full text-[22px] cursor-pointer hover:bg-red-700 hover:scale-110 duration-200"
+                        />
+                    )
+                )}
             </div>
+            <p className="text-center text-gray-500 text-[15px] mt-6 font-bold">
+                © 2025 VI GLOBAL FIBERTEL PRIVATE LIMITED — All Rights Reserved.
+            </p>
         </div>
+
     )
 }
 export default Footer

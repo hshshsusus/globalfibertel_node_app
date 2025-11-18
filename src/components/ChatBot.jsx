@@ -68,7 +68,7 @@ const ChatBot = () => {
                     }
                 </div>
                 <div className="flex items-center w-full px-4 py-3 gap-3 bg-white/70 backdrop-blur-xl
-                    shadow-inner border-t border-white/60" ref={scrollRef}>
+                    shadow-inner border-t border-white/60">
                     <input
                         type="text"
                         placeholder="Type a message..."

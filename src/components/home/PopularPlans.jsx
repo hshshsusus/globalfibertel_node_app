@@ -19,7 +19,7 @@ export const PopularPlans = () => {
         }
     }, [])
 
-    return !shimmer ? <PopularPlansShimmer /> : (
+    return (
         <div className="mt-[25px]">
             <p className="text-[35px] text-center py-[10px] font-bold">Our Popular plans</p>
             <div className="relative flex flex-wrap items-center justify-center gap-14 mx-auto py-1.5 px-14 mt-[25px]">

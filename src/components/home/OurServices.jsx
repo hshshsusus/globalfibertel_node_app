@@ -5,7 +5,6 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-
 export const OurServices = () => {
 
     const home = useSelector(store => store.home);
@@ -24,17 +23,17 @@ export const OurServices = () => {
                             key={i}
                             className="group w-[300px] bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer hover:-translate-y-3 hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
                         >
-                            <div className="flex items-center justify-center">
+                            <div className="flex">
                                 {each.serviceName === "Broadband" ? <FaTowerBroadcast
                                     className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
                                 /> : <GiWifiRouter 
                                     className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
                                 />}
                             </div>
-                            <p className="mt-5 text-[24px] text-gray-800 font-bold text-center group-hover:text-red-600 transition-all duration-300">
+                            <p className="mt-5 text-[24px] text-gray-800 font-bold text-start group-hover:text-red-600 transition-all duration-300">
                                 {each?.serviceName}
                             </p>
-                            <p className="mt-3 text-[16px] text-gray-500 text-center leading-relaxed">
+                            <p className="mt-5 text-[16px] text-gray-500 text-start leading-relaxed h-[18vh] overflow-hidden">
                                 {each?.serviceDescription}
                             </p>
                             <Link to="/service">
@@ -48,6 +47,5 @@ export const OurServices = () => {
                 })}
             </div>
         </div>
-
     )
 }

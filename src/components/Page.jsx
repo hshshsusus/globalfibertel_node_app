@@ -16,7 +16,7 @@ const Page = () => {
     }
 
     return (
-        <div className="relative">
+        <div className="relative element">
             <Navbar />
             <Outlet />
             <Footer />

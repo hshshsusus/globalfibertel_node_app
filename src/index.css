@@ -383,3 +383,6 @@ body {
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
 }
+.element::-webkit-scrollbar{
+  display: none;
+}

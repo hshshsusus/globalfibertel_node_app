@@ -1,3 +1,20 @@
+import { FaShieldAlt } from "react-icons/fa";
+import { FaBullhorn, FaCloud, FaDatabase, FaTowerBroadcast, FaWifi } from "react-icons/fa6";
+import {
+    FaHeadset,
+    FaUserShield,
+    FaFileContract,
+    FaUserLock,
+    FaNetworkWired,
+    FaTachometerAlt
+} from "react-icons/fa";
+
+import {
+    FaGlobe,
+    FaEthernet,
+    FaTv,
+} from "react-icons/fa";
+
 export const LOGO = import.meta.env.VITE_LOGO;
 
 export const IMG_SLIDE_URL = [{
@@ -79,3 +96,30 @@ export const FAQ = [
         a: `ACT Fibernet is available across major cities, offering strong local connectivity and fast, stable internet.`
     },
 ]
+
+export const ourServices = [
+    { text: "Broadband", icon: FaTowerBroadcast },
+    { text: "Wifi connection", icon: FaWifi },
+    { text: "Data services", icon: FaDatabase },
+    { text: "Cloud services", icon: FaCloud },
+    { text: "Cyber security", icon: FaShieldAlt },
+    { text: "Marketing services", icon: FaBullhorn }
+];
+
+
+export const importentLinks = [
+    { text: "Support", icon: FaHeadset },
+    { text: "Privacy & Policy", icon: FaUserShield },
+    { text: "Terms & Conditions", icon: FaFileContract },
+    { text: "Parental Control", icon: FaUserLock },
+    { text: "Our Network", icon: FaNetworkWired },
+    { text: "Our Network Performance", icon: FaTachometerAlt }
+];
+
+export const OurProducts = [
+    { text: "Internet", icon: FaGlobe },
+    { text: "Cables", icon: FaEthernet },
+    { text: "OTT", icon: FaTv },
+    { text: "Security", icon: FaShieldAlt },
+    { text: "Cloud Services", icon: FaCloud }
+];

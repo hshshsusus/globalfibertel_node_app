@@ -83,9 +83,9 @@ const Navbar = () => {
     return (
         <div>
             <TopNavbar />
-            <div className={`flex items-center justify-between py-1.5 navshadow px-14 ${scroll && 'w-[100%] fixed top-0 left-0 z-10 navshadow animate__animated animate__fadeInDown md:max-w-full md:px-1.5 md:py-1 md:flex items-center gap-1 text-[14px]'} ${scrollValue <= 10 && "animate__animated animate__fadeInUp"} bg-white`}>
+            <div className={`flex items-center justify-between py-1.5 navshadow px-14 ${scroll && 'w-[100%] fixed top-0 left-0 z-10 navshadow animate__animated animate__fadeInDown items-center gap-1 text-[14px]'} ${scrollValue <= 10 && "animate__animated animate__fadeInUp"} bg-white`}>
                 <div className="relative w-[100px]" onMouseOver={() => setShowPopup(true)} onMouseLeave={() => setShowPopup(false)}>
-                    <img src={LOGO} alt="logo" className="w-[100px] h-[100px] cursor-pointer" onClick={() => navigate("/")} />
+                    <img src="/public/company_logo.png" alt="logo" className="w-[100px] h-[100px] cursor-pointer" onClick={() => navigate("/")} />
                     {location.pathname !== "/" && showPopup && <p
                         className="absolute top-0 right-[-70px] text-[14px] px-3 py-1 rounded-tr-xl rounded-tl-xl rounded-br-xl text-gray-100 font-medium bg-black/90 border border-gray-700 shadow-md hover:shadow-lg transition-all duration-200"
                     >
