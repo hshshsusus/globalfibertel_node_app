@@ -5,6 +5,7 @@ import { addScroll } from "../Redux/scrollSlice";
 import { useNavigate } from "react-router-dom";
 import { Counting } from "./home/Counting";
 import AboutShimmer from "../ShimmerUI/AboutShimmer";
+import GeoMap from "./GeoMap";
 
 const About = () => {
 
@@ -49,7 +50,7 @@ const About = () => {
                 <div className="absolute top-0 left-0 w-[280px] h-[280px] bg-red-500/10 blur-3xl rounded-full"></div>
                 <div className="absolute bottom-0 right-0 w-[240px] h-[240px] bg-purple-500/10 blur-3xl rounded-full"></div>
 
-                <div className="flex items-center gap-[60px] relative z-10">     {/* Left Image */}
+                <div className="flex items-center gap-[60px] relative z-10">
                     <div className="relative w-[50%] animate__animated animate__fadeIn">
                         <div className="absolute -top-5 -left-5 w-[120px] h-[120px] bg-red-400/30 blur-2xl rounded-full"></div>
                         <img
@@ -96,7 +97,8 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-[60px]">
+            <GeoMap/>
+            <div className="mt-[20px]">
                 <Counting />
             </div>
         </>

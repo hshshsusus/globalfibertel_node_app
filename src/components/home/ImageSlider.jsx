@@ -104,7 +104,7 @@ export const ImageSlider = () => {
                 <FaAngleRight className="text-3xl" />
             </button>
             <div
-                className="absolute top-[18%] left-[10%] max-w-[450px] bg-white/10 backdrop-blur-[2px] p-8 shadow-2xl animate__animated animate__pulse rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl"
+                className="absolute top-[18%] left-[10%] max-w-[450px] subHead p-8 animate__animated animate__pulse rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl"
             >
                 <p className="text-[42px] font-extrabold text-white leading-tight drop-shadow-xl">
                     {banner?.[activeImage || img]?.heading}

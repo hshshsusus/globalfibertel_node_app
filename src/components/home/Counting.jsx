@@ -2,7 +2,6 @@ import React from "react";
 import SlotCounter from 'react-slot-counter';
 import { IoPeople } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { GiPathDistance } from "react-icons/gi";
 
 export const Counting = () => {
 

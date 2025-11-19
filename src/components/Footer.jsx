@@ -20,54 +20,54 @@ const Footer = () => {
                         alt="Company Logo"
                         className="w-[125px] h-[125px] mb-4"
                     />
-                    <p className="text-sm text-gray-400 leading-relaxed">
+                    <p className="text-sm text-gray-500 leading-relaxed">
                         Delivering ultra-fast broadband, secured network solutions, and modern digital services across India.
                     </p>
                 </div>
                 <div>
-                    <p className="text-[22px] font-bold text-white mb-4">Our Services</p>
+                    <p className="text-[18px] font-bold text-white mb-4">Our Services</p>
                     <div className="flex flex-col gap-3">
                         {ourServices?.map((e, i) => {
                             const Icon = e.icon;
                             return (
                                 <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
-                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
                 <div>
-                    <p className="text-[22px] font-bold text-white mb-4">Important Links</p>
+                    <p className="text-[18px] font-bold text-white mb-4">Important Links</p>
                     <div className="flex flex-col gap-3">
                         {importentLinks?.map((e, i) => {
                             const Icon = e.icon;
                             return (
                                 <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
-                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
                 <div>
-                    <p className="text-[22px] font-bold text-white mb-4">Our products</p>
+                    <p className="text-[18px] font-bold text-white mb-4">Our products</p>
                     <div className="flex flex-col gap-3">
                         {OurProducts?.map((e, i) => {
                             const Icon = e.icon;
                             return (
                                 <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-400 group-hover:text-red-500 duration-200" />
-                                    <p className="text-[16px] group-hover:text-red-400">{e.text}</p>
+                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                             );
                         })}
                     </div>
                 </div>
                 <div>
-                    <p className="text-[22px] font-bold text-white mb-4">Contact Us</p>
+                    <p className="text-[18px] font-bold text-white mb-4">Contact Us</p>
 
                     <img
                         src="https://erp.globalfibertel.com/assets/images/whatsapp_logo.png"
@@ -75,21 +75,21 @@ const Footer = () => {
                     />
 
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
-                        <IoIosCall className="text-[20px] text-gray-400 group-hover:text-red-500" />
-                        <p className="text-[16px] hover:text-red-400">+91 9705-9999-72</p>
+                        <IoIosCall className="text-[20px] text-gray-500 group-hover:text-red-600" />
+                        <p className="text-[16px] hover:text-red-600 text-gray-400">+91 9705-9999-72</p>
                     </div>
 
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
-                        <TbMailOpenedFilled className="text-[20px] text-gray-400" />
-                        <p className="text-[16px] hover:text-red-400">support@globalfibertel.com</p>
+                        <TbMailOpenedFilled className="text-[20px] text-gray-500" />
+                        <p className="text-[16px] hover:text-red-600 text-gray-400">support@globalfibertel.com</p>
                     </div>
 
                     <div className="flex flex-col py-1">
                         <div className="flex items-center gap-3">
-                            <PiBuildingOfficeDuotone className="text-[20px] text-gray-400" />
-                            <p className="text-[16px]">Corporate Office:</p>
+                            <PiBuildingOfficeDuotone className="text-[20px] text-gray-500" />
+                            <p className="text-[16px] text-gray-400">Corporate Office:</p>
                         </div>
-                        <p className="text-[14px] text-gray-400 mt-2">
+                        <p className="text-[14px] text-gray-600 mt-2 font-semibold">
                             Plot no 46, 5th Floor, VIP Hills,<br />
                             Hi-Tech City, Madhapur, Hyderabad,<br />
                             Telangana - 500081.

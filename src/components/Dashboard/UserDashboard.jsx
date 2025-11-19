@@ -56,8 +56,7 @@ const UserDashboard = () => {
             </div>
             {scrollValue > 10 && <BarChartData />}
             <Billing />
-            <FaRocketchat className="text-white text-[55px] fixed bottom-6 right-6 
-             z-50 cursor-pointer bg-red-600 p-2 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.2)]" onClick={handleChatbot}/>
+            
         </div>
     )
 }
