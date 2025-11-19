@@ -5,7 +5,7 @@ import { BASE_URL } from "../constants";
 
 const ChatBot = () => {
 
-    const [chat, setChat] = useState([]);
+    const [chat, setChat] = useState([{role:"bot", message:"Welcome to globalfibertel.! I am customer supporter How can i help you?"}]);
     const [text, setText] = useState("");
     const [typing, setTyping] = useState(false);
 
@@ -20,9 +20,9 @@ const ChatBot = () => {
 
             setText("");
 
-            const res = await axios.post(BASE_URL + "/user/chatbot", { message: userMessage.message }, { withCredentials: true });
-
-            const botMessage = { role: "bot", message: res?.data?.[0]?.Ai }
+            const res = await axios.post(BASE_URL + "/user/chatbot/q&a", { userQuestion: userMessage.message }, { withCredentials: true });
+            // console.log(res.data)
+            const botMessage = { role: "bot", message: res?.data }
 
             const timeId = setTimeout(() => {
                 setTyping(false)

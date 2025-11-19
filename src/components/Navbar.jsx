@@ -46,7 +46,6 @@ const Navbar = () => {
             const res = await axios.get(BASE_URL + "/profile/user/get", { withCredentials: true });
             dispatch(addUser(res.data))
         } catch (error) {
-            console.log(error)
         }
     }
 
@@ -66,10 +65,8 @@ const Navbar = () => {
             dispatch(removeUser())
             window.location.href = "/";
         } catch (error) {
-            console.log(error)
         }
     }
-
     const navigateToDashboard = () => {
         user && navigate("/user/dashboard/:userId")
     }
@@ -78,7 +75,7 @@ const Navbar = () => {
         !user && navigate("/auth/otp")
     }
 
-    const navigateContactPage = () =>{
+    const navigateContactPage = () => {
         navigate("/contact")
     }
     // const location = useLocation()
@@ -132,7 +129,7 @@ const Navbar = () => {
                                 onMouseLeave={() => setShowLogin(false)}
                             />
                             {showDash && user && (
-                                <div className={`absolute top-12 left-[-160px] w-48 bg-black/70 backdrop-blur-xl border border-gray-700 rounded-tr-2xl rounded-bl-2xl rounded-br-2xl p-4 flex flex-col gap-3 z-20 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown`}>
+                                <div className={`absolute top-12 left-[-160px] w-48 bg-black/70 backdrop-blur-xl border border-gray-700 rounded-tl-2xl rounded-bl-2xl rounded-br-2xl p-4 flex flex-col gap-3 z-20 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown`}>
                                     <Link to={"/user/dashboard/:userId"}>
                                         <p className="flex items-center gap-3 cursor-pointer  px-3 py-2 rounded-lg text-gray-200 hover:bg-gray-800 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300" onClick={navigateToDashboard} >
                                             <FaUser className="text-red-500 text-[22px]" />

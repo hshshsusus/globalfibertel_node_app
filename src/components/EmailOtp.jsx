@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../Redux/userslice";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
+import { MdArrowBackIosNew } from "react-icons/md";
 
 const EmailOtp = () => {
 
@@ -41,6 +42,7 @@ const EmailOtp = () => {
         <>
             <TopNavbar />
             <div className="mx-[8%] my-[5%] flex items-center justify-between py-[40px] px-[6%] bg-gradient-to-r from-[#f6f9ff] to-[#ffffff] rounded-2xl shadow-lg">
+
                 <div className="flex flex-col gap-8 w-[40%]">
                     <h2 className="text-[40px] leading-tight font-extrabold text-gray-800">
                         Enjoy your life with <br />
@@ -63,6 +65,7 @@ const EmailOtp = () => {
                 </div>
                 <div className="w-[55%]">
                     <div className="flex flex-col gap-8 p-[40px] rounded-2xl bg-white/70 backdrop-blur-lg shadow-xl border border-gray-200">
+                        <MdArrowBackIosNew className="text-[35px] text-red-600 hover:bg-gray-300 rounded-full py-[5px] px-[5px] cursor-pointer" onClick={() => navigate("/")}/>
                         <div className="flex items-center gap-3 mx-auto">
                             <p className="text-[36px] font-bold text-green-600">Email</p>
                             <span className="text-[32px] font-bold text-orange-600">Verification</span>
@@ -86,19 +89,11 @@ const EmailOtp = () => {
                         )}
                         <div className="flex flex-col gap-4 mx-auto">
                             <button
-
                                 onClick={handleOTP}
                                 className="flex items-center gap-2 justify-center cursor-pointer bg-gradient-to-r from-red-600 to-orange-500 hover:from-red-500 hover:to-orange-400 rounded-xl text-white font-semibold text-[18px] py-[12px] px-[40px] shadow-md hover:shadow-lg transition-all duration-300" >
                                 {loader ? <Loader /> : "Get OTP"}
                                 {!loader && <IoMdArrowForward className="text-[22px]" />}
                             </button>
-                            <p className="text-gray-700 font-semibold text-center">or</p>
-                            <Link to="/">
-                                <div className="flex items-center gap-2.5 text-red-700 hover:underline hover:text-green-700 transition-all duration-300 cursor-pointer font-semibold mx-auto">
-                                    <FaArrowLeft />
-                                    <span>Back to Home</span>
-                                </div>
-                            </Link>
                         </div>
                     </div>
                 </div>

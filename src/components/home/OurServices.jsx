@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 import { MdArrowBackIos } from "react-icons/md";
 import { MdArrowForwardIos } from "react-icons/md";
 import { useRef } from "react";
+import * as Fa6Icons from "react-icons/fa6";
+import * as GiIcons from "react-icons/gi";
+import * as BsIcons from "react-icons/bs";
+import * as MdIcons from "react-icons/md";
+import * as SiIcons from "react-icons/si";
 
 export const OurServices = () => {
 
@@ -21,10 +26,6 @@ export const OurServices = () => {
     const handleScrolle = () => {
         const ele = slideRef.current;
         const maxScroll = ele.scrollWidth - ele.clientWidth;
-
-        console.log("scrollleft", ele.scrollLeft);
-        console.log("scrollWidth", ele.scrollWidth);
-        console.log("clientWidth", ele.clientWidth);
 
         if (ele.scrollLeft >= 80) {
             setLeftArrow(true)
@@ -47,8 +48,23 @@ export const OurServices = () => {
         slideRef.current.scrollLeft = slideRef.current.scrollLeft + 300;
     }
 
-    const handleLeftArrow = () =>{
+    const handleLeftArrow = () => {
         slideRef.current.scrollLeft = slideRef.current.scrollLeft - 300;
+    }
+
+    const getIconsDetails = (icon, library) => {
+        const libraries = {
+            fa6: Fa6Icons,
+            gi: GiIcons,
+            bs: BsIcons,
+            md: MdIcons,
+            si: SiIcons
+        }
+
+        const lib = libraries[library];
+        const Icon = lib[icon];
+
+        return <Icon className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"/>
     }
 
     useEffect(() => {
@@ -66,17 +82,14 @@ export const OurServices = () => {
                 </div>}
                 <div className="cards pl-40 whitespace-nowrap" ref={slideRef} onScroll={handleScrolle}>
                     {services?.map((each, i) => {
+
                         return (
                             <div
                                 key={i}
                                 className="group card w-[300px] bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
                             >
                                 <div className="flex">
-                                    {each.serviceName === "Broadband" ? <FaTowerBroadcast
-                                        className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
-                                    /> : <GiWifiRouter
-                                        className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300"
-                                    />}
+                                    {getIconsDetails(each?.icon, each?.iconLibrary)}
                                 </div>
                                 <p className="mt-5 text-[24px] text-gray-800 font-bold text-start group-hover:text-red-600 transition-all duration-300">
                                     {each?.serviceName}

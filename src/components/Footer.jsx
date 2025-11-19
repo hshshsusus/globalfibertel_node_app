@@ -11,6 +11,12 @@ import { TbMailOpenedFilled } from "react-icons/tb";
 import { PiBuildingOfficeDuotone } from "react-icons/pi";
 
 const Footer = () => {
+
+     const handleWhatsapp = () => {
+        console.log(window)
+        window.open("https://wa.me/919701520653?text=Hello%20I%20need%20help!", "_blank");
+    }
+
     return (
         <div className="bg-[#0a0a0a] text-gray-300 px-[5%] pt-14 pb-10 mt-10">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 border-b border-gray-700 pb-10">
@@ -68,22 +74,19 @@ const Footer = () => {
                 </div>
                 <div>
                     <p className="text-[18px] font-bold text-white mb-4">Contact Us</p>
-
                     <img
                         src="https://erp.globalfibertel.com/assets/images/whatsapp_logo.png"
                         className="w-[130px] mb-3 cursor-pointer hover:scale-105 duration-200"
-                    />
+                    onClick={handleWhatsapp}/>
 
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
                         <IoIosCall className="text-[20px] text-gray-500 group-hover:text-red-600" />
                         <p className="text-[16px] hover:text-red-600 text-gray-400">+91 9705-9999-72</p>
                     </div>
-
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
                         <TbMailOpenedFilled className="text-[20px] text-gray-500" />
                         <p className="text-[16px] hover:text-red-600 text-gray-400">support@globalfibertel.com</p>
                     </div>
-
                     <div className="flex flex-col py-1">
                         <div className="flex items-center gap-3">
                             <PiBuildingOfficeDuotone className="text-[20px] text-gray-500" />
@@ -111,7 +114,6 @@ const Footer = () => {
                 © 2025 VI GLOBAL FIBERTEL PRIVATE LIMITED — All Rights Reserved.
             </p>
         </div>
-
     )
 }
 export default Footer
