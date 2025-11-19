@@ -414,3 +414,21 @@ body {
   flex-direction: column;
   flex-shrink: 0;
 }
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+}
+
+@keyframes fade {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+    animation: fade 0.5s ease-in-out;
+}

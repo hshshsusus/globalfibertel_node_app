@@ -23,11 +23,11 @@ const Page = () => {
         navigate("/user/chatbot")
     }
 
-    const handleContact = () =>{
+    const handleContact = () => {
         navigate("/contact")
     }
 
-    const handleWhatsapp = () =>{
+    const handleWhatsapp = () => {
         console.log(window)
         window.open("https://wa.me/919701520653?text=Hello%20I%20need%20help!", "_blank");
     }
@@ -37,16 +37,14 @@ const Page = () => {
             <Navbar />
             <Outlet />
             <Footer />
-            
-                <FaWhatsapp className="w-[50px] h-[50px] fixed right-10 bottom-50 rounded-full flex items-center text-white p-2 justify-center cursor-pointer bg-green-600 circle
-             animate__animated animate__fadeInDownBig" onClick={() => handleWhatsapp()}/>
-                <FaRocketchat className="w-[50px] h-[50px] fixed right-10 bottom-30 rounded-full flex items-center text-green-700 p-2 justify-center cursor-pointer bg-white circle
+            <FaWhatsapp className="w-[50px] h-[50px] fixed right-10 bottom-50 rounded-full flex items-center text-white p-2 justify-center cursor-pointer bg-green-600 circle
+             animate__animated animate__fadeInDownBig" onClick={() => handleWhatsapp()} />
+            <FaRocketchat className="w-[50px] h-[50px] fixed right-10 bottom-30 rounded-full flex items-center text-green-700 p-2 justify-center cursor-pointer bg-white circle
              animate__animated animate__fadeInDownBig chatbot" onClick={handleChatbot} />
-                {scroll && <div className={`w-[50px] h-[50px] fixed right-10 bottom-10 rounded-full flex items-center justify-center cursor-pointer bg-red-600 circle
+            {scroll && <div className={`w-[50px] h-[50px] fixed right-10 bottom-10 rounded-full flex items-center justify-center cursor-pointer bg-red-600 circle
              animate__animated animate__fadeInDownBig ${scroll === false && "animate__animated animate__fadeInUpBig "}`} onClick={handleScrollTop}>
-                    <RiArrowDropUpLine className="text-[50px] text-white" />
-                </div>}
-
+                <RiArrowDropUpLine className="text-[50px] text-white" />
+            </div>}
         </div>
     )
 }
