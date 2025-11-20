@@ -125,124 +125,124 @@ export const OurProducts = [
 ];
 
 const qaList = [
-  {
-    question: "What services do you offer?",
-    answer: "We offer high-speed broadband, WiFi connectivity, fiber internet, leased lines, OTT packages, cloud services, and cyber security solutions."
-  },
-  {
-    question: "Do you provide fiber internet?",
-    answer: "Yes, we provide ultra-fast fiber broadband with speeds up to 1 Gbps depending on your location."
-  },
-  {
-    question: "What areas do you serve?",
-    answer: "We serve multiple cities across India. Please share your location to check availability."
-  },
-  {
-    question: "How can I get a new connection?",
-    answer: "You can request a new connection by contacting our support team or filling out the online form on our website."
-  },
-  {
-    question: "What documents are required for a new connection?",
-    answer: "You need a valid ID proof (Aadhaar/PAN) and address proof."
-  },
-  {
-    question: "How long does installation take?",
-    answer: "Installation typically takes 24–48 hours depending on your location."
-  },
-  {
-    question: "What broadband plans do you have?",
-    answer: "We offer multiple plans based on speed and validity (3 months, 6 months, 12 months). Please visit our Plans section for details."
-  },
-  {
-    question: "Why is my internet speed slow?",
-    answer: "Speed may slow due to network congestion, WiFi issues, or device limitations. Try restarting your router."
-  },
-  {
-    question: "How can I check my internet speed?",
-    answer: "You can check your speed using online tools like SpeedTest.net or Fast.com."
-  },
-  {
-    question: "How can I pay my bill?",
-    answer: "You can pay online through UPI, credit/debit cards, or directly at our office."
-  },
-  {
-    question: "Can I get a bill receipt?",
-    answer: "Yes, after payment, a receipt will be sent to your registered email."
-  },
-  {
-    question: "Do you offer refunds?",
-    answer: "Refunds depend on plan terms. Please contact support for more details."
-  },
-  {
-    question: "My internet is not working",
-    answer: "Sorry for the trouble. Please restart your router. If the issue continues, our technical team will assist you."
-  },
-  {
-    question: "How can I contact customer support?",
-    answer: "You can call +91 9705-9999-72 or email support@globalfibertel.com."
-  },
-  {
-    question: "How to raise a complaint?",
-    answer: "You can contact support or create a service request through our website."
-  },
-  {
-    question: "How do I restart my router?",
-    answer: "Power off the router, wait 10 seconds, then power it on again."
-  },
-  {
-    question: "My WiFi keeps disconnecting",
-    answer: "This may be due to weak signal or interference. Try repositioning the router or restarting it."
-  },
-  {
-    question: "Can I change my WiFi password?",
-    answer: "Yes, you can log in to your router admin page or ask our team to assist you."
-  },
-  {
-    question: "Do you provide OTT subscriptions?",
-    answer: "Yes, we offer OTT bundles with premium platforms depending on your plan."
-  },
-  {
-    question: "How to activate OTT services?",
-    answer: "Once your plan is activated, you will receive activation links via SMS or email."
-  },
-  {
-    question: "Do you provide leased line connections?",
-    answer: "Yes, we provide dedicated leased lines for businesses with SLA and guaranteed uptime."
-  },
-  {
-    question: "What is your uptime guarantee?",
-    answer: "Our enterprise plans offer up to 99.9% uptime guarantee."
-  },
-  {
-    question: "What is fiber broadband?",
-    answer: "Fiber broadband uses optical fiber to deliver high-speed internet with low latency."
-  },
-  {
-    question: "What is the difference between upload and download speed?",
-    answer: "Download is how fast you receive data, upload is how fast you send data."
-  },
-  {
-    question: "What is bandwidth?",
-    answer: "Bandwidth is the maximum data transfer capacity of your internet connection."
-  },
-  {
-    question: "How can I update my mobile number?",
-    answer: "Share your new number with our support team for verification."
-  },
-  {
-    question: "How do I check my data usage?",
-    answer: "You can check usage through your customer portal or by contacting support."
-  },
-  {
-    question: "What is your support number?",
-    answer: "Our support number is +91 9705-9999-72."
-  },
-  {
-    question: "What is your office address?",
-    answer: "Plot 46, 5th Floor, VIP Hills, Hi-Tech City, Madhapur, Hyderabad, Telangana - 500081."
-  },
-  {
-    question: "What is your support email?",
-    answer: "You can reach us at support@globalfibertel.com."
-  }
+    {
+        question: "What services do you offer?",
+        answer: "We offer high-speed broadband, WiFi connectivity, fiber internet, leased lines, OTT packages, cloud services, and cyber security solutions."
+    },
+    {
+        question: "Do you provide fiber internet?",
+        answer: "Yes, we provide ultra-fast fiber broadband with speeds up to 1 Gbps depending on your location."
+    },
+    {
+        question: "What areas do you serve?",
+        answer: "We serve multiple cities across India. Please share your location to check availability."
+    },
+    {
+        question: "How can I get a new connection?",
+        answer: "You can request a new connection by contacting our support team or filling out the online form on our website."
+    },
+    {
+        question: "What documents are required for a new connection?",
+        answer: "You need a valid ID proof (Aadhaar/PAN) and address proof."
+    },
+    {
+        question: "How long does installation take?",
+        answer: "Installation typically takes 24–48 hours depending on your location."
+    },
+    {
+        question: "What broadband plans do you have?",
+        answer: "We offer multiple plans based on speed and validity (3 months, 6 months, 12 months). Please visit our Plans section for details."
+    },
+    {
+        question: "Why is my internet speed slow?",
+        answer: "Speed may slow due to network congestion, WiFi issues, or device limitations. Try restarting your router."
+    },
+    {
+        question: "How can I check my internet speed?",
+        answer: "You can check your speed using online tools like SpeedTest.net or Fast.com."
+    },
+    {
+        question: "How can I pay my bill?",
+        answer: "You can pay online through UPI, credit/debit cards, or directly at our office."
+    },
+    {
+        question: "Can I get a bill receipt?",
+        answer: "Yes, after payment, a receipt will be sent to your registered email."
+    },
+    {
+        question: "Do you offer refunds?",
+        answer: "Refunds depend on plan terms. Please contact support for more details."
+    },
+    {
+        question: "My internet is not working",
+        answer: "Sorry for the trouble. Please restart your router. If the issue continues, our technical team will assist you."
+    },
+    {
+        question: "How can I contact customer support?",
+        answer: "You can call +91 9705-9999-72 or email support@globalfibertel.com."
+    },
+    {
+        question: "How to raise a complaint?",
+        answer: "You can contact support or create a service request through our website."
+    },
+    {
+        question: "How do I restart my router?",
+        answer: "Power off the router, wait 10 seconds, then power it on again."
+    },
+    {
+        question: "My WiFi keeps disconnecting",
+        answer: "This may be due to weak signal or interference. Try repositioning the router or restarting it."
+    },
+    {
+        question: "Can I change my WiFi password?",
+        answer: "Yes, you can log in to your router admin page or ask our team to assist you."
+    },
+    {
+        question: "Do you provide OTT subscriptions?",
+        answer: "Yes, we offer OTT bundles with premium platforms depending on your plan."
+    },
+    {
+        question: "How to activate OTT services?",
+        answer: "Once your plan is activated, you will receive activation links via SMS or email."
+    },
+    {
+        question: "Do you provide leased line connections?",
+        answer: "Yes, we provide dedicated leased lines for businesses with SLA and guaranteed uptime."
+    },
+    {
+        question: "What is your uptime guarantee?",
+        answer: "Our enterprise plans offer up to 99.9% uptime guarantee."
+    },
+    {
+        question: "What is fiber broadband?",
+        answer: "Fiber broadband uses optical fiber to deliver high-speed internet with low latency."
+    },
+    {
+        question: "What is the difference between upload and download speed?",
+        answer: "Download is how fast you receive data, upload is how fast you send data."
+    },
+    {
+        question: "What is bandwidth?",
+        answer: "Bandwidth is the maximum data transfer capacity of your internet connection."
+    },
+    {
+        question: "How can I update my mobile number?",
+        answer: "Share your new number with our support team for verification."
+    },
+    {
+        question: "How do I check my data usage?",
+        answer: "You can check usage through your customer portal or by contacting support."
+    },
+    {
+        question: "What is your support number?",
+        answer: "Our support number is +91 9705-9999-72."
+    },
+    {
+        question: "What is your office address?",
+        answer: "Plot 46, 5th Floor, VIP Hills, Hi-Tech City, Madhapur, Hyderabad, Telangana - 500081."
+    },
+    {
+        question: "What is your support email?",
+        answer: "You can reach us at support@globalfibertel.com."
+    }
 ];
