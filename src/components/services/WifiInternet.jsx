@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function WifiInternet() {
     return (
-        <div className="w-full min-h-screen bg-white flex flex-col items-center overflow-hidden">
+        <div className="w-full min-h-screen bg-white flex flex-col items-center overflow-hidden mt-[65px]">
             <div className="relative w-full bg-red-600 text-white py-20 px-6 text-center">
                 <motion.h1
                     initial={{ opacity: 0, y: -20 }}

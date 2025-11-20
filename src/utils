@@ -98,22 +98,22 @@ export const FAQ = [
 ]
 
 export const ourServices = [
-    { text: "Broadband", icon: FaTowerBroadcast },
-    { text: "Wifi connection", icon: FaWifi },
-    { text: "Data services", icon: FaDatabase },
-    { text: "Cloud services", icon: FaCloud },
-    { text: "Cyber security", icon: FaShieldAlt },
-    { text: "Marketing services", icon: FaBullhorn }
+    { text: "Broadband", icon: FaTowerBroadcast, linkURL: "/service/broadband" },
+    { text: "Wifi connection", icon: FaWifi, linkURL: "/service/wifiinternet" },
+    { text: "Data services", icon: FaDatabase, linkURL: "/service/dataservices" },
+    { text: "Cloud services", icon: FaCloud, linkURL: "/service/cloudservices" },
+    { text: "Cyber security", icon: FaShieldAlt, linkURL: "/service/cybersecurity" },
+    { text: "Marketing services", icon: FaBullhorn, linkURL: "/service/marketingservices" }
 ];
 
 
 export const importentLinks = [
-    { text: "Support", icon: FaHeadset },
-    { text: "Privacy & Policy", icon: FaUserShield },
-    { text: "Terms & Conditions", icon: FaFileContract },
-    { text: "Parental Control", icon: FaUserLock },
-    { text: "Our Network", icon: FaNetworkWired },
-    { text: "Our Network Performance", icon: FaTachometerAlt }
+    { text: "Support", icon: FaHeadset, linkURL: "/importentlink/support" },
+    { text: "Privacy & Policy", icon: FaUserShield, linkURL: "/importentlink/privacypolicy" },
+    { text: "Terms & Conditions", icon: FaFileContract, linkURL: "/importentlink/termsandconditions" },
+    { text: "Parental Control", icon: FaUserLock, linkURL: "/importentlink/parentalcontrole" },
+    { text: "Our Network", icon: FaNetworkWired, linkURL: "/importentlink/support" },
+    { text: "Our Network Performance", icon: FaTachometerAlt, linkURL: "/importentlink/support" }
 ];
 
 export const OurProducts = [

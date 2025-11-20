@@ -4,8 +4,7 @@ import { Megaphone, Users, BarChart3, Globe2, MessagesSquare, TrendingUp } from 
 
 export default function MarketingService() {
     return (
-        <div className="w-full min-h-screen bg-white p-10 text-gray-900 flex flex-col items-center">
-            {/* Header */}
+        <div className="w-full min-h-screen bg-white p-10 text-gray-900 flex flex-col items-center mt-[75px]">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -14,7 +13,6 @@ export default function MarketingService() {
             >
                 Marketing Services
             </motion.h1>
-
             <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -24,8 +22,6 @@ export default function MarketingService() {
                 Boost your brand visibility, engage your audience, and grow your customer base
                 with our professional marketing solutions tailored for ISPs and digital businesses.
             </motion.p>
-
-            {/* Service Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
                 {[
                     { icon: Megaphone, title: "Brand Promotion", desc: "Increase awareness with expert-led marketing campaigns." },
@@ -48,8 +44,6 @@ export default function MarketingService() {
                     </motion.div>
                 ))}
             </div>
-
-            {/* Images Section */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -67,8 +61,6 @@ export default function MarketingService() {
                     className="w-full h-64 object-cover rounded-2xl shadow-lg"
                 />
             </motion.div>
-
-            {/* Why Choose Section */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

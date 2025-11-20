@@ -78,7 +78,6 @@ const Navbar = () => {
     const navigateContactPage = () => {
         navigate("/contact")
     }
-    // const location = useLocation()
 
     return (
         <div >

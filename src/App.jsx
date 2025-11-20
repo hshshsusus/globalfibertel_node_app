@@ -23,6 +23,10 @@ import DataService from './components/services/DataService';
 import CloudServices from './components/services/CloudServices';
 import CyberSecurityService from './components/services/CyberSecurityService';
 import MarketingService from './components/services/MarketingService';
+import Support from './components/ImportentLinksComponents/Support';
+import PrivacyAndPolicy from './components/ImportentLinksComponents/PrivacyAndPolicy';
+import TermsAndConditions from './components/ImportentLinksComponents/TermsAndConditions';
+import ParentalControle from './components/ImportentLinksComponents/ParentalControle';
 
 function AnimatedRoutes() {
 
@@ -87,7 +91,7 @@ function AnimatedRoutes() {
               }
             />
             <Route
-              path="/service/dataservice"
+              path="/service/dataservices"
               element={
                 <motion.div {...pageVariants}>
                   <DataService />
@@ -95,7 +99,7 @@ function AnimatedRoutes() {
               }
             />
             <Route
-              path="/service/cloudservice"
+              path="/service/cloudservices"
               element={
                 <motion.div {...pageVariants}>
                   <CloudServices />
@@ -111,10 +115,42 @@ function AnimatedRoutes() {
               }
             />
             <Route
-              path="/service/marketing"
+              path="/service/marketingservices"
               element={
                 <motion.div {...pageVariants}>
                   <MarketingService />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/importentlink/support"
+              element={
+                <motion.div {...pageVariants}>
+                  <Support />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/importentlink/privacypolicy"
+              element={
+                <motion.div {...pageVariants}>
+                  <PrivacyAndPolicy />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/importentlink/termsandconditions"
+              element={
+                <motion.div {...pageVariants}>
+                  <TermsAndConditions />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/importentlink/parentalcontrole"
+              element={
+                <motion.div {...pageVariants}>
+                  <ParentalControle />
                 </motion.div>
               }
             />

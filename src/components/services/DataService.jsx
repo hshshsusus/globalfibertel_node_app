@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function DataService() {
     return (
-        <div className="w-full min-h-screen text-black mt-15">
+        <div className="w-full min-h-screen text-black mt-30">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}

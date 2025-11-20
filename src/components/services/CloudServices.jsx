@@ -4,7 +4,7 @@ import { Cloud, Shield, Server, Globe } from "lucide-react";
 
 export default function CloudServices() {
     return (
-        <div className="w-full min-h-screen bg-white p-6 flex flex-col items-center mt-[45px]">
+        <div className="w-full min-h-screen bg-white p-6 flex flex-col items-center mt-[75px]">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}

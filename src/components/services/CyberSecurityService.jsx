@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 
 export default function CyberSecurity() {
     return (
-        <div className="w-full min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-8 flex flex-col items-center text-white">
-            {/* Header */}
+        <div className="w-full min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-8 flex flex-col items-center text-white mt-[65px]">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -13,8 +12,6 @@ export default function CyberSecurity() {
             >
                 Cyber Security Services
             </motion.h1>
-
-            {/* Intro Text */}
             <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -24,8 +21,6 @@ export default function CyberSecurity() {
                 Protect your online presence with our advanced cyber‑security features,
                 including network protection, threat monitoring, data safety, and AI‑powered analysis.
             </motion.p>
-
-            {/* Service Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
                 {[
                     { icon: "🛡️", title: "Threat Monitoring", desc: "Detect cyber attacks in real‑time with AI analytics." },
@@ -48,8 +43,6 @@ export default function CyberSecurity() {
                     </motion.div>
                 ))}
             </div>
-
-            {/* Images Section */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -67,8 +60,6 @@ export default function CyberSecurity() {
                     className="w-full h-64 object-cover rounded-2xl shadow-xl"
                 />
             </motion.div>
-
-            {/* Why Choose Cyber Security Section */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

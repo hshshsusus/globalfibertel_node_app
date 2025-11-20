@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function BroadbandInfo() {
     return (
-        <div className="w-full min-h-screen p-10 bg-gradient-to-b from-blue-50 to-white flex flex-col items-center">
+        <div className="w-full min-h-screen p-10 bg-gradient-to-b from-blue-50 to-white flex flex-col items-center mt-[65px]">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FaTowerBroadcast } from "react-icons/fa6";
-import { GiWifiRouter } from "react-icons/gi";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -83,6 +81,9 @@ export const OurServices = () => {
                 <div className="cards pl-40 whitespace-nowrap" ref={slideRef} onScroll={handleScrolle}>
                     {services?.map((each, i) => {
 
+                        const serviceName = each.serviceName.toLowerCase().split(" ").join('')
+                        const path = "/service/"+serviceName
+                        console.log("checking",path.includes(serviceName));
                         return (
                             <div
                                 key={i}
@@ -97,7 +98,7 @@ export const OurServices = () => {
                                 <p className="mt-5 text-[16px] text-gray-500 whitespace-normal text-start leading-relaxed h-[18vh] overflow-hidden">
                                     {each?.serviceDescription}
                                 </p>
-                                <Link to="/service">
+                                <Link to={path.includes(serviceName) && "/service/"+serviceName}>
                                     <div className="mt-6 flex items-center justify-center gap-2 text-red-600 font-bold group-hover:gap-4 transition-all duration-300">
                                         <p>READ MORE</p>
                                         <HiOutlineArrowRight className="text-lg" />

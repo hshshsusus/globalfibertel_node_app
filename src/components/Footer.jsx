@@ -9,10 +9,11 @@ import { OurProducts } from "../utils";
 import { IoIosCall } from "react-icons/io";
 import { TbMailOpenedFilled } from "react-icons/tb";
 import { PiBuildingOfficeDuotone } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
 
-     const handleWhatsapp = () => {
+    const handleWhatsapp = () => {
         console.log(window)
         window.open("https://wa.me/919701520653?text=Hello%20I%20need%20help!", "_blank");
     }
@@ -21,11 +22,11 @@ const Footer = () => {
         <div className="bg-[#0a0a0a] text-gray-300 px-[5%] pt-14 pb-10 mt-10">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8 border-b border-gray-700 pb-10">
                 <div>
-                    <img
+                    <Link to={"/"}><img
                         src="/company_logo.png"
                         alt="Company Logo"
                         className="w-[125px] h-[125px] mb-4"
-                    />
+                    /></Link>
                     <p className="text-sm text-gray-500 leading-relaxed">
                         Delivering ultra-fast broadband, secured network solutions, and modern digital services across India.
                     </p>
@@ -36,10 +37,11 @@ const Footer = () => {
                         {ourServices?.map((e, i) => {
                             const Icon = e.icon;
                             return (
-                                <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
+                                <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
                                     <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
+                                </Link>
                             );
                         })}
                     </div>
@@ -50,10 +52,11 @@ const Footer = () => {
                         {importentLinks?.map((e, i) => {
                             const Icon = e.icon;
                             return (
-                                <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
+                                <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
                                     <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
+                                </Link>
                             );
                         })}
                     </div>
@@ -77,7 +80,7 @@ const Footer = () => {
                     <img
                         src="https://erp.globalfibertel.com/assets/images/whatsapp_logo.png"
                         className="w-[130px] mb-3 cursor-pointer hover:scale-105 duration-200"
-                    onClick={handleWhatsapp}/>
+                        onClick={handleWhatsapp}/>
 
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
                         <IoIosCall className="text-[20px] text-gray-500 group-hover:text-red-600" />
