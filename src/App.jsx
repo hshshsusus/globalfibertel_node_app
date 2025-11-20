@@ -17,6 +17,12 @@ import UserDashboard from './components/Dashboard/UserDashboard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ChatBot from './components/ChatBot';
+import Broadband from './components/services/Broadband';
+import WifiInternet from './components/services/WifiInternet';
+import DataService from './components/services/DataService';
+import CloudServices from './components/services/CloudServices';
+import CyberSecurityService from './components/services/CyberSecurityService';
+import MarketingService from './components/services/MarketingService';
 
 function AnimatedRoutes() {
 
@@ -61,6 +67,54 @@ function AnimatedRoutes() {
               element={
                 <motion.div {...pageVariants}>
                   <Services />
+                </motion.div>
+              }
+            />
+             <Route
+              path="/service/broadband"
+              element={
+                <motion.div {...pageVariants}>
+                  <Broadband />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/service/wifiinternet"
+              element={
+                <motion.div {...pageVariants}>
+                  <WifiInternet />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/service/dataservice"
+              element={
+                <motion.div {...pageVariants}>
+                  <DataService />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/service/cloudservice"
+              element={
+                <motion.div {...pageVariants}>
+                  <CloudServices />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/service/cybersecurity"
+              element={
+                <motion.div {...pageVariants}>
+                  <CyberSecurityService />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/service/marketing"
+              element={
+                <motion.div {...pageVariants}>
+                  <MarketingService />
                 </motion.div>
               }
             />
