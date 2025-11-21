@@ -382,23 +382,24 @@ body {
 }
 
 .leftArrow {
-  background: linear-gradient(to right, rgba(255,255,255) 60%, transparent);
+  background: linear-gradient(to right, rgba(255, 255, 255) 60%, transparent);
 }
 
 .rightArrow {
-  background: linear-gradient(to left, rgba(255,255,255) 60%, transparent);
+  background: linear-gradient(to left, rgba(255, 255, 255) 60%, transparent);
 }
 
 .arrow {
   padding: 4px 10px;
- transition: all 0.3s ease-in;
- cursor: pointer;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
 }
 
 .arrow:hover {
   background-color: rgb(204, 204, 204);
 }
-.cards{
+
+.cards {
   display: inline-block;
   overflow-x: scroll;
   display: flex;
@@ -406,29 +407,51 @@ body {
   gap: 25px;
   scroll-behavior: smooth;
 }
-.cards::-webkit-scrollbar{
+
+.cards::-webkit-scrollbar {
   display: none;
 }
-.card{
+
+.card {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
 
 @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .animate-shimmer {
-    animation: shimmer 2s infinite linear;
+  animation: shimmer 2s infinite linear;
 }
 
 @keyframes fade {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fade {
-    animation: fade 0.5s ease-in-out;
+  animation: fade 0.5s ease-in-out;
+}
+
+.map {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  transition: all 0.5s ease;
+}
+.map:hover{
+  transform: scale(1.1);
 }

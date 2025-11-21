@@ -121,6 +121,12 @@ const Navbar = () => {
                             </li>
                         </Link>
                     ))}
+
+                    <button className="relative px-4 py-2 font-semibold text-white rounded-xl bg-gradient-to-r from-red-600 to-rose-500 shadow-lg hover:shadow-red-500/40 hover:scale-[1.06] transition-all duration-300 overflow-hidden group cursor-pointer" onClick={navigateContactPage} >
+                        <span className="relative z-10">Get Connection</span>
+                        <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span className="absolute top-0 left-0 w-full h-full -translate-x-full group-hover:translate-x-full bg-white/30 rotate-45 transition-transform duration-700"></span>
+                    </button>
                     <div
                         className={`relative ${user ? "text-green-700" : "hover:text-red-600"} flex items-center`}
                         onMouseOver={() => setShowDash(true)}
@@ -134,7 +140,7 @@ const Navbar = () => {
                             }
                             alt="profile" className="w-[42px] h-[42px] rounded-full cursor-pointer border-2 border-transparent hover:border-red-500 transition-all duration-300 shadow-md hover:shadow-red-500/40 hover:scale-110" onClick={handleImageNavigation} />
                         {showDash && user && (
-                            <div className="absolute top-10 left-[-150px] w-48 bg-white/90 backdrop-blur-xl border border-gray-300 rounded-tl-2xl rounded-br-2xl rounded-bl-2xl p-4 flex flex-col gap-3 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown">
+                            <div className="absolute top-10 right-[20px] w-48 bg-white/90 backdrop-blur-xl border border-gray-300 rounded-tl-2xl rounded-br-2xl rounded-bl-2xl p-4 flex flex-col gap-3 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown">
                                 <Link to={"/user/dashboard/:userId"}>
                                     <p className="flex items-center gap-3 cursor-pointer px-3 py-2 rounded-lg text-gray-700 hover:bg-red-50 hover:shadow-md hover:shadow-red-500/20 transition-all duration-300" onClick={navigateToDashboard} >
                                         <FaUser className="text-red-500 text-[20px]" />
@@ -153,11 +159,6 @@ const Navbar = () => {
                             </p>
                         )}
                     </div>
-                    <button className="relative px-4 py-2 font-semibold text-white rounded-xl bg-gradient-to-r from-red-600 to-rose-500 shadow-lg hover:shadow-red-500/40 hover:scale-[1.06] transition-all duration-300 overflow-hidden group cursor-pointer" onClick={navigateContactPage} >
-                        <span className="relative z-10">Get Connection</span>
-                        <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                        <span className="absolute top-0 left-0 w-full h-full -translate-x-full group-hover:translate-x-full bg-white/30 rotate-45 transition-transform duration-700"></span>
-                    </button>
                 </ul>
             </div>
         </div >

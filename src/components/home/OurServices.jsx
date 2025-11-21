@@ -75,7 +75,7 @@ export const OurServices = () => {
             </p>
 
             <div className="flex items-center mx-[6%] mt-[4%] overflow-hidden relative rounded-3xl py-3.5">
-                {showLeftArrow && <div className="absolute top-0 left-0 h-full w-[150px] px-[25px] leftArrow flex items-center justify-center w-[150px]" onClick={handleLeftArrow}>
+                {showLeftArrow && <div className="absolute z-10 top-0 left-0 h-full w-[150px] px-[25px] leftArrow flex items-center justify-center w-[150px]" onClick={handleLeftArrow}>
                     <MdArrowBackIos className="text-[55px] arrow rounded-full" />
                 </div>}
                 <div className="cards pl-40 whitespace-nowrap" ref={slideRef} onScroll={handleScrolle}>

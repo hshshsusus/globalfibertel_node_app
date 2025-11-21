@@ -2,7 +2,7 @@ import React from "react";
 
 const Billing = () => {
     return (
-        <div className="mx-auto w-[70vw] py-10 px-20 bg-white rounded-3xl shadow-xl mt-10 border border-gray-100">
+        <div className="mx-auto w-[50vw] py-10 px-10 bg-white rounded-3xl shadow-xl mt-10 border border-gray-100">
             <p className="text-3xl font-bold text-gray-800">Billing & Payments</p>
             <div className="mt-10">
                 <ul className="grid grid-cols-3 text-left border-b border-gray-200 pb-3 px-4">
