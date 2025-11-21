@@ -26,7 +26,7 @@ const VerifyOtp = () => {
     const otpExpiry = user?.otpExpiry
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     const refArr = useRef([]);
 
     const isFilled = inputArr.every(e => e !== "");
@@ -121,9 +121,12 @@ const VerifyOtp = () => {
                             <div className="flex items-end justify-end text-red-600 font-bold "><ResendOtp email={user?.email} otpExpiry={user?.otpExpiry} /></div>
                             <p className="text-[14px] font-semibold text-red-600">{showError}</p>
                         </div>
-                        <div className={`transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 rounded-tl-[10px] rounded-br-[10px] justify-center ${isFilled ? "bg-red-600 text-white font-bold" : "bg-gray-400 text-white font-bold"} w-fit py-[10px] px-[35px] mt-[-40px] mt-[20px]`} onClick={() => isFilled && handleSentOTP()}>
-                            <button className="cursor-pointer">{loader ? <Loader /> : "Verify"}</button>
+                        <div className={` flex items-center gap-2 cursor-pointer justify-center rounded-xl font-semibold transition-all duration-300 px-10 py-3 w-fit select-none ${isFilled ? "bg-gradient-to-r from-red-500 to-red-700 text-white shadow-md hover:shadow-lg hover:scale-[1.05]" : "bg-gray-300 text-gray-600 cursor-not-allowed opacity-70"} `} onClick={() => isFilled && handleSentOTP()} >
+                            <button className="cursor-pointer">
+                                {loader ? <Loader /> : "Verify"}
+                            </button>
                         </div>
+
                     </div>
                 </div>
             </div>

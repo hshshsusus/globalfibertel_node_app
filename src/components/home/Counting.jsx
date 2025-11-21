@@ -8,7 +8,7 @@ import * as PiIcons from "react-icons/pi"
 
 export const Counting = () => {
 
-    const home = useSelector(store => store.home);
+    const home = useSelector(store => store?.home?.homeData);
 
     const getIconsData = (icon, library) => {
         const libraries = {

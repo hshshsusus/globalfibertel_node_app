@@ -3,19 +3,31 @@ import { FaFacebookF, FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
-import { ourServices } from "../utils";
-import { importentLinks } from "../utils";
-import { OurProducts } from "../utils";
 import { IoIosCall } from "react-icons/io";
 import { TbMailOpenedFilled } from "react-icons/tb";
 import { PiBuildingOfficeDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import * as Fa6Icons from "react-icons/fa6";
+import * as FaIcons from "react-icons/fa";
 
-const Footer = () => {
-
+const Footer = ({ footer }) => {
+    if (!footer) return;
+    const { ourServices, ourProducts, importentLinks, companyInfo } = footer;
+    // console.log(footer)
     const handleWhatsapp = () => {
-        console.log(window)
         window.open("https://wa.me/919701520653?text=Hello%20I%20need%20help!", "_blank");
+    }
+
+    const getIcon = (icon, Library) => {
+        const libraries = {
+            fa6: Fa6Icons,
+            fa: FaIcons
+        }
+        const lib = libraries[Library];
+
+        const Icon = lib[icon];
+
+        return <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
     }
 
     return (
@@ -35,10 +47,10 @@ const Footer = () => {
                     <p className="text-[18px] font-bold text-white mb-4">Our Services</p>
                     <div className="flex flex-col gap-3">
                         {ourServices?.map((e, i) => {
-                            const Icon = e.icon;
+                            const Icon = e?.icon;
                             return (
                                 <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    {getIcon(e?.icon, e?.iconLib)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                                 </Link>
@@ -53,7 +65,7 @@ const Footer = () => {
                             const Icon = e.icon;
                             return (
                                 <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    {getIcon(e?.icon, e?.iconLib)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                                 </Link>
@@ -64,11 +76,11 @@ const Footer = () => {
                 <div>
                     <p className="text-[18px] font-bold text-white mb-4">Our products</p>
                     <div className="flex flex-col gap-3">
-                        {OurProducts?.map((e, i) => {
+                        {ourProducts?.map((e, i) => {
                             const Icon = e.icon;
                             return (
                                 <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+                                    {getIcon(e?.icon, e?.iconLib)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                             );
@@ -80,15 +92,15 @@ const Footer = () => {
                     <img
                         src="https://erp.globalfibertel.com/assets/images/whatsapp_logo.png"
                         className="w-[130px] mb-3 cursor-pointer hover:scale-105 duration-200"
-                        onClick={handleWhatsapp}/>
+                        onClick={handleWhatsapp} />
 
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
                         <IoIosCall className="text-[20px] text-gray-500 group-hover:text-red-600" />
-                        <p className="text-[16px] hover:text-red-600 text-gray-400">+91 9705-9999-72</p>
+                        <p className="text-[16px] hover:text-red-600 text-gray-400">+91 {companyInfo?.[0]?.phone_number}</p>
                     </div>
                     <div className="flex items-center gap-3 py-1 cursor-pointer">
                         <TbMailOpenedFilled className="text-[20px] text-gray-500" />
-                        <p className="text-[16px] hover:text-red-600 text-gray-400">support@globalfibertel.com</p>
+                        <p className="text-[16px] hover:text-red-600 text-gray-400">{companyInfo?.[0]?.email}</p>
                     </div>
                     <div className="flex flex-col py-1">
                         <div className="flex items-center gap-3">
@@ -96,9 +108,7 @@ const Footer = () => {
                             <p className="text-[16px] text-gray-400">Corporate Office:</p>
                         </div>
                         <p className="text-[14px] text-gray-600 mt-2 font-semibold">
-                            Plot no 46, 5th Floor, VIP Hills,<br />
-                            Hi-Tech City, Madhapur, Hyderabad,<br />
-                            Telangana - 500081.
+                            {companyInfo?.[0]?.address}
                         </p>
                     </div>
                 </div>

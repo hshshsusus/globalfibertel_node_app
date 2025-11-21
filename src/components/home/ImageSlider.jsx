@@ -17,7 +17,7 @@ export const ImageSlider = () => {
     const [shimmerLoader, setShowShimmer] = useState(false);
     const [value, setValue1] = useState() 
 
-    const home = useSelector(store => store.home);
+    const home = useSelector(store => store?.home?.homeData);
 
     const banner = home?.banners;
 

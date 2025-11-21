@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export const Faq = () => {
     const [showAns, setShowAns] = useState(null);
 
-    const home = useSelector(store => store.home);
+    const home = useSelector(store => store?.home?.homeData);
     const FAQS = home?.FAQ;
    
     const handleFAQ = (i) => {

@@ -8,18 +8,21 @@ import axios from "axios";
 import { BASE_URL } from "../constants";
 import { FaFacebookF, FaGoogle } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
+import { addTopNav } from "../Redux/homeSlice";
 
 const TopNavbar = () => {
 
-    const [topData, setTopData] = useState()
     const location = useLocation();
+    const dispatch = useDispatch();
+    const topData = useSelector(store => store?.home?.topNavData);
 
     const fetchTopData = async () => {
         try {
             const res = await axios.get(BASE_URL + "/home/topnav", { withCredentials: true })
-            setTopData(res.data)
+            dispatch(addTopNav(res.data))
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 

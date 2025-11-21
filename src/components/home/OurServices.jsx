@@ -16,7 +16,7 @@ export const OurServices = () => {
     const [showLeftArrow, setLeftArrow] = useState(false);
     const [showrightArrow, setRightArrow] = useState(true);
 
-    const home = useSelector(store => store.home);
+    const home = useSelector(store => store?.home?.homeData);
     const services = home?.services;
 
     const slideRef = useRef();
@@ -83,7 +83,7 @@ export const OurServices = () => {
 
                         const serviceName = each.serviceName.toLowerCase().split(" ").join('')
                         const path = "/service/"+serviceName
-                        console.log("checking",path.includes(serviceName));
+                        
                         return (
                             <div
                                 key={i}

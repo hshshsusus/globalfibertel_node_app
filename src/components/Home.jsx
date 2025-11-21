@@ -12,7 +12,7 @@ import { AddHome } from "../Redux/homeSlice";
 const Home = () => {
 
     const [rendor, setRendor] = useState(0);
-    
+
     const dispatch = useDispatch();
 
     const fetchHomepageData = async () => {
@@ -25,14 +25,23 @@ const Home = () => {
         }
     }
 
+    const handleCustomerData = async () =>{
+        try {
+            const res = await axios.get(BASE_URL+"/api/customer", {withCredentials:true})
+            console.log(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
+        handleCustomerData();
         fetchHomepageData();
         window.addEventListener("scroll", () => {
             setRendor(window.scrollY)
         });
-
     }, [])
-    
+
     return (
         <div>
             <ImageSlider />

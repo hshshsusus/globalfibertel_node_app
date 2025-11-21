@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function CyberSecurity() {
     return (
-        <div className="w-full min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-8 flex flex-col items-center text-white mt-[65px]">
+        <div className="w-full min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black p-8 flex flex-col items-center text-white mt-[55px]">
             <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}

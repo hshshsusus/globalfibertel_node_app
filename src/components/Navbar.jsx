@@ -82,85 +82,84 @@ const Navbar = () => {
     return (
         <div >
             <TopNavbar />
-            <div className={` flex items-center justify-between py-1.5 navshadow px-14 ${scroll && 'w-[100%] fixed top-0 left-0 z-10 navshadow animate__animated animate__fadeInDown items-center gap-1 text-[14px]'} ${scrollValue <= 10 && "animate__animated animate__fadeInUp"} bg-white`}>
+            <div
+                className={`flex items-center justify-between px-10 py-2 bg-white/80 backdrop-blur-xl shadow-md
+  transition-all duration-300 
+  ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"}`}
+            >
                 <div
                     className="relative w-[100px] group"
                     onMouseOver={() => setShowPopup(true)}
                     onMouseLeave={() => setShowPopup(false)}
                 >
                     <img
-                        src="/company_logo.png"
-                        alt="logo"
-                        className="w-[100px] h-[100px] cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(255,0,0,0.45)]" onClick={() => navigate("/")} />
+                        src="/company_logo.png" alt="logo" className="w-[90px] h-[90px] cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,0,0,0.55)]" onClick={() => navigate("/")} />
+
                     {location.pathname !== "/" && showPopup && (
-                        <p className="absolute top-0 left-0 -translate-y-1/2 text-[13px] font-semibold px-3 py-1.5 bg-black/70 backdrop-blur-md text-white rounded-tr-xl rounded-tl-xl rounded-bl-xl shadow-lg shadow-red-500/20  border border-gray-700/40 animate-[fadeIn_0.25s_ease-out,slideIn_0.25s_ease-out] whitespace-nowrap">
+                        <p className="absolute top-0 left-0 -translate-y-3 text-[12px] font-semibold px-3 py-1.5 bg-black/70 backdrop-blur-md text-white rounded-xl shadow-lg shadow-red-500/25 border border-gray-700/40 animate__animated animate__fadeInDown whitespace-nowrap">
                             Go Home
                         </p>
                     )}
                 </div>
-                <div className="pr-5">
-                    <ul className="flex items-center gap-10 text-[15px] font-semibold">
-                        {[
-                            { name: "HOME", path: "/" },
-                            { name: "PLANS", path: "/plans" },
-                            { name: "SERVICES", path: "/service" },
-                            { name: "CONTACT", path: "/contact" },
-                            { name: "ABOUT", path: "/about" },
-                        ].map((item) => (
-                            <Link key={item.path} to={item.path}>
-                                <li className={`font-bold relative cursor-pointer transition-all duration-300 ${location.pathname === item.path ? "text-red-600" : "text-gray-700 hover:text-red-600"}`} >
+                <ul className="flex items-center gap-8 text-[16px] font-semibold">
+                    {[
+                        { name: "HOME", path: "/" },
+                        { name: "PLANS", path: "/plans" },
+                        { name: "SERVICES", path: "/service" },
+                        { name: "CONTACT", path: "/contact" },
+                        { name: "ABOUT", path: "/about" },
+                    ].map(item => (
+                        <Link key={item.path} to={item.path}>
+                            <li className={` relative px-2 py-1 cursor-pointer transition-all duration-300 font-semibold tracking-wide ${location.pathname === item.path ? "text-red-600" : "text-gray-700 hover:text-red-500"
+                                } group`}>
+                                <span className="relative z-10 drop-shadow-sm">
                                     {item.name}
-                                    <span className={` absolute left-0 -bottom-1 h-[3px] w-full rounded-full bg-red-600 transition-all duration-300 ${location.pathname === item.path ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:scale-100"}`}></span>
-                                </li>
-                            </Link>
-                        ))}
-                        <div className={`relative mt-[5px] ${user ? "text-green-700" : "hover:text-red-600"} flex items-center gap-10`} onMouseOver={() => { setShowDash(true) }} onMouseLeave={() => { setShowDash(false) }}>
-                            <img
-                                src={
-                                    user
-                                        ? "https://res.cloudinary.com/dssabhgtb/image/upload/v1763027943/profile_vufmtj.png"
-                                        : "https://res.cloudinary.com/dssabhgtb/image/upload/v1763028097/profile-picture_vuzaai.png"
-                                }
-                                alt="profile"
-                                className="w-[40px] h-[40px] rounded-full cursor-pointer  border-2 border-transparent hover:border-red-500 transition-all duration-300 shadow-md hover:shadow-red-500/40 hover:scale-110"
-                                onClick={handleImageNavigation}
-                                onMouseOver={() => setShowLogin(true)}
-                                onMouseLeave={() => setShowLogin(false)}
-                            />
-                            {showDash && user && (
-                                <div className={`absolute top-12 left-[-160px] w-48 bg-black/70 backdrop-blur-xl border border-gray-700 rounded-tl-2xl rounded-bl-2xl rounded-br-2xl p-4 flex flex-col gap-3 z-20 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown`}>
-                                    <Link to={"/user/dashboard/:userId"}>
-                                        <p className="flex items-center gap-3 cursor-pointer  px-3 py-2 rounded-lg text-gray-200 hover:bg-gray-800 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300" onClick={navigateToDashboard} >
-                                            <FaUser className="text-red-500 text-[22px]" />
-                                            <span className="font-medium">My account</span>
-                                        </p>
-                                    </Link>
-                                    <p className="flex items-center gap-3 cursor-pointer px-3 py-2 rounded-lg text-gray-200 hover:bg-gray-800 hover:shadow-lg hover:shadow-red-500/20 transition-all duration-300" onClick={handleLogout} >
-                                        <IoPowerSharp className="text-red-500 text-[22px]" />
-                                        <span className="font-medium">Logout</span>
+                                </span>
+                                <span className="absolute inset-0 rounded-lg bg-red-500/10 scale-0 group-hover:scale-100 transition-transform duration-300" ></span>
+                                <span className={` absolute left-0 -bottom-[3px] h-[3px] w-full rounded-full bg-gradient-to-r from-red-500 to-red-700 transition-all duration-300 ${location.pathname === item.path ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"
+                                    }`} ></span>
+                            </li>
+                        </Link>
+                    ))}
+                    <div
+                        className={`relative ${user ? "text-green-700" : "hover:text-red-600"} flex items-center`}
+                        onMouseOver={() => setShowDash(true)}
+                        onMouseLeave={() => setShowDash(false)}
+                    >
+                        <img
+                            src={
+                                user
+                                    ? "https://res.cloudinary.com/dssabhgtb/image/upload/v1763027943/profile_vufmtj.png"
+                                    : "https://res.cloudinary.com/dssabhgtb/image/upload/v1763028097/profile-picture_vuzaai.png"
+                            }
+                            alt="profile" className="w-[42px] h-[42px] rounded-full cursor-pointer border-2 border-transparent hover:border-red-500 transition-all duration-300 shadow-md hover:shadow-red-500/40 hover:scale-110" onClick={handleImageNavigation} />
+                        {showDash && user && (
+                            <div className="absolute top-10 left-[-150px] w-48 bg-white/90 backdrop-blur-xl border border-gray-300 rounded-tl-2xl rounded-br-2xl rounded-bl-2xl p-4 flex flex-col gap-3 shadow-xl shadow-red-500/20 animate__animated animate__fadeInDown">
+                                <Link to={"/user/dashboard/:userId"}>
+                                    <p className="flex items-center gap-3 cursor-pointer px-3 py-2 rounded-lg text-gray-700 hover:bg-red-50 hover:shadow-md hover:shadow-red-500/20 transition-all duration-300" onClick={navigateToDashboard} >
+                                        <FaUser className="text-red-500 text-[20px]" />
+                                        <span className="font-medium">My account</span>
                                     </p>
-
-                                </div>
-                            )}
-                            {!user && showLogin && (
-                                <p className="absolute top-[-40px] left-[-45px] text-white bg-black/80 backdrop-blur-md px-3 py-1 rounded-tl-xl rounded-tr-xl rounded-bl-xl text-sm font-semibold shadow-lg shadow-red-500/20 animate__animated animate__fadeInUp">
-                                    Login
+                                </Link>
+                                <p className="flex items-center gap-3 cursor-pointer px-3 py-2 rounded-lg text-gray-700 hover:bg-red-50 hover:shadow-md hover:shadow-red-500/20 transition-all duration-300" onClick={handleLogout} >
+                                    <IoPowerSharp className="text-red-500 text-[20px]" />
+                                    <span className="font-medium">Logout</span>
                                 </p>
-                            )}
-                            <button
-                                class="relative px-8 py-3 font-semibold text-white rounded-xl bg-gradient-to-r from-red-600 to-rose-500 shadow-lg hover:shadow-red-500/40 hover:scale-[1.06] transition-all duration-300 overflow-hidden group cursor-pointer" onClick={navigateContactPage}>
-                                <span class="relative z-10">Get Connection</span>
-                                <span class="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                                </span>
-                                <span class="absolute top-0 left-0 w-full h-full -translate-x-full group-hover:translate-x-full bg-white/30 rotate-45 transition-transform duration-700">
-                                </span>
-                            </button>
-                        </div>
-                    </ul>
-
-                </div>
-
-            </div >
+                            </div>
+                        )}
+                        {!user && showLogin && (
+                            <p className="absolute top-[-35px] left-[-40px] text-white bg-black/80 backdrop-blur-md px-3 py-1 rounded-xl text-sm font-medium shadow-lg shadow-red-500/20 animate__animated animate__fadeInUp">
+                                Login
+                            </p>
+                        )}
+                    </div>
+                    <button className="relative px-4 py-2 font-semibold text-white rounded-xl bg-gradient-to-r from-red-600 to-rose-500 shadow-lg hover:shadow-red-500/40 hover:scale-[1.06] transition-all duration-300 overflow-hidden group cursor-pointer" onClick={navigateContactPage} >
+                        <span className="relative z-10">Get Connection</span>
+                        <span className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span className="absolute top-0 left-0 w-full h-full -translate-x-full group-hover:translate-x-full bg-white/30 rotate-45 transition-transform duration-700"></span>
+                    </button>
+                </ul>
+            </div>
         </div >
     )
 }
