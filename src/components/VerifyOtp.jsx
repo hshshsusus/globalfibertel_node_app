@@ -11,6 +11,7 @@ import { addUser } from "../Redux/userslice";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
 import ResendOtp from "./ResendOtp";
+import { addCustomerData, addCustomerInvoice } from "../Redux/customerSlice";
 
 const VerifyOtp = () => {
 
@@ -18,12 +19,12 @@ const VerifyOtp = () => {
 
     const [inputArr, setInputArr] = useState(new Array(OTP_NUMBER_COUNT).fill(""));
     const [showError, setShowError] = useState();
-    const [loader, setLoader] = useState(false)
+    const [loader, setLoader] = useState(false);
 
     const user = useSelector(store => store?.user);
     console.log(user)
-    const email = user?.email;
-    const otpExpiry = user?.otpExpiry
+    const email = user?.[0].email;
+    const otpExpiry = user?.[0].otpExpiry
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -54,15 +55,41 @@ const VerifyOtp = () => {
         }
     }
 
+    //GETTING CUSTOMER DATA
+    const handleCustomerData = async (data) => {
+        const email = data?.[0].email;
+        try {
+            const res = await axios.post(BASE_URL + "/api/customer", { email }, { withCredentials: true })
+            dispatch(addCustomerData(res?.data))
+            handleCustomerInvoices();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    //GETTING CUSTOMER INVOICES
+    const handleCustomerInvoices = async () => {
+        try {
+            const res = await axios.post(BASE_URL + "/api/customer/invoice", {}, { withCredentials: true })
+            console.log(res?.data)
+            dispatch(addCustomerInvoice(res?.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const handleSentOTP = async () => {
         try {
             setLoader(true);
             setShowError();
-            const { email } = user;
+            const { email } = user?.[0];
             const otp = parseInt(inputArr.join(''));
             const res = await axios.post(BASE_URL + "/login/user/otp/verify", { email, otp }, { withCredentials: true })
-            dispatch(addUser(res.data));
+
+            dispatch(addUser(res?.data));
             toast.success("Logged in successfully.!");
+            handleCustomerData(res?.data);
+            // handleCustomerInvoices();
             navigate("/")
             setLoader(false)
         } catch (error) {

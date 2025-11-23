@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import TopNavbar from "./TopNavbar";
-import { LOGO } from "../utils";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPacks } from "../Redux/packSlice";
@@ -10,6 +9,7 @@ import { FaUser } from "react-icons/fa";
 import { IoPowerSharp } from "react-icons/io5";
 import { addUser, removeUser } from "../Redux/userslice";
 import { toast } from "react-toastify";
+import { addCustomerData, addCustomerInvoice } from "../Redux/customerSlice";
 
 const Navbar = () => {
 
@@ -41,16 +41,39 @@ const Navbar = () => {
 
     // console.log(1763190525.49 - Date.now()/1000 )
 
-    const fetchUser = async () => {
+   const fetchUser = async () =>{
         try {
-            const res = await axios.get(BASE_URL + "/profile/user/get", { withCredentials: true });
-            dispatch(addUser(res.data))
+            const res = await axios.get(BASE_URL+"/profile/user/get", {withCredentials:true});
+            dispatch(addUser(res?.data))
+            
         } catch (error) {
+            console.log(error)
         }
-    }
+   }
+
+   const handleCustomerInvoices = async () => {
+        try {
+            const res = await axios.post(BASE_URL + "/api/customer/invoice", {}, { withCredentials: true })
+            dispatch(addCustomerInvoice(res?.data))
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+
+   const handleCustomerData = async (data) => {
+            const email = data?.[0].email;
+            try {
+                const res = await axios.post(BASE_URL + "/api/customer", { email }, { withCredentials: true })
+                dispatch(addCustomerData(res?.data))
+                handleCustomerInvoices();
+            } catch (error) {
+                console.log(error)
+            }
+        }
 
     useEffect(() => {
         fetchUser();
+       handleCustomerData(user);
         getAllPackages();
         window.addEventListener("scroll", handleScroll);
         return () => {

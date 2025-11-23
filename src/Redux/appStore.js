@@ -3,7 +3,8 @@ import scrollReducer from "./scrollSlice";
 import adminReducer from "./adminSlice";
 import packReducer from "./packSlice";
 import userReducer from "./userslice";
-import homeReducer from "./homeSlice"
+import homeReducer from "./homeSlice";
+import customerReducer from "./customerSlice";
 
 const appStore = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ const appStore = configureStore({
         pack: packReducer,
         user: userReducer,
         home: homeReducer,
+        customer: customerReducer,
     }
 })
 

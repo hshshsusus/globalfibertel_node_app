@@ -30,6 +30,7 @@ const EmailOtp = () => {
             setLoader(true);
             const res = await axios.post(BASE_URL + "/login/user/otp", { email }, { withCredentials: true });
             toast.success("Otp sent successfuly!")
+            console.log(res.data)
             dispatch(addUser(res.data));
             navigate("/auth/otp/verify")
         } catch (error) {

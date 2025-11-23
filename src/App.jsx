@@ -27,6 +27,7 @@ import Support from './components/ImportentLinksComponents/Support';
 import PrivacyAndPolicy from './components/ImportentLinksComponents/PrivacyAndPolicy';
 import TermsAndConditions from './components/ImportentLinksComponents/TermsAndConditions';
 import ParentalControle from './components/ImportentLinksComponents/ParentalControle';
+import CustomerOrder from './components/customers and tickets ui/CustomerOrder';
 
 function AnimatedRoutes() {
 
@@ -192,6 +193,14 @@ function AnimatedRoutes() {
               element={
                 <motion.div {...pageVariants}>
                   <UserDashboard />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/user/orders"
+              element={
+                <motion.div {...pageVariants}>
+                  <CustomerOrder />
                 </motion.div>
               }
             />
