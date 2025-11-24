@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { TbInvoice } from "react-icons/tb";
 import { Link } from 'react-router-dom';
+import { RiMailCheckLine } from "react-icons/ri";
 
 
 const UserIcon = () => (
@@ -53,14 +54,13 @@ const BriefcaseIcon = () => (
 
 const Dashboard = ({ data }) => {
 
+    const loaderStyle = "loader border-t-4 border-b-4 border-red-400 w-12 h-12 rounded-full animate-spin";
+
     if (!data) {
         return (
-            <div className="flex items-center justify-center h-64 bg-gray-50 rounded-xl shadow-inner animate-pulse">
-                <svg className="animate-spin h-5 w-5 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <span className="ml-3 text-lg text-gray-600">Loading Dashboard Data...</span>
+            <div className="flex flex-col justify-center items-center h-screen bg-gray-50 p-4">
+                <div className={loaderStyle}></div>
+                <p className="mt-4 text-lg text-gray-600">Loading Customer Data...</p>
             </div>
         );
     }
@@ -73,7 +73,7 @@ const Dashboard = ({ data }) => {
     const kycStatusText = data.kyc_status === "1" ? "Verified" : "Not Verified";
 
     const Card = ({ title, icon: Icon, children }) => (
-        <div className="bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl p-6 border-t-4 border-red-600 space-y-3">
+        <div className="bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-xl p-6 border-t-4 border-red-300 space-y-3">
             <div className="flex items-center space-x-3 text-red-600">
                 <Icon />
                 <h2 className="text-xl font-bold text-gray-800">{title}</h2>
@@ -86,7 +86,7 @@ const Dashboard = ({ data }) => {
         <div className="min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-10 font-sans mt-[px]">
             <div className="max-w-7xl mx-auto space-y-8">
 
-                <div className="flex flex-col lg:flex-row items-start lg:items-center bg-white shadow-2xl rounded-2xl p-8 space-y-6 lg:space-y-0 lg:space-x-8 border-b-4 border-red-600">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center bg-white shadow-2xl rounded-2xl p-8 space-y-6 lg:space-y-0 lg:space-x-8 border-b-4 border-red-300">
                     <div className="w-32 h-32 bg-red-600 text-white rounded-full flex items-center justify-center text-4xl font-extrabold shadow-inner ring-4 ring-red-200">
                         {data.firstname[0]}{data.lastname[0]}
                     </div>
@@ -95,14 +95,14 @@ const Dashboard = ({ data }) => {
                         <h1 className="text-4xl font-extrabold text-gray-900">
                             {data.firstname} {data.middle_name} {data.lastname}
                         </h1>
-                        <p className="text-lg bg-red-600 text-white inline-block mt-1 px-2 py-1 rounded">{data.email}</p>
-                        <p className="text-gray-600 mt-1">Mobile: <span className="font-medium">{data.mobile}</span></p>
+                        <p className=" text-gray-600 inline-block mt-1 px-2 py-1 rounded">Email : <span className='text-[18px] font-semibold text-gray-700'>{data.email}</span></p>
+                        <p className="text-gray-600 mt-1">Mobile: <span className="font-medium text-gray-700">{data.mobile}</span></p>
 
                         <div className="flex flex-wrap items-center gap-3 mt-4">
                             <span className={`px-3 py-1 text-sm font-semibold rounded-full text-white ${statusColorClass}`}>
                                 {data.status_text}
                             </span>
-                            <span className={`px-3 py-1 text-sm font-semibold rounded-full text-white ${onlineStatusClass}`}>
+                            <span className={`px-3 py-1 text-[12px] font-semibold rounded-full text-white ${onlineStatusClass}`}>
                                 {data.online_status}
                             </span>
                             <span className="px-3 py-1 text-sm font-semibold rounded-full bg-red-100 text-red-800">
@@ -160,13 +160,14 @@ const Dashboard = ({ data }) => {
                 </div>
 
                 <div className="bg-white shadow-xl rounded-xl p-6 flex gap-4">
-                    <button className="flex items-center bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 cursor-pointer">
+                    <Link to={"/user/orders/payment"}><button className="flex items-center bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 cursor-pointer">
                         <DollarIcon /> <span className="ml-2">Pay Balance (₹{data.balance})</span>
                     </button>
-
-                    <button className="flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 cursor-pointer">
+                    </Link>
+                    <Link to={`/user/ticket/${data?.acc_id}`}><button className="flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 cursor-pointer">
                         <UserIcon /> <span className="ml-2">Raise Support Ticket</span>
                     </button>
+                    </Link>
                     <Link to={"/user/orders"}>
                         <button className="flex items-center bg-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-600 cursor-pointer" >
                             <TbInvoice className='text-[25px]' /> <span className="ml-2">Orders & Payments</span>

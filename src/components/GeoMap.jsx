@@ -11,7 +11,7 @@ function GeoMap() {
                 style={{"border":"0;", "borderRadius":"20px"}}
                 allowfullscreen=""
                 loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" className='map'>
+                referrerpolicy="no-referrer-when-downgrade" className='map border-6 border-green-400'>
             
             </iframe>
         </div>

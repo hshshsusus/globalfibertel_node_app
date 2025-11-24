@@ -28,6 +28,10 @@ import PrivacyAndPolicy from './components/ImportentLinksComponents/PrivacyAndPo
 import TermsAndConditions from './components/ImportentLinksComponents/TermsAndConditions';
 import ParentalControle from './components/ImportentLinksComponents/ParentalControle';
 import CustomerOrder from './components/customers and tickets ui/CustomerOrder';
+import Invoice from './components/customers and tickets ui/Invoice';
+import CollectPayment from './components/customers and tickets ui/CollectPayment';
+import CreateTicket from './components/customers and tickets ui/CreateTicket';
+import CustomerTicket from './components/customers and tickets ui/CustomerTicket';
 
 function AnimatedRoutes() {
 
@@ -201,6 +205,30 @@ function AnimatedRoutes() {
               element={
                 <motion.div {...pageVariants}>
                   <CustomerOrder />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/user/orders/:customer_id/:order_id/:api_inv_id"
+              element={
+                <motion.div {...pageVariants}>
+                  <Invoice />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/user/orders/payment"
+              element={
+                <motion.div {...pageVariants}>
+                  <CollectPayment />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/user/ticket/:acc_id"
+              element={
+                <motion.div {...pageVariants}>
+                  <CustomerTicket />
                 </motion.div>
               }
             />

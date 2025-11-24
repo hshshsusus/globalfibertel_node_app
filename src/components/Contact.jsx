@@ -87,7 +87,7 @@ const Contact = () => {
 
     return !shimmerLoader ? <ContactShimmer /> : (
         <>
-            <div className="mx-[15%] bg-white shadow-xl rounded-2xl p-6 flex gap-6 mt-[50px]">
+            <div className="mx-[15%] bg-white shadow-xl rounded-2xl p-6 flex gap-6 mt-[50px] border-l-4 border-red-300 border-b-4">
                 <div className="w-[65%] flex flex-col gap-4">
                     <p className="text-3xl text-red-600 font-extrabold">Contact Us</p>
 

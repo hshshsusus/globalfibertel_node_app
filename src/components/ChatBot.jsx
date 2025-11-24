@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { BASE_URL } from "../constants";
 
 const ChatBot = () => {
 
-    const [chat, setChat] = useState([{role:"bot", message:"Welcome to globalfibertel.! I am customer supporter How can i help you?"}]);
+    const [chat, setChat] = useState([]);
     const [text, setText] = useState("");
     const [typing, setTyping] = useState(false);
 
@@ -33,6 +33,13 @@ const ChatBot = () => {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        const timer = setTimeout(() => setChat((prev) => [...prev, { role: "bot", message: "Welcome to globalfibertel.! I am customer supporter How can i help you?" }]), 1500)
+        return () =>{
+            clearTimeout(timer)
+        }
+    }, [])
 
     return (
         <div className="w-full h-[80vh] flex items-center justify-center">

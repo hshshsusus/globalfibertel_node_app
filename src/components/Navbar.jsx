@@ -108,7 +108,7 @@ const Navbar = () => {
             <div
                 className={`flex items-center justify-between px-10 py-2 bg-white/80 backdrop-blur-xl shadow-md
   transition-all duration-300 
-  ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"}`}
+  ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"} rounded-b-2xl border-b-4 border-red-300`}
             >
                 <div
                     className="relative w-[100px] group"

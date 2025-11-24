@@ -452,9 +452,27 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
   transition: all 0.5s ease;
 }
-.map:hover{
+
+.map:hover {
   transform: scale(1.1);
 }
-.invoiceCard{
+
+.invoiceCard {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.frame::-webkit-scrollbar {
+  display: none;
+}
+
+.pdfbox {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.input {
+  @apply bg-gray-50 border border-gray-300 focus:border-red-500 focus:ring-red-300 px-4 py-3 rounded-xl w-full transition;
+}
+
+.form-input {
+  @apply bg-gray-50 border border-gray-300 focus:border-indigo-500 focus:ring-indigo-300 px-4 py-3 rounded-xl w-full transition;
 }

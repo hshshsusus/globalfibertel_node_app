@@ -28,7 +28,7 @@ export const Faq = () => {
                             onClick={() => handleFAQ(i)}
                             className={`cursor-pointer bg-white shadow-md hover:shadow-xl 
         border border-gray-200 rounded-xl p-5 transition-all duration-300 
-        ${isOpen ? "bg-red-50 border-red-300" : ""}`}
+        ${isOpen ? "bg-red-50 border-red-300" : ""} border-b-4 border-gray-300`}
                         >
                             <div className="flex items-center justify-between">
                                 <p className={`text-[20px] font-semibold transition-all 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 // Original CustomerDashboard component adapted to use mock data
 const App = ({ customerId }) => {
@@ -42,7 +43,7 @@ const App = ({ customerId }) => {
     }, [customerData?.data, customerInvoices?.orders]);
 
     // Styling for the spinning loader
-    const loaderStyle = "loader border-t-4 border-b-4 border-blue-500 w-12 h-12 rounded-full animate-spin";
+    const loaderStyle = "loader border-t-4 border-b-4 border-red-400 w-12 h-12 rounded-full animate-spin";
 
     // Custom loader component
     if (loading)
@@ -77,7 +78,7 @@ const App = ({ customerId }) => {
                     {/* Customer Info and Address Block */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* Customer Info Card */}
-                        <div className="lg:col-span-2 bg-white shadow-xl rounded-2xl p-8 border-t-4 border-red-500 transition duration-300 hover:shadow-2xl">
+                        <div className="lg:col-span-2 bg-white shadow-xl rounded-2xl p-8 border-t-4 border-red-300 transition duration-300 hover:shadow-2xl">
                             <h2 className="text-2xl font-bold mb-4 text-red-600 flex items-center">
                                 <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 Customer Details
@@ -114,7 +115,7 @@ const App = ({ customerId }) => {
                         </div>
 
                         {/* Address Info Card */}
-                        <div className="bg-white shadow-xl rounded-2xl p-8 transition duration-300 border-t-4 border-red-500 hover:shadow-2xl">
+                        <div className="bg-white shadow-xl rounded-2xl p-8 transition duration-300 border-t-4 border-red-300 hover:shadow-2xl">
                             <h2 className="text-2xl font-bold mb-4 text-red-600 flex items-center">
                                 <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 Addresses
@@ -135,10 +136,10 @@ const App = ({ customerId }) => {
                     {/* Orders / Tickets Block */}
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
                         {/* Orders */}
-                        <div className="bg-white shadow-xl rounded-2xl p-8 border-l-4 border-green-500">
+                        <div className="bg-white shadow-xl rounded-2xl p-8 border-l-4 border-green-300">
                             <h2 className="text-2xl font-bold mb-4 text-green-700 flex items-center">
                                 <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                                Recent Orders
+                                Recent Payments
                             </h2>
                             {invoiceData && invoiceData.length > 0 ? (
                                 <ul className="space-y-4 max-h-96 overflow-y-scroll ">
@@ -147,7 +148,7 @@ const App = ({ customerId }) => {
                                         return (
                                             <li
                                                 key={order?.order_id}
-                                                className=" p-4 rounded-lg bg-green-50 hover:bg-green-100 transition duration-150 flex items-center justify-between border-r-4 border-green-500 invoiceCard"
+                                                className=" p-4 rounded-lg bg-green-50 hover:bg-green-100 transition duration-150 flex items-center justify-between border-r-4 border-green-300 invoiceCard"
                                             >
                                                 <div>
                                                     <p className="text-sm font-semibold text-green-800">Order ID: <span className="font-normal text-gray-700">{order?.order_id}</span></p>
@@ -160,27 +161,28 @@ const App = ({ customerId }) => {
                                                     <p>Balance: <span className="font-bold text-red-600">{order?.balance}</span></p>
                                                 </div>
                                                 <div>
-                                                    {order?.status === "Paid" ? (< button
-                                                        className="px-5 py-3 rounded-xl bg-green-600 hover:bg-green-700 active:scale-[.98] text-white text-[16px] font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
-                                                    >
-                                                        <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
-                                                            fill="none"
-                                                            viewBox="0 0 24 24"
-                                                            strokeWidth={1.8}
-                                                            stroke="currentColor"
-                                                            className="size-5"
+                                                    {order?.status === "Paid" ? (<Link to={`/user/orders/${order?.customer_id
+                                                        }/${order?.order_id}/${order?.api_inv_id}`}><button
+                                                            className="px-5 py-3 rounded-xl bg-green-600 hover:bg-green-700 active:scale-[.98] text-white text-[16px] font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
                                                         >
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                                                            <svg
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                fill="none"
+                                                                viewBox="0 0 24 24"
+                                                                strokeWidth={1.8}
+                                                                stroke="currentColor"
+                                                                className="size-5"
+                                                            >
+                                                                <path
+                                                                    strokeLinecap="round"
+                                                                    strokeLinejoin="round"
+                                                                    d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m.75 12 3 3m0 0 3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
 
-                                                            />
-                                                        </svg>
-                                                        <span>Download Invoice</span>
-                                                    </button>
-
+                                                                />
+                                                            </svg>
+                                                            <span>Download Invoice</span>
+                                                        </button>
+                                                    </Link>
                                                     ) : (
                                                         < button
                                                             className="px-5 py-3 rounded-xl bg-red-500 hover:bg-red-700 active:scale-[.98] text-white text-[16px] font-semibold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"

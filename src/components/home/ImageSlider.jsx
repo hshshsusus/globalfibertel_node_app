@@ -88,7 +88,7 @@ export const ImageSlider = () => {
             <img
                 src={banner?.[img || !img && activeImage]?.imageURL}
                 alt=""
-                className={`relative w-full h-[70vh] object-cover transition-all duration-700 z-0`}
+                className={`relative w-full h-[70vh] object-cover transition-all duration-700 z-0 rounded-2xl`}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
             <button

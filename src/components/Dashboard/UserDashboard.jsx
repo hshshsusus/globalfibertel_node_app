@@ -9,7 +9,6 @@ const UserDashboard = () => {
     const navigate = useNavigate();
 
     const customerData = useSelector(store => store.customer)
-    console.log(customerData)
 
     const handleScroll = () => {
         setScrollValue(window.scrollY)
