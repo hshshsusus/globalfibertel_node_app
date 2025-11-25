@@ -8,7 +8,6 @@ import Services from './components/Services';
 import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import Login from './components/Login';
 import AddPack from './components/AddPack';
 import UpdatePack from './components/UpdatePack';
 import EmailOtp from './components/EmailOtp';
@@ -32,6 +31,8 @@ import Invoice from './components/customers and tickets ui/Invoice';
 import CollectPayment from './components/customers and tickets ui/CollectPayment';
 import CreateTicket from './components/customers and tickets ui/CreateTicket';
 import CustomerTicket from './components/customers and tickets ui/CustomerTicket';
+import AdminLogin from './components/AdminComponents.jsx/AdminLogin';
+import AdminDashBoard from './components/AdminComponents.jsx/AdminDashBoard';
 
 function AnimatedRoutes() {
 
@@ -79,7 +80,7 @@ function AnimatedRoutes() {
                 </motion.div>
               }
             />
-             <Route
+            <Route
               path="/service/broadband"
               element={
                 <motion.div {...pageVariants}>
@@ -242,14 +243,25 @@ function AnimatedRoutes() {
             />
           </Route>
 
+{/* admin routes start  from here */}
           <Route
-            path="/login"
+            path="/admin/login"
             element={
               <motion.div {...pageVariants}>
-                <Login />
+                <AdminLogin />
               </motion.div>
             }
           />
+
+          <Route
+            path="/admin/dashboard"
+            element={
+              <motion.div {...pageVariants}>
+                <AdminDashBoard />
+              </motion.div>
+            }
+          />
+
           <Route
             path="/auth/otp"
             element={

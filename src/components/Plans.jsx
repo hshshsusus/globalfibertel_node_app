@@ -117,7 +117,7 @@ const Plans = () => {
                         return (
                             <div
                                 key={i}
-                                className={`border-l-6 border-red-300 relative pack cursor-pointer rounded-2xl border border-gray-200 p-15 bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
+                                className={` relative pack cursor-pointer rounded-2xl border border-gray-200 p-15 bg-white/70 backdrop-blur-xl shadow-md transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate__animated animate__fadeIn`}
                                 onMouseOver={() => setHover(i)}
                                 onMouseLeave={() => setHover()}
                             >
