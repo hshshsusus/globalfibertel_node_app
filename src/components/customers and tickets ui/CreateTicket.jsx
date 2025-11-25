@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const CreateTicketAttractive = () => {
+const CreateTicket = () => {
     const [form, setForm] = useState({
         acc_id: "",
         username_org: "",
@@ -57,8 +57,8 @@ const CreateTicketAttractive = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-            <div className="max-w-xl w-full mx-auto p-[2px] bg-gradient-to-r from-red-300 to-red-600 rounded-3xl shadow-2xl hover:shadow-3xl transition duration-500">
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="max-w-xl w-full mx-auto p-[2px] border-l-4 border-b-4 border-red-500 rounded-3xl shadow-2xl hover:shadow-3xl transition duration-500">
                 <div className="bg-white rounded-[22px] p-8 md:p-10">
 
                     <h2 className="text-3xl font-extrabold text-red-600 mb-8 text-center tracking-wide">
@@ -135,4 +135,4 @@ const CreateTicketAttractive = () => {
     );
 };
 
-export default CreateTicketAttractive;
+export default CreateTicket;

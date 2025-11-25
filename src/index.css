@@ -476,3 +476,11 @@ body {
 .form-input {
   @apply bg-gray-50 border border-gray-300 focus:border-indigo-500 focus:ring-indigo-300 px-4 py-3 rounded-xl w-full transition;
 }
+
+.t::-webkit-scrollbar {
+  display: none;
+}
+
+.ticketCol {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
