@@ -1,52 +1,83 @@
-import React, { useState } from "react";
-const data = [
-  { id: 1, image: "https://...", title: "Enjoy high speed internet connection", subtitle: "High Speed Bandwidth", description: "Connect Any Device Securely", phone1: "9999999999", phone2: "8888888888" },
-  { id: 2, image: "https://...", title: "Switch to Global Fibertel", subtitle: "Stable connection", description: "24/7 support", phone1: "9999999999", phone2: "8888888888" },
-  // add others...
-];
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { addAdminHomeData } from "../../../Redux/adminHomeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "../../../constants";
+import { FaRegEdit } from "react-icons/fa";
+
 const HomePageEdit = () => {
-    const [records, setRecords] = useState(data);
+
+    const [records, setRecords] = useState([]);
     const [editingId, setEditingId] = useState(null);
 
+    const data = useSelector(store => store.adminHome.adminHomePage)
+
     const handleChange = (id, field, value) => {
-       console.log(value)
+        setRecords((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, [field]: value } : item
+            )
+        );
     };
 
-    const handleSave = (id) => {
-        const updated = records.find((item) => item.id === id);
-        console.log("Send to backend:", updated); // axios.put(url, updated)
-        setEditingId(null);
+    const handleSave = async (id) => {
+
+        try {
+            const updated = records.find((item) => item.id === id);
+            console.log(updated)
+            const res = await axios.put(BASE_URL + "/admin/homepage/banners/edit/" + id, updated, { withCredentials: true })
+            setEditingId(null);
+        } catch (error) {
+            console.log(error)
+        }
+
     };
+
+    useEffect(() => {
+        setRecords(data?.banners)
+    }, [data])
 
     return (
-        <div className="w-[90%] mx-auto mt-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                Homepage Slider Manager
+        <div className="mt-10">
+            <h2 className="text-3xl font-bold text-red-400 mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-black/20 rounded-lg">
+                Homepage Banners
             </h2>
-
-            <div className="grid gap-6">
-                {records.map((item) => (
+            <div className="fixed top-32 right-15 bg-gray-600 text-white text-lg font-semibold rounded-lg px-4 py-2 shadow-lg transform transition-all hover:bg-gray-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2.5 cursor-pointer">
+                <button>
+                    Add New
+                </button>
+                <FaRegEdit />
+            </div>
+            <div className="w-fit flex flex-wrap gap-9 mx-[10%] mt-[85px]">
+                {records?.map((item, i) => (
                     <div
-                        key={item.id}
+                        key={item?.id}
                         className="bg-white shadow-md rounded-xl p-6 border border-gray-200"
                     >
+
                         {/* IMAGE */}
-                        <div className="flex items-center gap-6">
-                            <img
-                                src={item.image}
-                                alt="slider"
-                                className="w-44 h-32 rounded-md shadow"
-                            />
+                        <div className="flex flex-col items-center gap-6">
+
+                            <div className="flex gap-10">
+                                <p className="text-[16px] text-start h-fit text-white bg-gray-600 font-semibold py-1.5 px-2.5 w-fit mb-2.5 rounded-lg">Card-{i + 1}</p>
+                                
+                                <img
+                                    src={item?.imageURL}
+                                    alt="slider"
+                                    className="w-44 h-32 rounded-md shadow"
+                                />
+                            </div>
+
                             <div className="flex flex-col gap-2">
                                 <label className="text-sm font-semibold text-gray-600">
                                     Image URL
                                 </label>
                                 <input
                                     type="text"
-                                    value={item.image}
+                                    value={item?.imageURL}
                                     disabled={editingId !== item.id ? true : false}
                                     onChange={(e) =>
-                                        handleChange(item.id, "image", e.target.value)
+                                        handleChange(item.id, "imageURL", e.target.value)
                                     }
                                     className="border border-gray-300 p-2 rounded-md w-[400px]"
                                 />
@@ -55,21 +86,21 @@ const HomePageEdit = () => {
 
                         {/* TEXT FIELDS */}
                         <div className="grid grid-cols-2 gap-4 mt-6">
-                            {["title", "subtitle", "description", "phone1", "phone2"].map(
+                            {Object.keys(item).map(
                                 (field) => (
                                     <div key={field} className="flex flex-col gap-1">
                                         <label className="text-sm font-semibold text-gray-600">
-                                            {field}
+                                            {field !== "id" && field !== "homepage_id" && field}
                                         </label>
-                                        <input
+                                        {field !== "id" && field !== "homepage_id" && <input
                                             type="text"
-                                            value={item[field]}
+                                            value={item[field !== "id" && field !== "homepage_id" && field]}
                                             disabled={editingId !== item.id}
                                             onChange={(e) =>
                                                 handleChange(item.id, field, e.target.value)
                                             }
                                             className="border border-gray-300 p-2 rounded-md"
-                                        />
+                                        />}
                                     </div>
                                 )
                             )}
@@ -81,13 +112,13 @@ const HomePageEdit = () => {
                                 <>
                                     <button
                                         onClick={() => handleSave(item.id)}
-                                        className="bg-green-600 text-white rounded-md px-5 py-2 font-semibold"
+                                        className="bg-green-600 text-white rounded-lg px-5 py-2 font-semibold cursor-pointer hover:bg-green-700 transition-all duration-300 ease-in"
                                     >
                                         Save
                                     </button>
                                     <button
                                         onClick={() => setEditingId(null)}
-                                        className="bg-gray-400 text-white rounded-md px-5 py-2 font-semibold"
+                                        className="bg-red-400 text-white rounded-lg px-5 py-2 font-semibold cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in "
                                     >
                                         Cancel
                                     </button>
@@ -95,7 +126,7 @@ const HomePageEdit = () => {
                             ) : (
                                 <button
                                     onClick={() => setEditingId(item.id)}
-                                    className="bg-blue-600 text-white rounded-md px-5 py-2 font-semibold"
+                                    className="rounded-lg px-5 py-2 font-bold flex items-center gap-3 text-[16px] border border-red-300 bg-red-400 text-white cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in"
                                 >
                                     Edit
                                 </button>

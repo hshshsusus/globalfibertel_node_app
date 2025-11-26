@@ -1,21 +1,40 @@
 import { FaHome, FaRegSquare, FaPaintBrush, FaBox, FaImage, FaUsers } from "react-icons/fa";
 import { FiEdit } from "react-icons/fi";
 import HomePageEdit from "./EditableComponents.jsx/HomePageEdit";
+import HomeServicesEdit from "./EditableComponents.jsx/HomeServicesEdit";
+import HomeSubCount from "./EditableComponents.jsx/HomeSubCount";
+import HomeFAQsEdit from "./EditableComponents.jsx/HomeFAQsEdit";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 
-const AdminMainBody = () => {
-    const cards = [
-        { icon: <FaHome />, title: "Homepage Editor" },
-        { icon: <FaRegSquare />, title: "Banners Edit" },
-        { icon: <FaPaintBrush />, title: "Popular Palns Edit" },
-        { icon: <FaBox />, title: "Services Edit" },
-        { icon: <FaImage />, title: "Subscribers Count Edit" },
-        { icon: <FaUsers />, title: "FAQs Edit" },
-    ];
+const AdminMainBody = ({ showPage }) => {
+
+    const {pathname} = useLocation();
+    const [show, setShow] = useState(false);
+
+
+    useEffect(() =>{
+        setShow(true)
+    },[])
+
+    const targetPage = () => {
+
+        switch (showPage) {
+            case "Services":
+                return <HomeServicesEdit />;
+            case "Subscribers":
+                return <HomeSubCount />;
+            case "FAQs":
+                return <HomeFAQsEdit />;
+            default:
+                return <HomePageEdit />
+        }
+    }
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-h-[80vh] overflow-y-scroll">
-            <HomePageEdit/>
+        <div className="w-full max-h-[80vh] overflow-y-scroll">
+           {targetPage()}
         </div>
     );
 };

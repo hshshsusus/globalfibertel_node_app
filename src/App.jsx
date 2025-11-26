@@ -33,6 +33,7 @@ import CreateTicket from './components/customers and tickets ui/CreateTicket';
 import CustomerTicket from './components/customers and tickets ui/CustomerTicket';
 import AdminLogin from './components/AdminComponents.jsx/AdminLogin';
 import AdminDashBoard from './components/AdminComponents.jsx/AdminDashBoard';
+import PlansEdit from './components/AdminComponents.jsx/EditableComponents.jsx/PlansEdit';
 
 function AnimatedRoutes() {
 
@@ -243,7 +244,7 @@ function AnimatedRoutes() {
             />
           </Route>
 
-{/* admin routes start  from here */}
+          {/* admin routes start  from here */}
           <Route
             path="/admin/login"
             element={
@@ -258,6 +259,15 @@ function AnimatedRoutes() {
             element={
               <motion.div {...pageVariants}>
                 <AdminDashBoard />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="/admin/dashboard/plans"
+            element={
+              <motion.div {...pageVariants}>
+                <PlansEdit />
               </motion.div>
             }
           />

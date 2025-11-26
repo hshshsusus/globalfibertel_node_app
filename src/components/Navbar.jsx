@@ -41,39 +41,39 @@ const Navbar = () => {
 
     // console.log(1763190525.49 - Date.now()/1000 )
 
-   const fetchUser = async () =>{
+    const fetchUser = async () => {
         try {
-            const res = await axios.get(BASE_URL+"/profile/user/get", {withCredentials:true});
+            const res = await axios.get(BASE_URL + "/profile/user/get", { withCredentials: true });
             dispatch(addUser(res?.data))
-            
+
         } catch (error) {
             console.log(error)
         }
-   }
+    }
 
-   const handleCustomerInvoices = async () => {
+    const handleCustomerInvoices = async () => {
         try {
             const res = await axios.post(BASE_URL + "/api/customer/invoice", {}, { withCredentials: true })
             dispatch(addCustomerInvoice(res?.data))
         } catch (error) {
             console.log(error)
         }
-    } 
+    }
 
-   const handleCustomerData = async (data) => {
-            const email = data?.[0].email;
-            try {
-                const res = await axios.post(BASE_URL + "/api/customer", { email }, { withCredentials: true })
-                dispatch(addCustomerData(res?.data))
-                handleCustomerInvoices();
-            } catch (error) {
-                console.log(error)
-            }
+    const handleCustomerData = async (data) => {
+        const email = data?.[0].email;
+        try {
+            const res = await axios.post(BASE_URL + "/api/customer", { email }, { withCredentials: true })
+            dispatch(addCustomerData(res?.data))
+            handleCustomerInvoices();
+        } catch (error) {
+            console.log(error)
         }
+    }
 
     useEffect(() => {
         fetchUser();
-       handleCustomerData(user);
+        handleCustomerData(user);
         getAllPackages();
         window.addEventListener("scroll", handleScroll);
         return () => {
@@ -108,7 +108,7 @@ const Navbar = () => {
             <div
                 className={`flex items-center justify-between px-10 py-2 bg-white/80 backdrop-blur-xl shadow-md
   transition-all duration-300 
-  ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"} rounded-b-2xl border-b-4 border-red-300`}
+  ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"} rounded-b-2xl border-b-4 border-red-600`}
             >
                 <div
                     className="relative w-[100px] group"

@@ -23,7 +23,7 @@ const AdminLogin = () => {
                 password
             }, { withCredentials: true });
             dispatch(addAdmin(res.data));
-            navigate("/");
+            navigate("/admin/dashboard");
         } catch (error) {
             console.log(error)
         }

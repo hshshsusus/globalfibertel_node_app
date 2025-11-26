@@ -5,6 +5,7 @@ import packReducer from "./packSlice";
 import userReducer from "./userslice";
 import homeReducer from "./homeSlice";
 import customerReducer from "./customerSlice";
+import adminHomeReducer from "./adminHomeSlice";
 
 const appStore = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ const appStore = configureStore({
         user: userReducer,
         home: homeReducer,
         customer: customerReducer,
+        adminHome: adminHomeReducer,
     }
 })
 

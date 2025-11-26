@@ -18,13 +18,11 @@ const Home = () => {
     const fetchHomepageData = async () => {
         try {
             const res = await axios.get(BASE_URL + "/homepage/data/get", { withCredentials: true })
-            // console.log(res.data)
             dispatch(AddHome(res.data))
         } catch (error) {
             console.log(error)
         }
     }
-
 
     useEffect(() => {
         fetchHomepageData();

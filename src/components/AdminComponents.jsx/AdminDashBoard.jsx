@@ -1,16 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AdminSideBar from "./AdminSideBar";
 import AdminMainBody from "./AdminMainBody";
+import axios from "axios";
+import { BASE_URL } from "../../constants";
+import { addAdminHomeData } from "../../Redux/adminHomeSlice";
+import { useDispatch } from "react-redux";
+import { RiAdminFill } from "react-icons/ri";
+import { useLocation } from "react-router-dom";
+import { getAllPacks } from "../../Redux/packSlice";
+
 
 const AdminDashBoard = () => {
+
+    const [options, setOptions] = useState(["Homepage Banners", "Services", "Subscribers", "FAQs"]);
+    const [showPage, setShowPage] = useState();
+
+    const dispatch = useDispatch();
+
+    const location = useLocation();
+
+    const fetchHomepageData = async () => {
+        try {
+            const res = await axios.get(BASE_URL + "/homepage/data/get", { withCredentials: true })
+            dispatch(addAdminHomeData(res?.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const getAllPackages = async () => {
+        try {
+            const res = await axios.get(BASE_URL + "/plans/get", { withCredentials: true });
+
+            dispatch(getAllPacks(res.data));
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const click = (e) => {
+        const res = options.find((prev) => prev === e)
+        setShowPage(res)
+    }
+
+    useEffect(() => {
+        fetchHomepageData();
+        getAllPackages()
+    }, [])
+
     return (
-        <div className="flex">
-            <AdminSideBar />
-            <div className="flex-1 px-12 py-10">
-                <h1 className="text-[34px] font-bold text-red-600 mb-10">
-                    Admin Dashboard
-                </h1>
-                <AdminMainBody />
+        <div className="flex w-full">
+            <div className="w-fit">
+                <AdminSideBar />
+            </div>
+            <div className="flex flex-col w-full">
+                <div className="flex items-center justify-between py-6 px-8 header w-full">
+                    <div className="flex items-center gap-4 ">
+                        {
+                            options.map((e, i) => {
+                                return (
+                                    <div key={i} className={`text-[17px] text-gray-800 font-semibold hover:bg-black/5 py-[5px] px-[10px] cursor-pointer ${showPage === e ? "text-red-400 border-b-4 border-red-400 " : ""}`} onClick={() => click(e)}>
+                                        <p>{e}</p>
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                    <div className="flex items-center justify-center mr-20 mt-2.5 rounded-full p-1.5 border-4 border-gray-500">
+                        <RiAdminFill className="text-[35px] text-gray-800" />
+                    </div>
+                </div>
+                <AdminMainBody showPage={showPage} />
             </div>
         </div>
     )
