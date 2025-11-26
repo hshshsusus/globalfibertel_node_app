@@ -22,10 +22,10 @@ const AdminLogin = () => {
                 email,
                 password
             }, { withCredentials: true });
-            dispatch(addAdmin(res.data));
+            dispatch(addAdmin(res?.data));
             navigate("/admin/dashboard");
         } catch (error) {
-            console.log(error)
+            navigate("/admin/login")
         }
     }
 

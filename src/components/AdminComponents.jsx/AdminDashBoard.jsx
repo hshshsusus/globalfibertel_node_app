@@ -6,14 +6,17 @@ import { BASE_URL } from "../../constants";
 import { addAdminHomeData } from "../../Redux/adminHomeSlice";
 import { useDispatch } from "react-redux";
 import { RiAdminFill } from "react-icons/ri";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAllPacks } from "../../Redux/packSlice";
+import { addAdmin } from "../../Redux/adminSlice";
 
 
 const AdminDashBoard = () => {
 
     const [options, setOptions] = useState(["Homepage Banners", "Services", "Subscribers", "FAQs"]);
     const [showPage, setShowPage] = useState();
+
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -39,12 +42,25 @@ const AdminDashBoard = () => {
         }
     }
 
+    const getAdminProfile = async () =>{
+        try {
+            const res = await axios.get(BASE_URL+"/profile/admin", {withCredentials:true});
+            console.log(res.data);
+            dispatch(addAdmin(res?.data))
+        } catch (error) {
+            if(error.response.data === "Token got expired..!"){
+                navigate("/admin/login")
+            }
+        }
+    }
+
     const click = (e) => {
         const res = options.find((prev) => prev === e)
         setShowPage(res)
     }
 
     useEffect(() => {
+        getAdminProfile();
         fetchHomepageData();
         getAllPackages()
     }, [])

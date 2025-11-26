@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from "react";
 import AdminSideBar from "../AdminSideBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllPacks } from "../../../Redux/packSlice";
 import axios from "axios";
 import { BASE_URL } from "../../../constants";
 import AllPlansEdit from "./AllPlansEdit";
 import AddNewPack from "./AddNewPack";
+import { useNavigate } from "react-router-dom";
+import { addAdmin } from "../../../Redux/adminSlice";
 
 const PlansEdit = () => {
 
     const [packs, setPacks] = useState([])
     const [form, setForm] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    const getAdminProfile = async () => {
+        try {
+            const res = await axios.get(BASE_URL + "/profile/admin", { withCredentials: true })
+            dispatch(addAdmin(res?.data))
+        } catch (error) {
+            if(error.response.data === "Token got expired..!"){
+                navigate("/admin/login")
+            }
+        }
+    }
+
     const getAllPackages = async () => {
         try {
             const res = await axios.get(BASE_URL + "/plans/get", { withCredentials: true });
-            console.log("res", res.data)
             setPacks(res?.data)
         } catch (error) {
             console.log(error);
@@ -23,6 +39,7 @@ const PlansEdit = () => {
     }
 
     useEffect(() => {
+        getAdminProfile()
         getAllPackages();
     }, [])
 
@@ -41,7 +58,7 @@ const PlansEdit = () => {
                     </svg>
                 </div>
             </div>
-            {form &&<div className="fixed inset-0 w-full flex items-center bg-black/50">
+            {form && <div className="fixed inset-0 w-full flex items-center bg-black/50">
                 <AddNewPack />
             </div>}
 
