@@ -102,7 +102,6 @@ const VerifyOtp = () => {
 
     return (
         <>
-            <TopNavbar />
             <div className="mx-[10%] my-[6%] flex items-center justify-between py-[35px] px-[8%] emailOtp">
                 <div className="flex flex-col gap-7 w-[50%]">
                     <p className="text-[35px] font-bold">Enjoy your life with<br /> high speed internet</p>

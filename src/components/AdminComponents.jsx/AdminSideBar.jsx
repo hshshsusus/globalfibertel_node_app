@@ -13,22 +13,14 @@ const AdminSideBar = () => {
 
                 <ul className="flex flex-col gap-6 text-[16px] font-medium">
 
-                    <Link to={location.pathname === "/admin/dashboard" && "/admin/dashboard"}><li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
+                    <Link to={"/admin/dashboard"}><li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
                         <FaHome /> Homepage Editor
                     </li>
                     </Link>
-
                     <Link to={"/admin/dashboard/plans"}><li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
-                        <FaRegSquare /> Buttons Editor
-                    </li>
-                    </Link>
-
-                    <li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
-                        <FaPaintBrush /> Theme Settings
-                    </li>
-                    <li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
                         <FaBox /> Plans Manager
                     </li>
+                    </Link>
                     <li className="flex items-center gap-3 cursor-pointer hover:text-gray-300">
                         <FaImage /> Image Uploads
                     </li>
@@ -37,8 +29,8 @@ const AdminSideBar = () => {
                     </li>
                 </ul>
             </div>
-            
-        </div>
+
+        </div >
     );
 };
 

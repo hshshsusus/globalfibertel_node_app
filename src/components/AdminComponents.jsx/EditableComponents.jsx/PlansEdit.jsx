@@ -24,7 +24,7 @@ const PlansEdit = () => {
             dispatch(addAdmin(res?.data))
         } catch (error) {
             if(error.response.data === "Token got expired..!"){
-                navigate("/admin/login")
+                // navigate("/admin/login")
             }
         }
     }
@@ -47,11 +47,11 @@ const PlansEdit = () => {
 
     return (
         <div>
-            <div className="flex items-center justify-between fixed top-0 left-0 w-[100%] py-5 px-12">
-                <div>
+            <div className="text-2xl font-bold text-white mb-6 ml-[2%] py-4 px-8  rounded-sm flex items-center justify-between">
+                <div className="bg-gray-600 text-white rounded-sm py-2 px-4">
                     Plans edit section
                 </div>
-                <div className="flex items-center justify-center bg-green-500  w-fit gap-2.5 py-2.5 px-5 text-white font-bold hover:bg-green-600 cursor-pointer transition-all duration-300 ease-in rounded-xl" onClick={() => setForm(true)}>
+                <div className="flex items-center justify-center text-[18px] bg-green-500  w-fit gap-2.5 py-2.5 px-5 text-white font-bold hover:bg-green-600 cursor-pointer transition-all duration-300 ease-in rounded-xl" onClick={() => setForm(true)}>
                     <p>Add new</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                         <path fillRule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />

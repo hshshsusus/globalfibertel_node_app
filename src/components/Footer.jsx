@@ -9,6 +9,7 @@ import { PiBuildingOfficeDuotone } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import * as Fa6Icons from "react-icons/fa6";
 import * as FaIcons from "react-icons/fa";
+import * as MdIcons from "react-icons/md";
 
 const Footer = ({ footer }) => {
     if (!footer) return;
@@ -21,14 +22,25 @@ const Footer = ({ footer }) => {
     const getIcon = (icon, Library) => {
         const libraries = {
             fa6: Fa6Icons,
-            fa: FaIcons
-        }
+            fa: FaIcons,
+            md:MdIcons,
+        };
+
         const lib = libraries[Library];
+        if (!lib) return null;
 
-        const Icon = lib[icon];
+        const IconComponent = lib[icon];
 
-        return <Icon className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
-    }
+        if (!IconComponent) {
+            console.warn(`Icon not found: ${icon} in ${Library}`);
+            return <span className="text-gray-500">•</span>; 
+        }
+
+        return (
+            <IconComponent className="text-[18px] text-gray-500 group-hover:text-red-600 duration-200" />
+        );
+    };
+
 
     return (
         <div className="bg-[#0a0a0a] text-gray-300 px-[5%] pt-14 pb-10 mt-10">
@@ -50,7 +62,7 @@ const Footer = ({ footer }) => {
                             const Icon = e?.icon;
                             return (
                                 <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    {getIcon(e?.icon, e?.iconLib)}
+                                    {getIcon(e?.icon, e?.iconLibrary)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                                 </Link>
@@ -65,7 +77,7 @@ const Footer = ({ footer }) => {
                             const Icon = e.icon;
                             return (
                                 <Link to={e.linkURL}><div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    {getIcon(e?.icon, e?.iconLib)}
+                                    {getIcon(e?.icon, e?.iconLibrary)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                                 </Link>
@@ -80,7 +92,7 @@ const Footer = ({ footer }) => {
                             const Icon = e.icon;
                             return (
                                 <div key={i} className="flex items-center gap-2.5 group cursor-pointer">
-                                    {getIcon(e?.icon, e?.iconLib)}
+                                    {getIcon(e?.icon, e?.iconLibrary)}
                                     <p className="text-[16px] group-hover:text-red-600 text-gray-400">{e.text}</p>
                                 </div>
                             );

@@ -13,6 +13,7 @@ import { addUser } from "../Redux/userslice";
 import Loader from "./Loader";
 import { toast } from "react-toastify";
 import { MdArrowBackIosNew } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const EmailOtp = () => {
 
@@ -30,7 +31,6 @@ const EmailOtp = () => {
             setLoader(true);
             const res = await axios.post(BASE_URL + "/login/user/otp", { email }, { withCredentials: true });
             toast.success("Otp sent successfuly!")
-            console.log(res.data)
             dispatch(addUser(res.data));
             navigate("/auth/otp/verify")
         } catch (error) {
@@ -41,7 +41,6 @@ const EmailOtp = () => {
     }
     return (
         <>
-            <TopNavbar />
             <div className="mx-[8%] my-[5%] flex items-center justify-between py-[40px] px-[6%] bg-gradient-to-r from-[#f6f9ff] to-[#ffffff] rounded-2xl shadow-lg">
 
                 <div className="flex flex-col gap-8 w-[40%]">
@@ -99,7 +98,6 @@ const EmailOtp = () => {
                     </div>
                 </div>
             </div>
-
             <Footer />
         </>
     )

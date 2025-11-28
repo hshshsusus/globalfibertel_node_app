@@ -5,18 +5,21 @@ import HomeServicesEdit from "./EditableComponents.jsx/HomeServicesEdit";
 import HomeSubCount from "./EditableComponents.jsx/HomeSubCount";
 import HomeFAQsEdit from "./EditableComponents.jsx/HomeFAQsEdit";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import HomePageTopbarEdit from "./EditableComponents.jsx/HomePageTopbarEdit";
+import FooterEdit from "./EditableComponents.jsx/FooterEdit";
 
 
 const AdminMainBody = ({ showPage }) => {
 
-    const {pathname} = useLocation();
+    const { pathname } = useLocation();
     const [show, setShow] = useState(false);
 
+    const navigate = useNavigate();
 
-    useEffect(() =>{
+    useEffect(() => {
         setShow(true)
-    },[])
+    }, [])
 
     const targetPage = () => {
 
@@ -27,6 +30,10 @@ const AdminMainBody = ({ showPage }) => {
                 return <HomeSubCount />;
             case "FAQs":
                 return <HomeFAQsEdit />;
+            case "Topbar":
+                return <HomePageTopbarEdit />;
+            case "Footer":
+                return <FooterEdit />;
             default:
                 return <HomePageEdit />
         }
@@ -34,7 +41,7 @@ const AdminMainBody = ({ showPage }) => {
 
     return (
         <div className="w-full max-h-[80vh] overflow-y-scroll">
-           {targetPage()}
+            {targetPage()}
         </div>
     );
 };

@@ -37,7 +37,7 @@ const AllPlansEdit = ({ packs }) => {
     }
 
     return packs?.length > 0 && (
-        <div className="mt-10">
+        <div className=" overflow-y-scroll max-h-[80vh]">
 
             <div className="grid grid-cols-2 md:grid-cols-2 gap-8 p-6 mt-[65px]">
 

@@ -60,7 +60,7 @@ const Dashboard = ({ data }) => {
         return (
             <div className="flex flex-col justify-center items-center h-screen bg-gray-50 p-4">
                 <div className={loaderStyle}></div>
-                <p className="mt-4 text-lg text-gray-600">Loading Customer Data...</p>
+                <p className="mt-4 text-lg text-gray-600">No data found.!</p>
             </div>
         );
     }

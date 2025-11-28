@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { CgLogIn } from "react-icons/cg";
 import { RiAdminLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
 import { addAdmin } from "../../Redux/adminSlice";
 import { useNavigate } from "react-router-dom";
+import { CgLogIn } from "react-icons/cg";
+import { IoEye } from "react-icons/io5";
+import { IoIosEyeOff } from "react-icons/io";
+
 
 const AdminLogin = () => {
 
-    const [email, setEmail] = useState("durgaprasadkasa81@gmail.com");
+    const [email, setEmail] = useState("durgaprasadkasa@gmail.com");
     const [password, setPassword] = useState("Naveen@123");
+    const [showPassword, setShowPassword] = useState(false);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,32 +29,66 @@ const AdminLogin = () => {
             dispatch(addAdmin(res?.data));
             navigate("/admin/dashboard");
         } catch (error) {
-            navigate("/admin/login")
+            // navigate("/admin/login")
         }
     }
 
     return (
         <>
-            <div className="w-[100vw] h-[100vh] flex items-center justify-center">
-                <div className="w-[50gap-1.5 it%] flex flex-col gap-4 items-center justify-center mx-[10%] px-[10px] py-[20px] my-[35px] log w-[400px]">
-                    <div className="flex ems-center justify-center">
-                        <p className="text-[30px] text-orange-500 font-bold"><span className="text-[30px] text-green-600 font-bold">Admin</span> login</p>
-                        <RiAdminLine className="text-[30px] text-orange-500 font-bold" />
+            <div
+                className="w-screen h-screen flex items-center justify-center bg-cover bg-center"
+                style={{
+                    backgroundImage: "url('https://res.cloudinary.com/dssabhgtb/image/upload/v1764321303/Gemini_Generated_Image_2rozm12rozm12roz_lwvyxx.png')",
+                }}
+            >
+                <div className="bg-white/80 backdrop-blur-md shadow-2xl rounded-2xl p-10 w-full max-w-md flex flex-col items-center gap-6">
+                    <div className="flex items-center gap-3 mb-4">
+                        <RiAdminLine className="text-4xl text-orange-500" />
+                        <h1 className="text-3xl font-bold text-gray-800">
+                            <span className="text-green-600">Admin</span> Login
+                        </h1>
                     </div>
-                    <form action="" className="w-[100%] flex flex-col items-center justify-center gap-5" onSubmit={(e) => e.preventDefault()}>
-                        <div className="flex flex-col gap-1.5 w-[70%]">
-                            <label htmlFor="" className="text-gray-700 font-semibold">Email address</label>
-                            <input type="email" placeholder="example@gmail.com..." className="py-[10px] px-[20px] login border border-gray-300 rounded-md" value={email} onChange={(e) => setEmail(e.target.value)} />
+
+                    <form
+                        className="w-full flex flex-col gap-5"
+                        onSubmit={(e) => e.preventDefault()}
+                    >
+                        <div className="flex flex-col gap-1">
+                            <label className="text-gray-700 font-semibold">Email Address</label>
+                            <input
+                                type="email"
+                                placeholder="example@gmail.com"
+                                className="py-3 px-4 border border-gray-400 focus:border-none rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
-                        <div className="flex flex-col gap-1.5 w-[70%]">
-                            <label htmlFor="" className="text-gray-700 font-semibold">Password</label>
-                            <input type="password" placeholder="password..." className="py-[10px] px-[20px] login border border-gray-300 rounded-md" value={password} onChange={(e) => setPassword(e.target.value)} />
+
+                        <div className="flex flex-col gap-1 relative">
+                            <label className="text-gray-700 font-semibold">Password</label>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="********"
+                                className="py-3 px-4 border border-gray-400 focus:border-none rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <div className="absolute right-5 bottom-3.5 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
+                                {showPassword ? <IoIosEyeOff className="text-[22px] text-gray-800" /> : <IoEye className=" text-[22px] text-gray-800" />}
+                            </div>
                         </div>
-                        <p className="text-end text-[14px] text-gray-500 hover:text-blue-600 hover:underline cursor-pointer font-bold transition delay-150 duration-300 ease-in-out">forgot password?</p>
-                        <div onClick={handleLogin} className="transition delay-150 duration-300 ease-in-out flex gap-1.5 items-center cursor-pointer hover:bg-red-400 justify-center bg-red-600 text-white font-bold w-fit py-[10px] px-[35px] rounded-2xl">
-                            <button className="cursor-pointer">Login</button>
-                            <CgLogIn className="text-[22px]" />
-                        </div>
+
+                        <p className="text-right text-sm text-gray-500 hover:text-blue-600 hover:underline cursor-pointer transition duration-200">
+                            Forgot password?
+                        </p>
+
+                        <button
+                            type="button"
+                            onClick={handleLogin}
+                            className="mt-2 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-xl transition duration-200 w-full cursor-pointer"
+                        >
+                            Login <CgLogIn className="text-xl" />
+                        </button>
                     </form>
                 </div>
             </div>

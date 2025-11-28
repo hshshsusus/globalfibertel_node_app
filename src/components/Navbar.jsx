@@ -21,6 +21,7 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const scroll = useSelector(store => store.scroll);
+    const topData = useSelector(store => store?.home?.topNavData);
 
     const dispatch = useDispatch();
     const user = useSelector(store => store.user);
@@ -32,22 +33,21 @@ const Navbar = () => {
             dispatch(getAllPacks(res.data));
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
     const handleScroll = () => {
         setScrollValue(window.scrollY);
     }
 
-    // console.log(1763190525.49 - Date.now()/1000 )
-
     const fetchUser = async () => {
         try {
             const res = await axios.get(BASE_URL + "/profile/user/get", { withCredentials: true });
+            console.log("user", res)
             dispatch(addUser(res?.data))
 
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -56,7 +56,7 @@ const Navbar = () => {
             const res = await axios.post(BASE_URL + "/api/customer/invoice", {}, { withCredentials: true })
             dispatch(addCustomerInvoice(res?.data))
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -67,7 +67,7 @@ const Navbar = () => {
             dispatch(addCustomerData(res?.data))
             handleCustomerInvoices();
         } catch (error) {
-            console.log(error)
+            // console.log(error)
         }
     }
 
@@ -106,7 +106,7 @@ const Navbar = () => {
         <div >
             <TopNavbar />
             <div
-                className={`flex items-center justify-between px-10 py-2 bg-white/80 backdrop-blur-xl shadow-md
+                className={`flex items-center justify-between px-10 py-2 bg-white/80 backdrop-blur-2xl shadow-md
   transition-all duration-300 
   ${scroll && "fixed top-0 left-0 w-full z-20 shadow-lg animate__animated animate__fadeInDown"} rounded-b-2xl border-b-4 border-red-600`}
             >
@@ -116,7 +116,7 @@ const Navbar = () => {
                     onMouseLeave={() => setShowPopup(false)}
                 >
                     <img
-                        src="/company_logo.png" alt="logo" className="w-[90px] h-[90px] cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,0,0,0.55)]" onClick={() => navigate("/")} />
+                        src={topData?.[0]?.logo} alt="logo" className="w-[90px] h-[90px] cursor-pointer transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_15px_rgba(255,0,0,0.55)]" onClick={() => navigate("/")} />
 
                     {location.pathname !== "/" && showPopup && (
                         <p className="absolute top-0 left-0 -translate-y-3 text-[12px] font-semibold px-3 py-1.5 bg-black/70 backdrop-blur-md text-white rounded-xl shadow-lg shadow-red-500/25 border border-gray-700/40 animate__animated animate__fadeInDown whitespace-nowrap">

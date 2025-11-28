@@ -246,3 +246,14 @@ const qaList = [
         answer: "You can reach us at support@globalfibertel.com."
     }
 ];
+
+export function getTokenFromCookie(name = "token") {
+  const cookieString = document.cookie; // all cookies in one string
+  const cookies = cookieString.split("; ").reduce((acc, curr) => {
+    const [key, value] = curr.split("=");
+    acc[key] = value;
+    return acc;
+  }, {});
+
+  return cookies[name] || null;
+}

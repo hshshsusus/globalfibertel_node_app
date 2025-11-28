@@ -51,6 +51,12 @@ export const OurServices = () => {
     }
 
     const getIconsDetails = (icon, library) => {
+        
+        if (!library || !icon) {
+            console.error(`Invalid icon or library: ${icon}, ${library}`);
+            return null;
+        }
+
         const libraries = {
             fa6: Fa6Icons,
             gi: GiIcons,
@@ -60,7 +66,18 @@ export const OurServices = () => {
         }
 
         const lib = libraries[library];
+
+        if (!lib) {
+            console.error(`Library "${library}" not found.`);
+            return null;
+        }
+
         const Icon = lib[icon];
+
+        if (!Icon) {
+            console.error(`Icon "${icon}" not found in library "${library}".`);
+            return null;
+        }
 
         return <Icon className="text-red-600 text-[50px] group-hover:scale-110 transition-all duration-300" />
     }
@@ -68,7 +85,8 @@ export const OurServices = () => {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
     }, [])
-    return (
+
+    return home && (
         <div className="mt-[40px]">
             <p className="text-[38px] text-center font-extrabold tracking-wide">
                 Our Popular Services
@@ -81,16 +99,15 @@ export const OurServices = () => {
                 <div className="cards pl-40 whitespace-nowrap" ref={slideRef} onScroll={handleScrolle}>
                     {services?.map((each, i) => {
 
-                        const serviceName = each.serviceName.toLowerCase().split(" ").join('')
+                        const serviceName = each?.serviceName?.toLowerCase().split(" ").join('')
                         const path = "/service/" + serviceName
-
                         return (
                             <div
                                 key={i}
                                 className="group card w-[300px] bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer hover:bg-gradient-to-b hover:from-red-50 hover:to-white"
                             >
                                 <div className="flex">
-                                    {getIconsDetails(each?.icon, each?.iconLibrary)}
+                                    {each?.icon && each?.iconLibrary &&getIconsDetails(each?.icon, each?.iconLibrary)}
                                 </div>
                                 <p className="mt-5 text-[24px] text-gray-800 font-bold text-start group-hover:text-red-600 transition-all duration-300">
                                     {each?.serviceName}

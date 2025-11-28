@@ -36,7 +36,7 @@ const HomeFAQEdit = () => {
 
     return (
         <div className="mt-10">
-            <h2 className="text-3xl font-bold text-red-400 mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-black/20 rounded-lg">
+            <h2 className="text-3xl font-bold text-white mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-gray-600 rounded-lg">
                 FAQs Edit
             </h2>
             <div className="fixed top-32 right-15 bg-gray-600 text-white text-lg font-semibold rounded-lg px-4 py-2 shadow-lg transform transition-all hover:bg-gray-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2.5 cursor-pointer">

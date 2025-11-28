@@ -4,13 +4,13 @@ import { useSelector } from "react-redux";
 import { BASE_URL } from "../../../constants";
 import { FaRegEdit } from "react-icons/fa";
 
-const HomeServicesEdit = () => {
+const FooterProductsEdit = () => {
 
     const [services, setServices] = useState([])
     const [editingId, setEditingId] = useState(null);
 
-    const home = useSelector(store => store.adminHome.adminHomePage);
-    const service = home?.services
+    const home = useSelector(store => store.adminHome.adminHomeFooter);
+    const service = home?.ourProducts
 
     const handleChange = (id, field, value) => {
         setServices((prev) =>
@@ -23,7 +23,7 @@ const HomeServicesEdit = () => {
         try {
             const updated = services.find((item) => item?.id === id);
             console.log(updated)
-            const res = await axios.put(BASE_URL + "/admin/homepage/services/edit/" + id, updated, { withCredentials: true })
+            const res = await axios.put(BASE_URL + "/admin/home/footer/ourproducts/edit/" + id, updated, { withCredentials: true })
             console.log(res)
             setEditingId(null);
         } catch (error) {
@@ -38,15 +38,7 @@ const HomeServicesEdit = () => {
 
     return (
         <div className="mt-10">
-            <h2 className="text-3xl font-bold text-white mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-gray-600 rounded-lg">
-                Services Edit
-            </h2>
-            <div className="fixed top-32 right-15 bg-gray-600 text-white text-lg font-semibold rounded-lg px-4 py-2 shadow-lg transform transition-all hover:bg-gray-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2.5 cursor-pointer">
-                <button>
-                    Add New
-                </button>
-                <FaRegEdit />
-            </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 mt-[65px]">
                 {services?.map((service, i) => (
                     <div
@@ -130,4 +122,4 @@ const HomeServicesEdit = () => {
     )
 }
 
-export default HomeServicesEdit;
+export default FooterProductsEdit;

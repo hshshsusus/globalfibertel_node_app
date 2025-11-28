@@ -71,7 +71,7 @@ const Page = () => {
             </div>}
             {showChatbot && <div className="fixed inset-0 bg-black/50 flex items-center justify-center">
                 <ChatBot />
-                <IoClose className="fixed bottom-18 right-2/4 rounded-2xl text-white text-[45px] bg-white/10 p-2 cursor-pointer" onClick={() => setShowChatbot(false)}/>
+                <IoClose className="fixed bottom-18 right-2/4 rounded-2xl text-black text-[45px] bg-white/70 p-2 cursor-pointer" onClick={() => setShowChatbot(false)}/>
             </div>}
 
         </div>

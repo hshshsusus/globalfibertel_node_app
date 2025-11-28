@@ -3,24 +3,43 @@ import AdminSideBar from "./AdminSideBar";
 import AdminMainBody from "./AdminMainBody";
 import axios from "axios";
 import { BASE_URL } from "../../constants";
-import { addAdminHomeData } from "../../Redux/adminHomeSlice";
+import { addAdminHomeData, adminHomeFooter, adminHomeTopbarData } from "../../Redux/adminHomeSlice";
 import { useDispatch } from "react-redux";
 import { RiAdminFill } from "react-icons/ri";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { getAllPacks } from "../../Redux/packSlice";
 import { addAdmin } from "../../Redux/adminSlice";
+import PlansEdit from "./EditableComponents.jsx/PlansEdit";
 
 
 const AdminDashBoard = () => {
 
-    const [options, setOptions] = useState(["Homepage Banners", "Services", "Subscribers", "FAQs"]);
+    const [options, setOptions] = useState(["Homepage Banners", "Services", "Subscribers", "FAQs", "Topbar", "Footer"]);
     const [showPage, setShowPage] = useState();
 
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
-    const location = useLocation();
+    console.log("location", location)
+
+    const fetchFooterData = async () => {
+        try {
+            const res = await axios.get(BASE_URL + "/home/footer", { withCredentials: true })
+            dispatch(adminHomeFooter(res?.data))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const fetchHomeTopbarData = async () => {
+        try {
+            const res = await axios.get(BASE_URL + "/home/topnav", { withCredentials: true });
+            dispatch(adminHomeTopbarData(res?.data))
+        } catch (error) {
+
+        }
+    }
 
     const fetchHomepageData = async () => {
         try {
@@ -42,14 +61,13 @@ const AdminDashBoard = () => {
         }
     }
 
-    const getAdminProfile = async () =>{
+    const getAdminProfile = async () => {
         try {
-            const res = await axios.get(BASE_URL+"/profile/admin", {withCredentials:true});
-            console.log(res.data);
+            const res = await axios.get(BASE_URL + "/profile/admin", { withCredentials: true });
             dispatch(addAdmin(res?.data))
         } catch (error) {
-            if(error.response.data === "Token got expired..!"){
-                navigate("/admin/login")
+            if (error.response.data === "Token got expired..!") {
+                // navigate("/admin/login")
             }
         }
     }
@@ -60,9 +78,11 @@ const AdminDashBoard = () => {
     }
 
     useEffect(() => {
-        getAdminProfile();
         fetchHomepageData();
+        fetchHomeTopbarData();
+        fetchFooterData();
         getAllPackages()
+        getAdminProfile();
     }, [])
 
     return (
@@ -71,7 +91,7 @@ const AdminDashBoard = () => {
                 <AdminSideBar />
             </div>
             <div className="flex flex-col w-full">
-                <div className="flex items-center justify-between py-6 px-8 header w-full">
+                <div className="flex items-center justify-between py-6 px-8 header w-full adminHead border-black">
                     <div className="flex items-center gap-4 ">
                         {
                             options.map((e, i) => {
@@ -87,7 +107,7 @@ const AdminDashBoard = () => {
                         <RiAdminFill className="text-[35px] text-gray-800" />
                     </div>
                 </div>
-                <AdminMainBody showPage={showPage} />
+                <Outlet />
             </div>
         </div>
     )
