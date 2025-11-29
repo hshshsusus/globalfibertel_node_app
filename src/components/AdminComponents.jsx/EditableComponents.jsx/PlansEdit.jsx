@@ -8,6 +8,7 @@ import AllPlansEdit from "./AllPlansEdit";
 import AddNewPack from "./AddNewPack";
 import { useNavigate } from "react-router-dom";
 import { addAdmin } from "../../../Redux/adminSlice";
+import { IoClose } from "react-icons/io5";
 
 const PlansEdit = () => {
 
@@ -60,6 +61,7 @@ const PlansEdit = () => {
             </div>
             {form && <div className="fixed inset-0 w-full flex items-center bg-black/50">
                 <AddNewPack />
+                <IoClose className="fixed top-27 right-100 rounded-2xl text-black text-[45px] bg-white p-2 cursor-pointer" onClick={() => setForm(false)}/>
             </div>}
 
             <AllPlansEdit packs={packs} />

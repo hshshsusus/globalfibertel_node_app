@@ -90,7 +90,7 @@ const VerifyOtp = () => {
             toast.success("Logged in successfully.!");
             handleCustomerData(res?.data);
             // handleCustomerInvoices();
-            navigate("/")
+            navigate("/user/dashboard/:userId")
             setLoader(false)
         } catch (error) {
             toast.error("Login unsuccessfull!")

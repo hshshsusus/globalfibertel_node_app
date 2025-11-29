@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../../../constants";
 import { FaRegEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const HomePageTopbarEdit = () => {
 
     const [locations, setLocations] = useState([]);
     const [editingId, setEditingId] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-
+    const [showData, setShowData] = useState();
     // Fetch data from redux store
     const homeTopData = useSelector((store) => store.adminHome.adminHomeTopbarData);
 
@@ -31,11 +32,25 @@ const HomePageTopbarEdit = () => {
                 setEditingId(null);
                 setErrorMessage(""); // Clear any previous error message
             }
+            setShowData("")
         } catch (error) {
             setErrorMessage("Failed to update the location. Please try again later.");
             console.error("Error saving location:", error);
         }
     };
+
+    const showInputFieldData = (id) => {
+        const editableItem = locations?.filter((e) => e?.id === id)
+        setShowData(editableItem[0]?.id)
+    }
+
+    const showToast = () => {
+        return Swal.fire({
+            title: "Edit option enabled.",
+            // text: "You clicked the button!",
+            icon: "success"
+        });
+    }
 
     useEffect(() => {
         setLocations(homeTopData);
@@ -84,7 +99,7 @@ const HomePageTopbarEdit = () => {
                                             // Render textarea or input based on field type
                                             isTextArea ? (
                                                 <textarea
-                                                    value={location[field] || ""}
+                                                    value={showData === location.id ? location[field] : ""}
                                                     disabled={editingId !== location.id}
                                                     onChange={(e) =>
                                                         handleChange(location.id, field, e.target.value)
@@ -94,7 +109,7 @@ const HomePageTopbarEdit = () => {
                                             ) : (
                                                 <input
                                                     type="text"
-                                                    value={location[field] || ""}
+                                                    value={showData === location.id ? location[field] : ""}
                                                     disabled={editingId !== location.id}
                                                     onChange={(e) =>
                                                         handleChange(location.id, field, e.target.value)
@@ -120,7 +135,7 @@ const HomePageTopbarEdit = () => {
                                         Save
                                     </button>
                                     <button
-                                        onClick={() => setEditingId(null)}
+                                        onClick={() => { setEditingId(null), setShowData("") }}
                                         className="bg-red-400 text-white rounded-lg px-5 py-2 font-semibold cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in"
                                     >
                                         Cancel
@@ -128,7 +143,7 @@ const HomePageTopbarEdit = () => {
                                 </>
                             ) : (
                                 <button
-                                    onClick={() => setEditingId(location?.id)}
+                                    onClick={() => { setEditingId(location.id), showInputFieldData(location.id), showToast() }}
                                     className="rounded-lg px-5 py-2 font-bold flex items-center gap-3 text-[16px] border border-red-300 bg-red-400 text-white cursor-pointer hover:bg-red-500"
                                 >
                                     Edit

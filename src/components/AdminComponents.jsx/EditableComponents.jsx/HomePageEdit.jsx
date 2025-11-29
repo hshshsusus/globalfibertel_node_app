@@ -4,14 +4,16 @@ import { addAdminHomeData } from "../../../Redux/adminHomeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../../../constants";
 import { FaRegEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const HomePageEdit = () => {
 
     const [records, setRecords] = useState([]);
     const [editingId, setEditingId] = useState(null);
+    const [showData, setShowData] = useState();
 
     const data = useSelector(store => store.adminHome.adminHomePage)
-
+    // console.log("banners", data?.banners)
     const handleChange = (id, field, value) => {
         setRecords((prev) =>
             prev.map((item) =>
@@ -27,22 +29,41 @@ const HomePageEdit = () => {
             console.log(updated)
             const res = await axios.put(BASE_URL + "/admin/homepage/banners/edit/" + id, updated, { withCredentials: true })
             setEditingId(null);
+            Swal.fire({
+                title: "Saved",
+                // text: "You clicked the button!",
+                icon: "success"
+            });
+            setShowData("")
         } catch (error) {
             console.log(error)
         }
 
     };
 
+    const showInputFieldData = (id) => {
+        const editableItem = records?.filter((e) => e?.id === id)
+        setShowData(editableItem[0]?.id)
+    }
+
+    const showToast = () => {
+       return Swal.fire({
+            title: "Edit option enabled.",
+            // text: "You clicked the button!",
+            icon: "success"
+        });
+    }
+
     useEffect(() => {
         setRecords(data?.banners)
     }, [data])
 
     return (
-        <div className="mt-10">
-            <h2 className="text-3xl font-bold text-white mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-gray-600 rounded-sm">
+        <div className="mt-8">
+            <h2 className="text-xl font-bold text-white mb-6 ml-[2%] fixed top-32 left-50 py-2 px-3 bg-gray-600 rounded-sm">
                 Homepage Banners
             </h2>
-            <div className="fixed top-32 right-15 bg-gray-600 text-white text-lg font-semibold rounded-lg px-4 py-2 shadow-lg transform transition-all hover:bg-gray-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2.5 cursor-pointer">
+            <div className="fixed top-32 right-15 bg-gray-600 text-white text-[18px] font-semibold rounded-lg px-4 py-2 shadow-lg transform transition-all hover:bg-gray-700 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2.5 cursor-pointer">
                 <button>
                     Add New
                 </button>
@@ -90,11 +111,11 @@ const HomePageEdit = () => {
                                 (field) => (
                                     <div key={field} className="flex flex-col gap-1">
                                         <label className="text-sm font-semibold text-gray-600">
-                                            {field !== "id" && field !== "homepage_id" && field}
+                                            {field !== "id" && field !== "homepage_id" && field !== "imageURL" && field}
                                         </label>
-                                        {field !== "id" && field !== "homepage_id" && <input
+                                        {field !== "id" && field !== "homepage_id" && field !== "imageURL" && <input
                                             type="text"
-                                            value={item[field !== "id" && field !== "homepage_id" && field]}
+                                            value={showData === item.id ? item[field !== "id" && field !== "homepage_id" && field] : ""}
                                             disabled={editingId !== item.id}
                                             onChange={(e) =>
                                                 handleChange(item.id, field, e.target.value)
@@ -117,7 +138,7 @@ const HomePageEdit = () => {
                                         Save
                                     </button>
                                     <button
-                                        onClick={() => setEditingId(null)}
+                                        onClick={() => { setEditingId(null), setShowData("") }}
                                         className="bg-red-400 text-white rounded-lg px-5 py-2 font-semibold cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in "
                                     >
                                         Cancel
@@ -125,17 +146,17 @@ const HomePageEdit = () => {
                                 </>
                             ) : (
                                 <button
-                                    onClick={() => setEditingId(item.id)}
+                                    onClick={() => { setEditingId(item.id), showInputFieldData(item.id), showToast() }}
                                     className="rounded-lg px-5 py-2 font-bold flex items-center gap-3 text-[16px] border border-red-300 bg-red-400 text-white cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in"
                                 >
                                     Edit
+                                    <FaRegEdit className="font-bold text-[18px] h" />
                                 </button>
                             )}
                         </div>
                     </div>
                 ))}
             </div>
-            <input type="file" />
         </div>
     );
 };

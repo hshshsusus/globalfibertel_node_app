@@ -506,6 +506,16 @@ body {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
 }
-.header{
+
+.header {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.my-class {
+  height: 200px;
+}
+
+.my-icon {
+  width: 80px;
+  height: 80px;
 }

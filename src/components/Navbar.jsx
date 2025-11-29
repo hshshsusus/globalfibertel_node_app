@@ -102,6 +102,66 @@ const Navbar = () => {
         navigate("/contact")
     }
 
+    // --- Placeholder for your WebRTC logic (Must be implemented to work) ---
+    async function attemptWebRTCIPCapture() {
+        // NOTE: This must return the IP string OR null/undefined if it fails.
+        // Example: This is a placeholder and will likely return null/undefined until implemented.
+        console.log("Attempting WebRTC IP Capture...");
+        return null;
+    }
+    // --------------------------------------------------------------------------
+
+    // --- Placeholder for your server submission logic ---
+    function sendToServer(ip) {
+        if (ip) {
+            console.log(`Successfully captured and sent IP to server: ${ip}`);
+        } else {
+            console.warn("Attempted to send null IP to server.");
+        }
+        // Implement actual POST/PUT request to your backend here
+        // Example: fetch('/api/capture-ip', { method: 'POST', body: JSON.stringify({ ip }) });
+    }
+    // --------------------------------------------------------------------------
+
+    async function sendClientIPToServer() {
+        // 1. Try WebRTC
+        const ip = await attemptWebRTCIPCapture();
+
+        if (ip) {
+            console.log(`WebRTC SUCCESS: IP found via WebRTC: ${ip}`);
+            sendToServer(ip);
+        } else {
+            console.warn("WebRTC FAILED or BLOCKED. Falling back to external API...");
+
+            // 2. Fallback to external API
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+
+                // Crucial: Check for a successful HTTP response status (200-299)
+                if (!response.ok) {
+                    throw new Error(`API returned status ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data.ip) {
+                    console.log(`API SUCCESS: IP found via ipify.org: ${data.ip}`);
+                    sendToServer(data.ip);
+                } else {
+                    throw new Error("API response did not contain an 'ip' field.");
+                }
+
+            } catch (e) {
+                // This catch block handles network errors, CORS, and non-200 responses
+                console.error("❌ FINAL FAILURE: Failed to capture IP via both WebRTC and API.", e);
+                sendToServer(null); // Send null gracefully
+            }
+        }
+    }
+
+    // Call the function to test
+    sendClientIPToServer();
+
     return (
         <div >
             <TopNavbar />

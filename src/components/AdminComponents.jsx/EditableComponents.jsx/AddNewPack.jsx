@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { BASE_URL } from '../../../constants';
+import { LuPackagePlus } from "react-icons/lu";
+import { RxCross2 } from "react-icons/rx";
 
 const AddNewPack = () => {
     const [formData, setFormData] = useState({
@@ -45,8 +47,11 @@ const AddNewPack = () => {
     };
 
     return (
-        <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-red-600 text-center">Create New Plan</h2>
+        <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg relative">
+            <div className='flex items-center justify-center mb-6 gap-2.5'>
+                <h2 className="text-2xl font-bold text-red-600 text-center">Create New Plan</h2>
+                <LuPackagePlus className='text-[24px] text-red-600' />
+            </div>
             <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="mb-4">
                     <label className="block text-sm font-semibold text-gray-600" htmlFor="price">

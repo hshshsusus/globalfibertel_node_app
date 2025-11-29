@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { CgLogIn } from "react-icons/cg";
 import { IoEye } from "react-icons/io5";
 import { IoIosEyeOff } from "react-icons/io";
+import Swal from "sweetalert2";
 
 
 const AdminLogin = () => {
@@ -27,9 +28,20 @@ const AdminLogin = () => {
                 password
             }, { withCredentials: true });
             dispatch(addAdmin(res?.data));
+            Swal.fire({
+                title: "Login successful",
+                // text: "You clicked the button!",
+                icon: "success"
+            });
             navigate("/admin/dashboard");
         } catch (error) {
-            // navigate("/admin/login")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: (error.response.data),
+                // footer: '<a href="#">Why do I have this issue?</a>'
+            });
+            console.log(error)
         }
     }
 
@@ -72,6 +84,7 @@ const AdminLogin = () => {
                                 className="py-3 px-4 border border-gray-400 focus:border-none rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
                             />
                             <div className="absolute right-5 bottom-3.5 cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                                 {showPassword ? <IoIosEyeOff className="text-[22px] text-gray-800" /> : <IoEye className=" text-[22px] text-gray-800" />}
@@ -84,7 +97,9 @@ const AdminLogin = () => {
 
                         <button
                             type="button"
-                            onClick={handleLogin}
+                            onClick={() => {
+                                handleLogin()
+                            }}
                             className="mt-2 flex items-center justify-center gap-2 bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-xl transition duration-200 w-full cursor-pointer"
                         >
                             Login <CgLogIn className="text-xl" />

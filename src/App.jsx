@@ -50,6 +50,7 @@ import TermsAndConditions from './components/ImportentLinksComponents/TermsAndCo
 import ParentalControle from './components/ImportentLinksComponents/ParentalControle';
 import ProtectedRoutes from './components/ProtectedRoutes';
 import AdminMainBody from './components/AdminComponents.jsx/AdminMainBody';
+import NewAdminForm from './components/AdminComponents.jsx/NewAdminForm';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -156,38 +157,38 @@ function AnimatedRoutes() {
             element={<motion.div {...pageVariants}><AdminLogin /></motion.div>}
           />
           <Route
+            path="/admin/create"
+            element={
+              <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
+                <motion.div {...pageVariants}><NewAdminForm /></motion.div>
+              </ProtectedRoutes>
+            }
+          />
+          <Route
             path="/admin/dashboard"
             element={
               <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
                 <motion.div {...pageVariants}><AdminDashBoard /></motion.div>
               </ProtectedRoutes>
             }
-          >
-            <Route
-              path="/admin/dashboard"
-              element={
-                <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
-                  <motion.div {...pageVariants}><AdminMainBody /></motion.div>
-                </ProtectedRoutes>
-              }
-            />
-            <Route
-              path="/admin/dashboard/plans"
-              element={
-                <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
-                  <motion.div {...pageVariants}><PlansEdit /></motion.div>
-                </ProtectedRoutes>
-              }
-            />
-            <Route
-              path="/admin/dashboard/footer"
-              element={
-                <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
-                  <motion.div {...pageVariants}><FooterEdit /></motion.div>
-                </ProtectedRoutes>
-              }
-            />
-          </Route>
+          />
+          <Route
+            path="/admin/dashboard/plans"
+            element={
+              <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
+                <motion.div {...pageVariants}><PlansEdit /></motion.div>
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/admin/dashboard/footer"
+            element={
+              <ProtectedRoutes allowedRoles={["admin"]} redirectPath={"/admin/login"}>
+                <motion.div {...pageVariants}><FooterEdit /></motion.div>
+              </ProtectedRoutes>
+            }
+          />
+
           {/* Fallback for Unauthorized */}
           <Route path="/unauthorized" element={<h2>Unauthorized Access</h2>} />
         </Routes>

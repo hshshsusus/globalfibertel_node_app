@@ -3,11 +3,13 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../../../constants";
 import { FaRegEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const HomeServicesEdit = () => {
 
     const [services, setServices] = useState([])
     const [editingId, setEditingId] = useState(null);
+    const [showData, setShowData] = useState();
 
     const home = useSelector(store => store.adminHome.adminHomePage);
     const service = home?.services
@@ -26,11 +28,30 @@ const HomeServicesEdit = () => {
             const res = await axios.put(BASE_URL + "/admin/homepage/services/edit/" + id, updated, { withCredentials: true })
             console.log(res)
             setEditingId(null);
+            Swal.fire({
+                title: "Saved",
+                // text: "You clicked the button!",
+                icon: "success"
+            });
+            setShowData("")
         } catch (error) {
             console.log(error)
         }
 
     };
+
+    const showInputFieldData = (id) => {
+        const editableItem = services?.filter((e) => e?.id === id)
+        setShowData(editableItem[0]?.id)
+    }
+
+    const showToast = () => {
+        return Swal.fire({
+            title: "Edit option enabled.",
+            // text: "You clicked the button!",
+            icon: "success"
+        });
+    }
 
     useEffect(() => {
         setServices(service)
@@ -73,7 +94,7 @@ const HomeServicesEdit = () => {
 
                                         {isTextArea ? (
                                             <textarea
-                                                value={service[eachField]}
+                                                value={ showData === service.id ? service[eachField] : ""}
                                                 disabled={editingId !== service.id}
                                                 onChange={(e) =>
                                                     handleChange(service.id, eachField, e.target.value)
@@ -83,7 +104,7 @@ const HomeServicesEdit = () => {
                                         ) : (
                                             <input
                                                 type="text"
-                                                value={service[eachField]}
+                                                value={showData === service.id ? service[eachField] : ""}
                                                 disabled={editingId !== service.id}
                                                 onChange={(e) =>
                                                     handleChange(service.id, eachField, e.target.value)
@@ -107,7 +128,7 @@ const HomeServicesEdit = () => {
                                         Save
                                     </button>
                                     <button
-                                        onClick={() => setEditingId(null)}
+                                        onClick={() => { setEditingId(null), setShowData("") }}
                                         className="bg-red-400 text-white rounded-lg px-5 py-2 font-semibold cursor-pointer hover:bg-red-500 transition-all duration-300 ease-in"
                                     >
                                         Cancel
@@ -115,7 +136,7 @@ const HomeServicesEdit = () => {
                                 </>
                             ) : (
                                 <button
-                                    onClick={() => setEditingId(service?.id)}
+                                    onClick={() => { setEditingId(service.id), showInputFieldData(service.id), showToast() }}
                                     className="rounded-lg px-5 py-2 font-bold flex items-center gap-3 text-[16px] border border-red-300 bg-red-400 text-white cursor-pointer hover:bg-red-500"
                                 >
                                     Edit

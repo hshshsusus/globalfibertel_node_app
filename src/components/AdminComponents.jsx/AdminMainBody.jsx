@@ -11,7 +11,7 @@ import FooterEdit from "./EditableComponents.jsx/FooterEdit";
 
 
 const AdminMainBody = ({ showPage }) => {
-
+    
     const { pathname } = useLocation();
     const [show, setShow] = useState(false);
 

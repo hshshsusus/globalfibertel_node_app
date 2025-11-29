@@ -66,12 +66,12 @@ const EmailOtp = () => {
                 <div className="w-[55%]">
                     <div className="flex flex-col gap-8 p-[40px] rounded-2xl bg-white/70 backdrop-blur-lg shadow-xl border border-gray-200">
                         <MdArrowBackIosNew className="text-[35px] text-red-600 hover:bg-gray-300 rounded-full py-[5px] px-[5px] cursor-pointer" onClick={() => navigate("/")}/>
-                        <div className="flex items-center gap-3 mx-auto">
+                        <div className="flex items-center gap-3 mx-auto mt-[-30px]">
                             <p className="text-[36px] font-bold text-green-600">Email</p>
                             <span className="text-[32px] font-bold text-orange-600">Verification</span>
                             <MdOutlineMailLock className="text-[32px] text-orange-600" />
                         </div>
-                        <div className="flex flex-col gap-2 mx-auto w-[70%]">
+                        <div className="flex flex-col gap-2 mx-auto w-[70%] mt-[-20px]">
                             <p className="text-[16px] text-gray-700 font-semibold">Email address</p>
                             <input
                                 type="email"
